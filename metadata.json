@@ -1,0 +1,6 @@
+{
+  "name": "KTES Educational Society",
+  "description": "Comprehensive premium web application for Khed Taluka Education Society (KTES) and its integrated Colleges (MAV, EMS, SKPPV). Features dynamic departments, visual timetables, study notes downloads, multi-category galleries, online admissions tracking, student resources, and a stateful administrative CMS panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

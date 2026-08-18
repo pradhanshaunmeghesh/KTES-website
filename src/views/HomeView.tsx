@@ -1,0 +1,815 @@
+import { useState, useEffect } from 'react';
+import { Announcement } from '../types';
+import { FOUNDERS, DIRECTORS } from '../data/mockData';
+import HistoryTimeline from '../components/HistoryTimeline';
+import ExecutiveDesk from '../components/ExecutiveDesk';
+import {
+  GraduationCap,
+  Users,
+  User,
+  Trophy,
+  Award,
+  ArrowRight,
+  BookOpen,
+  Laptop,
+  Flame,
+  Globe2,
+  BookmarkCheck,
+  Megaphone,
+  Calendar,
+  Sparkles,
+  ChevronRight,
+  ChevronDown,
+  ChevronUp,
+  Target,
+  Compass,
+  Eye,
+  CheckCircle,
+  RotateCw,
+  Building,
+  Medal,
+  Star,
+  Shield,
+  Library,
+  Landmark
+} from 'lucide-react';
+import { motion } from 'motion/react';
+// @ts-ignore
+import ktesCampusImg from '../assets/images/ktes_actual_banner_1783586668608.jpg';
+// @ts-ignore
+import chairmanImg from '../assets/images/Chairman.png';
+// @ts-ignore
+import dhanrajKatareImg from '../assets/images/presidents/dhanraj katare.jpg';
+// @ts-ignore
+import khushalchandLunawatImg from '../assets/images/presidents/khushalchand lunawat.jpg';
+// @ts-ignore
+import moreshwarSutarImg from '../assets/images/presidents/Moreshwar Sutar.jpg';
+// @ts-ignore
+import narharKulkarniImg from '../assets/images/presidents/Narhar Kulkarni.jpg';
+// @ts-ignore
+import naryanGhumatkarImg from '../assets/images/presidents/Narayan Ghumatkar.jpg';
+// @ts-ignore
+import raghunathJoshiImg from '../assets/images/presidents/raghunath joshi.jpg';
+// @ts-ignore
+import vishnuPathakImg from '../assets/images/presidents/vishnu (dadasaheb) pathak.jpg';
+
+const PAST_PRESIDENTS = [
+  {
+    id: 'p1',
+    nameEn: 'Late Dhanraj Katare',
+    nameMr: 'कै. धनराज कटारे',
+    image: dhanrajKatareImg
+  },
+  {
+    id: 'p2',
+    nameEn: 'Late Khushalchand Lunawat',
+    nameMr: 'कै. खुशालचंद लुनावत',
+    image: khushalchandLunawatImg
+  },
+  {
+    id: 'p3',
+    nameEn: 'Late Moreshwar Sutar',
+    nameMr: 'कै. मोरेश्वर सुतार',
+    image: moreshwarSutarImg
+  },
+  {
+    id: 'p4',
+    nameEn: 'Late Narhar Kulkarni',
+    nameMr: 'कै. नरहर कुलकर्णी',
+    image: narharKulkarniImg
+  },
+  {
+    id: 'p5',
+    nameEn: 'Late Naryan Ghumatkar',
+    nameMr: 'कै. नारायण घुमटकर',
+    image: naryanGhumatkarImg
+  },
+  {
+    id: 'p6',
+    nameEn: 'Late Raghunath Joshi',
+    nameMr: 'कै. रघुनाथ जोशी',
+    image: raghunathJoshiImg
+  },
+  {
+    id: 'p7',
+    nameEn: 'Late Vishnu (Dadasaheb) Pathak',
+    nameMr: 'कै. विष्णू (दादासाहेब) पाठक',
+    image: vishnuPathakImg
+  }
+];
+
+const TRUST_BOARD = [
+  // Executive Leadership
+  {
+    id: 'tb-1',
+    nameEn: 'Shri. Haribhau Sandbhor',
+    nameMr: 'श्री. हरीभाऊ सांडभोर',
+    designationEn: 'Chairman',
+    designationMr: 'अध्यक्ष',
+    image: chairmanImg,
+    isExecutive: true
+  },
+  {
+    id: 'tb-2',
+    nameEn: 'Shri. Ajit Lunawat',
+    nameMr: 'श्री. अजित लुणावत',
+    designationEn: 'Vice Chairman',
+    designationMr: 'उपाध्यक्ष',
+    image: null,
+    isExecutive: true
+  },
+  {
+    id: 'tb-3',
+    nameEn: 'Air Commodore Shri Ganesh Joshi',
+    nameMr: 'एयर कमोडोर श्री गणेश जोशी',
+    designationEn: 'Honorary Secretary',
+    designationMr: 'मानद सचिव',
+    image: null,
+    isExecutive: true
+  },
+  // Board Members
+  {
+    id: 'tb-4',
+    nameEn: 'Shri. Hiraman Satkar',
+    nameMr: 'श्री. हिरामाण सातकर',
+    designationEn: 'Member',
+    designationMr: 'सदस्य',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-5',
+    nameEn: 'Shri. Kailas Sandbhor',
+    nameMr: 'श्री. कैलास सांडभोर',
+    designationEn: 'Member',
+    designationMr: 'सदस्य',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-6',
+    nameEn: 'Dr. Shri. Pradeep Shewale',
+    nameMr: 'डॉ. श्री. प्रदीप शेवाळे',
+    designationEn: 'Member',
+    designationMr: 'सदस्य',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-7',
+    nameEn: 'Adv. Shri. Sandeep Bhosale',
+    nameMr: 'ॲड. श्री. संदीप भोसले',
+    designationEn: 'Member',
+    designationMr: 'सदस्य',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-8',
+    nameEn: 'Shri. Pradeep Kaswa',
+    nameMr: 'श्री. प्रदीप कासवा',
+    designationEn: 'Member',
+    designationMr: 'सदस्य',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-9',
+    nameEn: 'Shri. Ganesh Ghumatkar',
+    nameMr: 'श्री. गणेश घुमटकर',
+    designationEn: 'Member',
+    designationMr: 'सदस्य',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-10',
+    nameEn: 'Shri. Prakash Bhansali',
+    nameMr: 'श्री. प्रकाश भनसाळी',
+    designationEn: 'Member',
+    designationMr: 'सदस्य',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-11',
+    nameEn: 'Shri. Dattatraya Sandbhor',
+    nameMr: 'श्री. दत्तात्रय सांडभोर',
+    designationEn: 'Member',
+    designationMr: 'सदस्य',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-12',
+    nameEn: 'Smt. Surekha Shrotriya',
+    nameMr: 'श्रीमती सुरेखा श्रोत्रिय',
+    designationEn: 'Member',
+    designationMr: 'सदस्या',
+    image: null,
+    isExecutive: false
+  },
+  {
+    id: 'tb-13',
+    nameEn: 'Sau. Urmila Sandbhor',
+    nameMr: 'सौ. उर्मिला सांडभोर',
+    designationEn: 'Member',
+    designationMr: 'सदस्या',
+    image: null,
+    isExecutive: false
+  }
+];
+
+function getInitials(name: string): string {
+  const clean = name.replace(/^(Air Commodore|Shri|Smt|Sau|Dr|Adv|\.)\s*/gi, '').trim();
+  const parts = clean.split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+  return clean.substring(0, 2).toUpperCase();
+}
+
+interface HomeViewProps {
+  announcements: Announcement[];
+  onChangeTab: (tab: string) => void;
+  onSelectAnnouncement: (announcement: Announcement) => void;
+  scrollToAbout?: boolean;
+}
+
+export default function HomeView({
+  announcements,
+  onChangeTab,
+  onSelectAnnouncement,
+  scrollToAbout = false
+}: HomeViewProps) {
+  const [flippedFounderId, setFlippedFounderId] = useState<string | null>(null);
+  const [selectedLang, setSelectedLang] = useState<'en' | 'mr' | 'both'>('both');
+
+  useEffect(() => {
+    if (scrollToAbout) {
+      const el = document.getElementById('about-section');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [scrollToAbout]);
+
+  const quickNav = [
+    { title: 'Admissions 2026', desc: 'Secure your registration in Science, Commerce or Primary wings online.', tab: 'admission', color: 'border-l-4 border-amber-500' },
+    { title: 'Departments', desc: 'Read curriculum offering, faculty, & facilities of Mahatma Gandhi Vidyalaya, Sheth Kesharchand Parakh Prathamik Vidyalaya, Junior College & English Medium School.', tab: 'departments', color: 'border-l-4 border-blue-500' },
+    { title: 'Student Portal', desc: 'Gain access to department downloads, e-notes, syllabi, & library lookups.', tab: 'portal', color: 'border-l-4 border-emerald-500' },
+    { title: 'Photo Gallery', desc: 'Explore visual stories of sports tournaments, labs & grand cultural events.', tab: 'gallery', color: 'border-l-4 border-purple-500' },
+  ];
+
+  const highlights = announcements.slice(0, 3);
+
+  const testimonials = [
+    {
+      name: 'Rohan Deshmukh',
+      role: 'Alumnus, S.Y. B.Sc Class of 2024 (Now software developer)',
+      comment: 'The computer labs here changed the course of my career. Working closely with Prof. Shruti Kulkarni gave me real, deep engineering foundations.',
+      rating: '⭐⭐⭐⭐⭐'
+    },
+    {
+      name: 'Mr. Arvind Joshi',
+      role: 'Parent of Grade 10 Student at English Medium School',
+      comment: 'Unbelievable attention from headmistresses. When school classes shifted online or required digital timetables, everything worked within minutes.',
+      rating: '⭐⭐⭐⭐⭐'
+    },
+    {
+      name: 'Mansi Kelkar',
+      role: 'N.C.C. Cadet Master / Under Officer',
+      comment: 'Participating in the Republic Day training camps with fully funded society kits and guidance was a proud lifetime milestone.',
+      rating: '⭐⭐⭐⭐⭐'
+    }
+  ];
+
+  return (
+    <div className="space-y-20 pb-16">
+      {/* Hero Section */}
+      <section
+        id="home-hero"
+        className="relative min-h-[90vh] flex items-center justify-center bg-[#090f20] overflow-hidden pt-24 pb-16 border-b border-white/5"
+      >
+        {/* Subtle background glow circles for premium atmosphere */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full filter blur-3xl animate-pulse delay-700"></div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+          <div className="space-y-8 md:space-y-10 py-6">
+            {/* Typography & CTA */}
+            {/* Header / Motto & Establishment */}
+            <div className="flex flex-col items-center space-y-4">
+              {/* Motto Group */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col items-center space-y-1.5"
+              >
+                <span className="text-amber-400 font-display font-black text-2.5xl sm:text-3xl md:text-4xl tracking-wider block">
+                  ।। संहतिः कार्यसाधिका ।।
+                </span>
+                <span className="text-slate-400 font-sans font-bold text-xs sm:text-sm tracking-widest uppercase block">
+                  STRENGTH IN UNITY
+                </span>
+              </motion.div>
+
+              {/* Establishment Year Badge */}
+              <motion.span
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="inline-flex items-center bg-slate-950/80 border border-white/10 text-slate-300 font-sans px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider shadow-lg"
+              >
+                <span>१९३८ सालापासून | Since 1938</span>
+              </motion.span>
+            </div>
+
+            {/* TWO COLUMN CARDS (Directly below the top metrics) */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch text-left"
+            >
+              {/* LEFT BOX - Marathi */}
+              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-sm flex flex-col justify-between hover:border-white/15 hover:bg-white/[0.05] transition-all h-full">
+                <div className="space-y-4">
+                  <div className="space-y-1 pb-3 border-b border-white/5">
+                    <h3 className="text-base sm:text-lg font-display font-black text-amber-400">
+                      दर्जेदार शिक्षण
+                    </h3>
+                  </div>
+                  
+                  <h4 className="font-sans font-black text-white text-base sm:text-lg md:text-xl leading-snug">
+                    दर्जेदार शिक्षणातून विद्यार्थ्यांचे उज्ज्वल भविष्य घडवणारी संस्था
+                  </h4>
+                  
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans font-medium">
+                    मानवी सुप्त गुणांचा विकास, अत्याधुनिक प्रयोगशाळा, उत्कृष्ट डिजिटल संसाधने आणि सुरक्षित वातावरणात क्रीडा क्षेत्रातील दैदिप्यमान कामगिरी.
+                  </p>
+                </div>
+
+                <div className="pt-4 mt-6 border-t border-white/5">
+                  <p className="text-xs sm:text-sm font-display font-black text-slate-300 text-right">
+                    – खेड तालुका एज्युकेशन सोसायटी
+                  </p>
+                </div>
+              </div>
+
+              {/* RIGHT BOX - English */}
+              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-sm flex flex-col justify-between hover:border-white/15 hover:bg-white/[0.05] transition-all h-full">
+                <div className="space-y-4">
+                  <div className="space-y-1 pb-3 border-b border-white/5">
+                    <h3 className="text-base sm:text-lg font-display font-black text-amber-400">
+                      Quality Education
+                    </h3>
+                  </div>
+
+                  <h4 className="font-sans font-bold text-white text-base sm:text-lg md:text-xl leading-snug">
+                    An institution shaping a bright future for students through quality education.
+                  </h4>
+
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans font-medium">
+                    Nurturing human potential with state-of-the-art laboratory infrastructure, elite digital resources, and sporting achievements in a safe environment.
+                  </p>
+                </div>
+
+                <div className="pt-4 mt-6 border-t border-white/5">
+                  <p className="text-xs sm:text-sm font-sans font-bold text-slate-300 text-right">
+                    – Khed Taluka Education Society
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            >
+              <button
+                onClick={() => onChangeTab('admission')}
+                className="w-full sm:w-auto bg-secondary hover:bg-amber-500 text-primary-dark font-display font-bold px-6 sm:px-8 py-3.5 rounded-xl shadow-xl transition-all cursor-pointer flex items-center justify-center space-x-2 text-xs sm:text-sm md:text-base whitespace-nowrap"
+              >
+                <span>आता ऑनलाईन अर्ज करा | Apply Online Now</span>
+                <ArrowRight className="h-5 w-5 shrink-0" />
+              </button>
+              <button
+                onClick={() => onChangeTab('departments')}
+                className="w-full sm:w-auto bg-white/5 hover:bg-white/15 text-white border border-white/10 px-6 sm:px-8 py-3.5 rounded-xl font-semibold transition-all cursor-pointer text-xs sm:text-sm md:text-base whitespace-nowrap"
+              >
+                विभाग पहा | Explore Departments
+              </button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Executive Desk / Chairman Message Section (Prominent Top Banner) */}
+      <ExecutiveDesk />
+
+      {/* Quick Access Navigation Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
+        <div>
+          <div className="text-center space-y-2 mb-8">
+            <span className="text-amber-400 font-display font-bold tracking-widest uppercase text-xs">
+              थेट मार्गिका | Direct Corridors
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-display font-black text-white">
+              जलद मार्गक्रमण | Quick Navigation
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {quickNav.map((card, i) => (
+              <div
+                key={i}
+                onClick={() => onChangeTab(card.tab)}
+                className={`bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 shadow-xl ${card.color} hover:border-white/20 hover:bg-white/10 hover:shadow-2xl hover:scale-[1.02] cursor-pointer transition-all flex flex-col justify-between group`}
+              >
+                <div className="space-y-3">
+                  <h3 className="font-display font-bold text-lg text-white group-hover:text-amber-400 transition-colors">
+                    {card.title}
+                  </h3>
+                  <p className="text-slate-300 text-sm leading-relaxed">
+                    {card.desc}
+                  </p>
+                </div>
+                <div className="pt-4 flex items-center text-xs font-semibold text-amber-400 space-x-1 group-hover:translate-x-1 transition-transform">
+                  <span>Navigate</span>
+                  <ArrowRight className="h-3 w-3 text-amber-400" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Society Section Wrapper (Unified Layout) */}
+      <div id="about-section" className="space-y-24 border-t border-white/10 pt-24 mt-12">
+
+        {/* Aim & Vision with animated icons */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
+          {/* Mission Card */}
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 shadow-xl backdrop-blur-md flex flex-col justify-between group hover:border-white/20 hover:bg-white/8 transition-all">
+            <div className="space-y-6">
+              <div className="h-14 w-14 rounded-2xl bg-[#001f4d] text-amber-300 flex items-center justify-center border border-white/10">
+                <Compass className="h-7 w-7" />
+              </div>
+              <h2 className="text-2xl font-display font-black text-white">Our Sacred Mission</h2>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                To construct a value-integrated, technically modern learning ecosystem that educates students from preschool up to doctoral studies, transforming raw curiosity into professional integrity and social leadership.
+              </p>
+              <ul className="space-y-2.5 text-slate-200 text-xs font-medium">
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span>Nurture rational thinking & laboratory skills.</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span>Provide continuous tuition grants for underprivileged kids.</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span>Drive industry-academic placements.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Vision Card */}
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 shadow-xl backdrop-blur-md flex flex-col justify-between group hover:border-white/20 hover:bg-white/8 transition-all">
+            <div className="space-y-6">
+              <div className="h-14 w-14 rounded-2xl bg-[#001f4d] text-amber-300 flex items-center justify-center border border-white/10">
+                <Eye className="h-7 w-7" />
+              </div>
+              <h2 className="text-2xl font-display font-black text-white">Our Future Vision</h2>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                To establish our institutions as a nationally recognized benchmark of research innovation and ethical leadership development, where digital smart classrooms and traditional community values achieve a perfect, holistic synthesis.
+              </p>
+              <ul className="space-y-2.5 text-slate-200 text-xs font-medium">
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-amber-400 shrink-0" />
+                  <span>Zero Carbon solar-powered smart campus by 2028.</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-amber-400 shrink-0" />
+                  <span>Global university tie-ups for joint biotech programs.</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-amber-400 shrink-0" />
+                  <span>Fully AI-integrated personal coaching plans for high schoolers.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive Chronological Timeline */}
+        <section id="growth-timeline-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10 pt-8 scroll-mt-24">
+          <div className="text-center space-y-3">
+            <span className="text-xs font-bold text-secondary tracking-widest uppercase">Chronicles</span>
+            <h2 className="text-3xl font-display font-black text-white">Our Growth Journey / आमचा प्रगतीचा प्रवास</h2>
+            <p className="text-slate-300 text-sm max-w-xl mx-auto">
+              From humble village roots to a state-certified, A++ academic capital. / ग्रामीण भागातील मुळांपासून ते राज्य-प्रमाणित, A++ दर्जाच्या शैक्षणिक केंद्रापर्यंतचा प्रवास.
+            </p>
+          </div>
+
+          <HistoryTimeline />
+        </section>
+
+        {/* Past Presidents tribute section */}
+        <section id="past-presidents-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 border-t border-white/10 pt-16 relative z-10 scroll-mt-24">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-white/10 pb-6">
+            <div className="space-y-3 flex-1">
+              <span className="text-xs font-bold text-secondary tracking-widest uppercase block mb-1">
+                {selectedLang === 'mr' ? 'आदरणीय नेतृत्व' : 'Honored Leadership'}
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-display font-black text-white leading-tight">
+                {selectedLang === 'en' && "Architects of our Progress"}
+                {selectedLang === 'mr' && "आमच्या प्रगतीचे शिल्पकार: संस्थेचे माजी अध्यक्ष"}
+                {selectedLang === 'both' && "Architects of our Progress / आमच्या प्रगतीचे शिल्पकार: संस्थेचे माजी अध्यक्ष"}
+              </h2>
+              <p className="text-slate-300 text-xs sm:text-sm max-w-3xl leading-relaxed font-sans font-medium">
+                {selectedLang === 'en' && "Honoring the visionaries who designed the foundation of our institution."}
+                {selectedLang === 'mr' && "आमच्या संस्थेचा भक्कम पाया रचणाऱ्या थोर दूरदृष्ट्या नेत्यांना विनम्र अभिवादन."}
+                {selectedLang === 'both' && "Honoring the visionaries who designed the foundation of our institution. / आमच्या संस्थेचा भक्कम पाया रचणाऱ्या थोर दूरदृष्ट्या नेत्यांना विनम्र अभिवादन."}
+              </p>
+            </div>
+
+            {/* Language Toggle Controls */}
+            <div className="flex bg-white/5 border border-white/10 p-1 rounded-xl shrink-0 self-start md:self-center">
+              <button
+                onClick={() => setSelectedLang('en')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  selectedLang === 'en' ? 'bg-secondary text-primary-dark shadow font-extrabold' : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                English Only
+              </button>
+              <button
+                onClick={() => setSelectedLang('mr')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  selectedLang === 'mr' ? 'bg-secondary text-primary-dark shadow font-extrabold' : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                मराठी
+              </button>
+              <button
+                onClick={() => setSelectedLang('both')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  selectedLang === 'both' ? 'bg-secondary text-primary-dark shadow font-extrabold' : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                Dual Language
+              </button>
+            </div>
+          </div>
+
+          {/* 7-Card Leadership Profile Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-5 sm:gap-6 justify-center">
+            {PAST_PRESIDENTS.map((pres) => (
+              <div
+                key={pres.id}
+                className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center space-y-4 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group shadow-lg"
+              >
+                {/* Larger Circular container with gold border ring */}
+                <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/50 bg-slate-950 flex items-center justify-center overflow-hidden shadow-md group-hover:border-amber-400 transition-all duration-300 shrink-0">
+                  <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
+                    {pres.image ? (
+                      <img
+                        src={pres.image}
+                        alt={pres.nameEn}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <span className="text-slate-400 font-display font-bold text-base tracking-widest">
+                        {pres.nameEn.replace('Late ', '').split(' ').map(p => p[0]).join('').substring(0, 2).toUpperCase()}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Stylized Gold Badge / Ribbon Label */}
+                <div className="w-full bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border border-amber-400/30 rounded-xl px-3 py-2.5 flex flex-col items-center justify-center min-h-[60px] shadow-sm">
+                  {selectedLang !== 'mr' && (
+                    <span className="text-xs sm:text-[13px] font-sans font-bold text-amber-300 tracking-tight leading-snug block">
+                      {pres.nameEn}
+                    </span>
+                  )}
+                  {selectedLang === 'both' && (
+                    <span className="w-6 h-[1px] bg-amber-400/25 my-1.5 block"></span>
+                  )}
+                  {selectedLang !== 'en' && (
+                    <span className="text-xs sm:text-[13px] font-sans font-semibold text-amber-200 leading-snug block">
+                      {pres.nameMr}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+
+
+        {/* Trust Board & Executive Committee section */}
+        <section id="trust-board-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 border-t border-white/10 pt-16 relative z-10 scroll-mt-24">
+          <div className="text-center space-y-3">
+            <span className="text-xs font-bold text-amber-400 tracking-widest uppercase bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 inline-block">
+              Trust Board / विश्वस्त मंडळ
+            </span>
+            <h2 className="text-3xl font-display font-black text-white">
+              Governing Body & Executive Committee
+            </h2>
+            <p className="text-slate-300 text-sm max-w-xl mx-auto font-sans font-medium">
+              Governing Trustees and Office Bearers guiding Khed Taluka Education Society with vision, ethics, and dedication.
+            </p>
+          </div>
+
+          {/* Executive Leadership Sub-Section */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 border-b border-amber-400/20 pb-3">
+              <span className="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+              <h3 className="text-base sm:text-lg font-display font-bold text-amber-400 uppercase tracking-wider">
+                Executive Leadership / कार्यकारिणी अधिकारी
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-center">
+              {TRUST_BOARD.filter((m) => m.isExecutive).map((member) => (
+                <div
+                  key={member.id}
+                  className="bg-white/5 border border-amber-400/30 rounded-2xl p-6 flex flex-col items-center text-center space-y-4 hover:border-amber-400/60 hover:bg-white/10 transition-all duration-300 group shadow-xl relative overflow-hidden"
+                >
+                  {/* Executive Ribbon Tag */}
+                  <div className="absolute top-0 right-0 bg-amber-400/20 text-amber-300 font-sans font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded-bl-xl border-l border-b border-amber-400/30">
+                    {member.designationEn} / {member.designationMr}
+                  </div>
+
+                  {/* Spacious Circular Photo Frame */}
+                  <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/60 bg-slate-950 flex items-center justify-center overflow-hidden shadow-lg group-hover:border-amber-400 transition-all duration-300 shrink-0 mt-2">
+                    <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.nameEn}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center space-y-1">
+                          <User className="w-10 h-10 sm:w-12 sm:h-12 text-amber-400/80 mb-0.5" />
+                          <span className="text-amber-300 font-display font-bold text-sm sm:text-base tracking-wider uppercase">
+                            {getInitials(member.nameEn)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Name and Designation Card Content */}
+                  <div className="w-full bg-gradient-to-r from-amber-500/15 via-amber-500/25 to-amber-500/15 border border-amber-400/40 rounded-xl px-3 py-2.5 flex flex-col items-center justify-center min-h-[64px] shadow-sm">
+                    {selectedLang !== 'mr' && (
+                      <span className="text-sm font-sans font-bold text-amber-300 tracking-tight leading-snug block">
+                        {member.nameEn}
+                      </span>
+                    )}
+                    {selectedLang === 'both' && (
+                      <span className="w-8 h-[1px] bg-amber-400/30 my-1 block"></span>
+                    )}
+                    {selectedLang !== 'en' && (
+                      <span className="text-xs sm:text-[13px] font-sans font-semibold text-amber-200 leading-snug block">
+                        {member.nameMr}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Board Members Sub-Section */}
+          <div className="space-y-6 pt-4">
+            <div className="flex items-center space-x-3 border-b border-white/10 pb-3">
+              <span className="h-2.5 w-2.5 rounded-full bg-slate-400"></span>
+              <h3 className="text-base sm:text-lg font-display font-bold text-white uppercase tracking-wider">
+                Board Members / विश्वस्त सदस्य
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-6 justify-center">
+              {TRUST_BOARD.filter((m) => !m.isExecutive).map((member) => (
+                <div
+                  key={member.id}
+                  className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center space-y-4 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group shadow-lg"
+                >
+                  {/* Spacious Circular Photo Frame */}
+                  <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/50 bg-slate-950 flex items-center justify-center overflow-hidden shadow-md group-hover:border-amber-400 transition-all duration-300 shrink-0">
+                    <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.nameEn}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center space-y-1">
+                          <User className="w-10 h-10 sm:w-12 sm:h-12 text-amber-400/70 mb-0.5" />
+                          <span className="text-amber-300 font-display font-bold text-xs sm:text-sm tracking-wider uppercase">
+                            {getInitials(member.nameEn)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Name and Designation Tag */}
+                  <div className="w-full bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border border-amber-400/30 rounded-xl px-3 py-2.5 flex flex-col items-center justify-center min-h-[64px] shadow-sm">
+                    {selectedLang !== 'mr' && (
+                      <span className="text-xs sm:text-[13px] font-sans font-bold text-amber-300 tracking-tight leading-snug block">
+                        {member.nameEn}
+                      </span>
+                    )}
+                    {selectedLang === 'both' && (
+                      <span className="w-6 h-[1px] bg-amber-400/25 my-1 block"></span>
+                    )}
+                    {selectedLang !== 'en' && (
+                      <span className="text-xs sm:text-[13px] font-sans font-semibold text-amber-200 leading-snug block">
+                        {member.nameMr}
+                      </span>
+                    )}
+                    <span className="text-[10px] font-mono text-amber-400/90 font-semibold uppercase tracking-wider pt-1 block">
+                      {member.designationEn} / {member.designationMr}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Testimonials */}
+      <section className="bg-primary py-20 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-blue-900/50 mix-blend-overlay"></div>
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-blue-300/10 rounded-full filter blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
+            <span className="text-amber-400 font-display font-bold tracking-widest uppercase text-xs">Community Voices</span>
+            <h2 className="text-3xl font-display font-bold tracking-tight">What Parents & Students Say</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((test, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/10 p-6 flex flex-col justify-between space-y-4"
+              >
+                <div className="space-y-3">
+                  <div className="text-amber-300 text-sm">{test.rating}</div>
+                  <p className="text-gray-200 text-sm italic leading-relaxed font-sans font-medium">
+                    "{test.comment}"
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/10">
+                  <h4 className="font-display font-bold text-white text-sm">{test.name}</h4>
+                  <span className="text-xs text-blue-300">{test.role}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Admissions Open CTA Banner */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="gold-gradient text-white rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl space-y-6">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20"></div>
+          <h2 className="text-2xl md:text-3.5xl font-display font-black leading-tight">
+            Admissions for Academic Session 2026-2027 are Open!
+          </h2>
+          <p className="text-amber-100 text-sm max-w-xl mx-auto leading-relaxed font-sans font-medium">
+            Take the first step toward a secured clinical, software engineering, and civic-excellence future. Secure counseling services today.
+          </p>
+          <div className="pt-2">
+            <button
+              onClick={() => onChangeTab('admission')}
+              className="bg-primary text-white hover:bg-primary-dark transition-colors px-6 sm:px-8 py-3 rounded-xl font-display font-bold text-xs sm:text-sm shadow-xl inline-flex items-center space-x-2 cursor-pointer max-w-full text-center whitespace-normal sm:whitespace-nowrap"
+            >
+              <span>आता ऑनलाईन अर्ज करा | Apply Online Now</span>
+              <ArrowRight className="h-4 w-4 shrink-0" />
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
