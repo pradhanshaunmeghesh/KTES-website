@@ -174,7 +174,7 @@ export default function App() {
           />
         );
       case 'departments':
-        return <DepartmentsView facultyList={facultyList} initialDept={initialDept} />;
+        return <DepartmentsView facultyList={facultyList} initialDept={initialDept} onNavigateTab={handleTabChange} />;
       case 'academic':
         return <AcademicView />;
       case 'student':

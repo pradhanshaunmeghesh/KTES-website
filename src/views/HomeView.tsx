@@ -63,7 +63,7 @@ const PAST_PRESIDENTS = [
   {
     id: 'p2',
     nameEn: 'Late Khushalchand Lunawat',
-    nameMr: 'कै. खुशालचंद लुनावत',
+    nameMr: 'कै. खुशालचंद लुणावत',
     image: khushalchandLunawatImg
   },
   {
@@ -133,7 +133,7 @@ const TRUST_BOARD = [
     nameEn: 'Shri. Hiraman Satkar',
     nameMr: 'श्री. हिरामाण सातकर',
     designationEn: 'Member',
-    designationMr: 'सदस्य',
+    designationMr: 'संचालक',
     image: null,
     isExecutive: false
   },
@@ -142,7 +142,7 @@ const TRUST_BOARD = [
     nameEn: 'Shri. Kailas Sandbhor',
     nameMr: 'श्री. कैलास सांडभोर',
     designationEn: 'Member',
-    designationMr: 'सदस्य',
+    designationMr: 'संचालक',
     image: null,
     isExecutive: false
   },
@@ -151,7 +151,7 @@ const TRUST_BOARD = [
     nameEn: 'Dr. Shri. Pradeep Shewale',
     nameMr: 'डॉ. श्री. प्रदीप शेवाळे',
     designationEn: 'Member',
-    designationMr: 'सदस्य',
+    designationMr: 'संचालक',
     image: null,
     isExecutive: false
   },
@@ -160,7 +160,7 @@ const TRUST_BOARD = [
     nameEn: 'Adv. Shri. Sandeep Bhosale',
     nameMr: 'ॲड. श्री. संदीप भोसले',
     designationEn: 'Member',
-    designationMr: 'सदस्य',
+    designationMr: 'संचालक',
     image: null,
     isExecutive: false
   },
@@ -169,7 +169,7 @@ const TRUST_BOARD = [
     nameEn: 'Shri. Pradeep Kaswa',
     nameMr: 'श्री. प्रदीप कासवा',
     designationEn: 'Member',
-    designationMr: 'सदस्य',
+    designationMr: 'संचालक',
     image: null,
     isExecutive: false
   },
@@ -178,7 +178,7 @@ const TRUST_BOARD = [
     nameEn: 'Shri. Ganesh Ghumatkar',
     nameMr: 'श्री. गणेश घुमटकर',
     designationEn: 'Member',
-    designationMr: 'सदस्य',
+    designationMr: 'संचालक',
     image: null,
     isExecutive: false
   },
@@ -187,7 +187,7 @@ const TRUST_BOARD = [
     nameEn: 'Shri. Prakash Bhansali',
     nameMr: 'श्री. प्रकाश भनसाळी',
     designationEn: 'Member',
-    designationMr: 'सदस्य',
+    designationMr: 'संचालक',
     image: null,
     isExecutive: false
   },
@@ -196,7 +196,7 @@ const TRUST_BOARD = [
     nameEn: 'Shri. Dattatraya Sandbhor',
     nameMr: 'श्री. दत्तात्रय सांडभोर',
     designationEn: 'Member',
-    designationMr: 'सदस्य',
+    designationMr: 'संचालक',
     image: null,
     isExecutive: false
   },
@@ -205,7 +205,7 @@ const TRUST_BOARD = [
     nameEn: 'Smt. Surekha Shrotriya',
     nameMr: 'श्रीमती सुरेखा श्रोत्रिय',
     designationEn: 'Member',
-    designationMr: 'सदस्या',
+    designationMr: 'संचालिका',
     image: null,
     isExecutive: false
   },
@@ -214,9 +214,36 @@ const TRUST_BOARD = [
     nameEn: 'Sau. Urmila Sandbhor',
     nameMr: 'सौ. उर्मिला सांडभोर',
     designationEn: 'Member',
-    designationMr: 'सदस्या',
+    designationMr: 'संचालिका',
     image: null,
     isExecutive: false
+  }
+];
+
+const ADMIN_OFFICERS = [
+  {
+    id: 'ao-1',
+    nameEn: 'Shri Kailash Raghunath Pacharne',
+    nameMr: 'श्री. कैलास रघुनाथ पाचारणे',
+    designationEn: 'Administrative Officer',
+    designationMr: 'प्रशासकीय अधिकारी',
+    image: null
+  },
+  {
+    id: 'ao-2',
+    nameEn: 'Shri Rahul Prabhakar Kumbhar',
+    nameMr: 'श्री. राहुल प्रभाकर कुंभार',
+    designationEn: 'Local Auditor',
+    designationMr: 'स्थानिक हिशोब तपासनीस',
+    image: null
+  },
+  {
+    id: 'ao-3',
+    nameEn: 'Shri Swanand Vilas Khedkar',
+    nameMr: 'श्री. स्वानंद विलास खेडकर',
+    designationEn: 'Local Auditor',
+    designationMr: 'स्थानिक हिशोब तपासनीस',
+    image: null
   }
 ];
 
@@ -256,7 +283,7 @@ export default function HomeView({
 
   const quickNav = [
     { title: 'Admissions 2026', desc: 'Secure your registration in Science, Commerce or Primary wings online.', tab: 'admission', color: 'border-l-4 border-amber-500' },
-    { title: 'Departments', desc: 'Read curriculum offering, faculty, & facilities of Mahatma Gandhi Vidyalaya, Sheth Kesharchand Parakh Prathamik Vidyalaya, Junior College & English Medium School.', tab: 'departments', color: 'border-l-4 border-blue-500' },
+    { title: 'Departments', desc: 'Read curriculum offering, faculty, & facilities of Mahatma Gandhi Vidyalay, Sheth Kesharchand Parakh Prathamik Vidyalay, Junior College & English Medium School.', tab: 'departments', color: 'border-l-4 border-blue-500' },
     { title: 'Student Portal', desc: 'Gain access to department downloads, e-notes, syllabi, & library lookups.', tab: 'portal', color: 'border-l-4 border-emerald-500' },
     { title: 'Photo Gallery', desc: 'Explore visual stories of sports tournaments, labs & grand cultural events.', tab: 'gallery', color: 'border-l-4 border-purple-500' },
   ];
@@ -752,64 +779,68 @@ export default function HomeView({
               ))}
             </div>
           </div>
+
+          {/* Administrative Officers & Auditors Sub-Section */}
+          <div className="space-y-6 pt-4">
+            <div className="flex items-center space-x-3 border-b border-white/10 pb-3">
+              <span className="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+              <h3 className="text-base sm:text-lg font-display font-bold text-white uppercase tracking-wider">
+                Administrative Officers & Auditors / प्रशासकीय व हिशोब अधिकारी
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 justify-center">
+              {ADMIN_OFFICERS.map((officer) => (
+                <div
+                  key={officer.id}
+                  className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center space-y-4 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group shadow-lg"
+                >
+                  {/* Spacious Circular Photo Frame */}
+                  <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/50 bg-slate-950 flex items-center justify-center overflow-hidden shadow-md group-hover:border-amber-400 transition-all duration-300 shrink-0">
+                    <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
+                      {officer.image ? (
+                        <img
+                          src={officer.image}
+                          alt={officer.nameEn}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center space-y-1">
+                          <User className="w-10 h-10 sm:w-12 sm:h-12 text-amber-400/70 mb-0.5" />
+                          <span className="text-amber-300 font-display font-bold text-xs sm:text-sm tracking-wider uppercase">
+                            {getInitials(officer.nameEn)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Name and Designation Tag */}
+                  <div className="w-full bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border border-amber-400/30 rounded-xl px-3 py-2.5 flex flex-col items-center justify-center min-h-[64px] shadow-sm">
+                    {selectedLang !== 'mr' && (
+                      <span className="text-xs sm:text-[13px] font-sans font-bold text-amber-300 tracking-tight leading-snug block">
+                        {officer.nameEn}
+                      </span>
+                    )}
+                    {selectedLang === 'both' && (
+                      <span className="w-6 h-[1px] bg-amber-400/25 my-1 block"></span>
+                    )}
+                    {selectedLang !== 'en' && (
+                      <span className="text-xs sm:text-[13px] font-sans font-semibold text-amber-200 leading-snug block">
+                        {officer.nameMr}
+                      </span>
+                    )}
+                    <span className="text-[10px] font-mono text-amber-400/90 font-semibold uppercase tracking-wider pt-1 block">
+                      {officer.designationEn} / {officer.designationMr}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
       </div>
-
-      {/* Testimonials */}
-      <section className="bg-primary py-20 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900/50 mix-blend-overlay"></div>
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full filter blur-3xl"></div>
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-blue-300/10 rounded-full filter blur-3xl"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
-            <span className="text-amber-400 font-display font-bold tracking-widest uppercase text-xs">Community Voices</span>
-            <h2 className="text-3xl font-display font-bold tracking-tight">What Parents & Students Say</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((test, i) => (
-              <div
-                key={i}
-                className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/10 p-6 flex flex-col justify-between space-y-4"
-              >
-                <div className="space-y-3">
-                  <div className="text-amber-300 text-sm">{test.rating}</div>
-                  <p className="text-gray-200 text-sm italic leading-relaxed font-sans font-medium">
-                    "{test.comment}"
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-white/10">
-                  <h4 className="font-display font-bold text-white text-sm">{test.name}</h4>
-                  <span className="text-xs text-blue-300">{test.role}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Admissions Open CTA Banner */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="gold-gradient text-white rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl space-y-6">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20"></div>
-          <h2 className="text-2xl md:text-3.5xl font-display font-black leading-tight">
-            Admissions for Academic Session 2026-2027 are Open!
-          </h2>
-          <p className="text-amber-100 text-sm max-w-xl mx-auto leading-relaxed font-sans font-medium">
-            Take the first step toward a secured clinical, software engineering, and civic-excellence future. Secure counseling services today.
-          </p>
-          <div className="pt-2">
-            <button
-              onClick={() => onChangeTab('admission')}
-              className="bg-primary text-white hover:bg-primary-dark transition-colors px-6 sm:px-8 py-3 rounded-xl font-display font-bold text-xs sm:text-sm shadow-xl inline-flex items-center space-x-2 cursor-pointer max-w-full text-center whitespace-normal sm:whitespace-nowrap"
-            >
-              <span>आता ऑनलाईन अर्ज करा | Apply Online Now</span>
-              <ArrowRight className="h-4 w-4 shrink-0" />
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

@@ -25,14 +25,22 @@ import {
   Filter,
   BadgeCheck,
   FileSpreadsheet,
-  Camera
+  Camera,
+  X
 } from 'lucide-react';
 import SKPPVGallery from './SKPPVGallery';
+
+import skppImg1 from '../assets/images/SKPP/SKPP.jpeg';
+import skppImg2 from '../assets/images/SKPP/SKPP_1.jpeg';
+import skppImg3 from '../assets/images/SKPP/SKPP_2.jpeg';
+import skppImg4 from '../assets/images/SKPP/SKPP_3.jpeg';
+import skppImg5 from '../assets/images/SKPP/SKPP_4.jpeg';
 
 export default function SKPPVDeptView() {
   const [selectedLang, setSelectedLang] = useState<'en' | 'mr' | 'both'>('both');
   const [staffSearchQuery, setStaffSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState<'overview' | 'staff' | 'academics' | 'activities' | 'gallery'>('overview');
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const showEn = selectedLang === 'both' || selectedLang === 'en';
   const showMr = selectedLang === 'both' || selectedLang === 'mr';
@@ -43,15 +51,15 @@ export default function SKPPVDeptView() {
     { roleEn: 'Vice President', roleMr: 'मा. उपाध्यक्ष', nameEn: 'Shri P. M. Shindekar', nameMr: 'श्री पा. मा. शिंदेकर' },
     { roleEn: 'Secretary', roleMr: 'मा. सचिव', nameEn: 'Shri Tryambak Ganesh Joshi', nameMr: 'श्री त्र्यंबक गणेश जोशी' },
     { roleEn: 'Headmaster', roleMr: 'मुख्याध्यापक', nameEn: 'Shri V. G. Pathak', nameMr: 'श्री. वि. गो. पाठक' },
-    { roleEn: 'Assistant Headmistress', roleMr: 'उपमुख्याध्यापिका', nameEn: 'Mrs. M. S. Kulkarni', nameMr: 'सौ. एम.एस. कुलकर्णी' }
+    { roleEn: 'Assistant Headmistress', roleMr: 'उपमुख्याध्यापिका', nameEn: 'Smt. M. S. Kulkarni', nameMr: 'सौ. एम.एस. कुलकर्णी' }
   ];
 
   const historyPoints = [
     { labelEn: 'Establishment', labelMr: 'स्थापना', valueEn: 'June 1971', valueMr: 'जून १९७१' },
     { labelEn: 'Original Name', labelMr: 'मूळ नाव', valueEn: 'Mahatma Gandhi Primary School', valueMr: 'महात्मा गांधी प्राथमिक विद्यालय' },
-    { labelEn: 'Initial Stats', labelMr: 'सुरुवातीची आकडेवारी', valueEn: 'Balwadi, 1st & 2nd classes; 163 students, 10 teachers', valueMr: 'बालवाडी, पहिली व दुसरी वर्ग; १६३ विद्यार्थी, १० शिक्षक' },
-    { labelEn: 'Renaming Date', labelMr: 'नामकरण', valueEn: '27/11/1988 ("Sheth Kesharichand Parakh Primary School" in memory of Late Kesharichandji Parakh, Pune)', valueMr: '२७/११/१९८८ रोजी "शेठ केशरचंद पारख प्राथमिक विद्यालय" (पुण्याचे कै. केशरचंदजी पारख यांच्या स्मृत्यर्थ)' },
-    { labelEn: 'Current Headmistress', labelMr: 'सध्याच्या मुख्याध्यापिका', valueEn: 'Mrs. Vandana Shankar Kashid', valueMr: 'सौ. वंदना शं. काशिद' }
+    { labelEn: 'Initial Stats', labelMr: 'सुरुवातीची आकडेवारी', valueEn: 'Pre- Primary School, 1st & 2nd classes; 163 students, 10 teachers', valueMr: 'पूर्व प्राथमिक शाळा (Pre-Primary), पहिली व दुसरी वर्ग; १६३ विद्यार्थी, १० शिक्षक' },
+    { labelEn: 'Renaming Year', labelMr: 'नामकरण वर्ष', valueEn: '1988 ("Sheth Kesharchand Parakh Primary School" in memory of Late Kesharchandji Parakh, Pune)', valueMr: '१९८८ ("शेठ केशरचंद पारख प्राथमिक विद्यालय" - पुण्याचे कै. केशरचंदजी पारख यांच्या स्मृत्यर्थ)' },
+    { labelEn: 'Current Headmistress', labelMr: 'सध्याच्या मुख्याध्यापिका', valueEn: 'Smt. Vandana Shankar Kashid', valueMr: 'सौ. वंदना शं. काशिद' }
   ];
 
   const studentGrowth = [
@@ -107,7 +115,7 @@ export default function SKPPVDeptView() {
       sr: 1,
       catSr: 1,
       nameMr: 'सौ. काशिद वंदना शंकर',
-      nameEn: 'Mrs. Vandana Shankar Kashid',
+      nameEn: 'Smt. Vandana Shankar Kashid',
       roleMr: 'मुख्याध्यापिका',
       roleEn: 'Headmistress',
       qual: 'H.S.C., D.Ed, B.A., D.S.M',
@@ -121,7 +129,7 @@ export default function SKPPVDeptView() {
       sr: 2,
       catSr: 2,
       nameMr: 'श्रीम. थिटे मंगला जयवंत',
-      nameEn: 'Mrs. Mangala Jaywant Thite',
+      nameEn: 'Smt. Mangala Jaywant Thite',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, M.A., D.S.M',
@@ -135,7 +143,7 @@ export default function SKPPVDeptView() {
       sr: 3,
       catSr: 3,
       nameMr: 'सौ. सांडभोर स्वाती राजाराम',
-      nameEn: 'Mrs. Swati Rajaram Sandbhor',
+      nameEn: 'Smt. Swati Rajaram Sandbhor',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.A.',
@@ -149,7 +157,7 @@ export default function SKPPVDeptView() {
       sr: 4,
       catSr: 4,
       nameMr: 'श्रीम. काकडे अरुणा सुदाम',
-      nameEn: 'Mrs. Aruna Sudam Kakade',
+      nameEn: 'Smt. Aruna Sudam Kakade',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.A., D.S.M',
@@ -163,7 +171,7 @@ export default function SKPPVDeptView() {
       sr: 5,
       catSr: 5,
       nameMr: 'श्रीम. सातकर स्नेहलता निवृत्ती',
-      nameEn: 'Mrs. Snehlata Nivrutti Satkar',
+      nameEn: 'Smt. Snehlata Nivrutti Satkar',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'B.A., B.P.Ed, M.A., D.S.M.',
@@ -177,7 +185,7 @@ export default function SKPPVDeptView() {
       sr: 6,
       catSr: 6,
       nameMr: 'श्रीम. लोखंडे अर्चना भरत',
-      nameEn: 'Mrs. Archana Bharat Lokhande',
+      nameEn: 'Smt. Archana Bharat Lokhande',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.A.',
@@ -191,7 +199,7 @@ export default function SKPPVDeptView() {
       sr: 7,
       catSr: 7,
       nameMr: 'श्रीम. रोकडे हर्षदा गौतम',
-      nameEn: 'Mrs. Harshada Gautam Rokade',
+      nameEn: 'Smt. Harshada Gautam Rokade',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.A., B.Ed, D.S.M',
@@ -219,7 +227,7 @@ export default function SKPPVDeptView() {
       sr: 9,
       catSr: 9,
       nameMr: 'श्रीम. तागडे स्वप्नाली अर्जुन',
-      nameEn: 'Mrs. Swapnali Arjun Tagade',
+      nameEn: 'Smt. Swapnali Arjun Tagade',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.A.',
@@ -247,7 +255,7 @@ export default function SKPPVDeptView() {
       sr: 11,
       catSr: 11,
       nameMr: 'श्रीम. गरुड विशाखा अर्जुन',
-      nameEn: 'Mrs. Vishakha Arjun Garud',
+      nameEn: 'Smt. Vishakha Arjun Garud',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed',
@@ -261,7 +269,7 @@ export default function SKPPVDeptView() {
       sr: 12,
       catSr: 12,
       nameMr: 'श्रीम. गायकवाड देवयानी गोपीचंद',
-      nameEn: 'Mrs. Devayani Gopichand Gaikwad',
+      nameEn: 'Smt. Devayani Gopichand Gaikwad',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, M.A., B.Ed',
@@ -289,7 +297,7 @@ export default function SKPPVDeptView() {
       sr: 14,
       catSr: 14,
       nameMr: 'सौ. बोऱ्हाडे पुष्पा शरद',
-      nameEn: 'Mrs. Pushpa Sharad Borhade',
+      nameEn: 'Smt. Pushpa Sharad Borhade',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, M.A., B.Ed, D.S.M',
@@ -317,7 +325,7 @@ export default function SKPPVDeptView() {
       sr: 16,
       catSr: 16,
       nameMr: 'श्रीमती गोरडे धनश्री गोविंद',
-      nameEn: 'Mrs. Dhanashree Govind Gorde',
+      nameEn: 'Smt. Dhanashree Govind Gorde',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.A.',
@@ -335,7 +343,7 @@ export default function SKPPVDeptView() {
       sr: 17,
       catSr: 1,
       nameMr: 'सौ. गुजर मनीषा दीपक',
-      nameEn: 'Mrs. Manisha Deepak Gujar',
+      nameEn: 'Smt. Manisha Deepak Gujar',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'D.Ed, B.A.',
@@ -349,7 +357,7 @@ export default function SKPPVDeptView() {
       sr: 18,
       catSr: 2,
       nameMr: 'सौ. टाकळकर सुनंदा बाळासाहेब',
-      nameEn: 'Mrs. Sunanda Balasaheb Takalkar',
+      nameEn: 'Smt. Sunanda Balasaheb Takalkar',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'D.Ed, B.A.',
@@ -363,7 +371,7 @@ export default function SKPPVDeptView() {
       sr: 19,
       catSr: 3,
       nameMr: 'सौ. काळे ललिता प्रवीण',
-      nameEn: 'Mrs. Lalita Pravin Kale',
+      nameEn: 'Smt. Lalita Pravin Kale',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.A.',
@@ -377,7 +385,7 @@ export default function SKPPVDeptView() {
       sr: 20,
       catSr: 4,
       nameMr: 'सौ. सुतार रूपाली केशव',
-      nameEn: 'Mrs. Rupali Keshav Sutar',
+      nameEn: 'Smt. Rupali Keshav Sutar',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.COM',
@@ -391,7 +399,7 @@ export default function SKPPVDeptView() {
       sr: 21,
       catSr: 5,
       nameMr: 'श्रीमती गाढवे योगिता लक्ष्मण',
-      nameEn: 'Mrs. Yogita Laxman Gadhave',
+      nameEn: 'Smt. Yogita Laxman Gadhave',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.T.Ed',
@@ -405,7 +413,7 @@ export default function SKPPVDeptView() {
       sr: 22,
       catSr: 6,
       nameMr: 'सौ. चव्हाण रत्नमाला योगेश',
-      nameEn: 'Mrs. Ratnamala Yogesh Chavan',
+      nameEn: 'Smt. Ratnamala Yogesh Chavan',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C, A.T.D., B.F.A.',
@@ -419,7 +427,7 @@ export default function SKPPVDeptView() {
       sr: 23,
       catSr: 7,
       nameMr: 'सौ. कसबें श्रद्धा सत्यविजय',
-      nameEn: 'Mrs. Shraddha Satyavijay Kasabe',
+      nameEn: 'Smt. Shraddha Satyavijay Kasabe',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'D.T.Ed, B.A., B.Ed',
@@ -433,7 +441,7 @@ export default function SKPPVDeptView() {
       sr: 24,
       catSr: 8,
       nameMr: 'सौ. कोरडे जया संदीप',
-      nameEn: 'Mrs. Jaya Sandeep Korde',
+      nameEn: 'Smt. Jaya Sandeep Korde',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'B.A., B.Ed',
@@ -447,7 +455,7 @@ export default function SKPPVDeptView() {
       sr: 25,
       catSr: 9,
       nameMr: 'सौ. गोरे प्रतिभा संतोष',
-      nameEn: 'Mrs. Pratibha Santosh Gore',
+      nameEn: 'Smt. Pratibha Santosh Gore',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed',
@@ -461,7 +469,7 @@ export default function SKPPVDeptView() {
       sr: 26,
       catSr: 10,
       nameMr: 'श्रीम. पवार वैशाली विलास',
-      nameEn: 'Mrs. Vaishali Vilas Pawar',
+      nameEn: 'Smt. Vaishali Vilas Pawar',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.T.Ed, B.A.',
@@ -475,7 +483,7 @@ export default function SKPPVDeptView() {
       sr: 27,
       catSr: 11,
       nameMr: 'श्रीमती सातकर प्रणाली प्रताप',
-      nameEn: 'Mrs. Pranali Pratap Satkar',
+      nameEn: 'Smt. Pranali Pratap Satkar',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed',
@@ -489,7 +497,7 @@ export default function SKPPVDeptView() {
       sr: 28,
       catSr: 12,
       nameMr: 'वाळुंज निलम गणेश',
-      nameEn: 'Mrs. Nilam Ganesh Walunj',
+      nameEn: 'Smt. Nilam Ganesh Walunj',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed, B.A., B.Lib, M.Lib',
@@ -503,7 +511,7 @@ export default function SKPPVDeptView() {
       sr: 29,
       catSr: 13,
       nameMr: 'खाडगीर वनिता भानुदास',
-      nameEn: 'Mrs. Vanita Bhanudas Khadgir',
+      nameEn: 'Smt. Vanita Bhanudas Khadgir',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'H.S.C., D.Ed',
@@ -517,7 +525,7 @@ export default function SKPPVDeptView() {
       sr: 30,
       catSr: 14,
       nameMr: 'सौ. पुरंदरे शुभांगी अवधूत',
-      nameEn: 'Mrs. Shubhangi Avdhoot Purandare',
+      nameEn: 'Smt. Shubhangi Avdhoot Purandare',
       roleMr: 'उपशिक्षिका (बालवाडी)',
       roleEn: 'Assistant Teacher (Balwadi)',
       qual: 'H.S.C. बालवाडी कोर्स',
@@ -531,7 +539,7 @@ export default function SKPPVDeptView() {
       sr: 31,
       catSr: 15,
       nameMr: 'शमीम नजीर मोमीन',
-      nameEn: 'Mrs. Shamim Nazeer Momin',
+      nameEn: 'Smt. Shamim Nazeer Momin',
       roleMr: 'उपशिक्षिका (बालवाडी)',
       roleEn: 'Assistant Teacher (Balwadi)',
       qual: 'H.S.C. बालवाडी कोर्स',
@@ -545,7 +553,7 @@ export default function SKPPVDeptView() {
       sr: 32,
       catSr: 16,
       nameMr: 'कुंभार स्नेहल संदेश',
-      nameEn: 'Mrs. Snehal Sandesh Kumbhar',
+      nameEn: 'Smt. Snehal Sandesh Kumbhar',
       roleMr: 'उपशिक्षिका (बालवाडी)',
       roleEn: 'Assistant Teacher (Balwadi)',
       qual: 'H.S.C. बालवाडी कोर्स',
@@ -563,7 +571,7 @@ export default function SKPPVDeptView() {
       sr: 33,
       catSr: 1,
       nameMr: 'सौ. थिगळे ज्योती सुरेंद्र',
-      nameEn: 'Mrs. Jyoti Surendra Thigale',
+      nameEn: 'Smt. Jyoti Surendra Thigale',
       roleMr: 'शिक्षकेतर कर्मचारी (कार्यालयीन/लिपिक)',
       roleEn: 'Non-Teaching Staff (Clerk)',
       qual: 'M.COM',
@@ -591,7 +599,7 @@ export default function SKPPVDeptView() {
       sr: 35,
       catSr: 3,
       nameMr: 'सौ. कुंभार सारिका संतोष',
-      nameEn: 'Mrs. Sarika Santosh Kumbhar',
+      nameEn: 'Smt. Sarika Santosh Kumbhar',
       roleMr: 'शिक्षकेतर कर्मचारी',
       roleEn: 'Non-Teaching Staff',
       qual: 'सातवी (7th Pass)',
@@ -605,7 +613,7 @@ export default function SKPPVDeptView() {
       sr: 36,
       catSr: 4,
       nameMr: 'श्रीमती सांडभोर साधना संजय',
-      nameEn: 'Mrs. Sadhana Sanjay Sandbhor',
+      nameEn: 'Smt. Sadhana Sanjay Sandbhor',
       roleMr: 'शिक्षकेतर कर्मचारी',
       roleEn: 'Non-Teaching Staff',
       qual: 'S.S.C.',
@@ -619,7 +627,7 @@ export default function SKPPVDeptView() {
       sr: 37,
       catSr: 5,
       nameMr: 'सौ. साळवे हर्षदा सुनिल',
-      nameEn: 'Mrs. Harshada Sunil Salve',
+      nameEn: 'Smt. Harshada Sunil Salve',
       roleMr: 'शिक्षकेतर कर्मचारी',
       roleEn: 'Non-Teaching Staff',
       qual: '9 वी (9th Pass)',
@@ -633,7 +641,7 @@ export default function SKPPVDeptView() {
       sr: 38,
       catSr: 6,
       nameMr: 'सौ. नाईक प्रतिभा संतोषराव',
-      nameEn: 'Mrs. Pratibha Santoshrao Naik',
+      nameEn: 'Smt. Pratibha Santoshrao Naik',
       roleMr: 'शिक्षकेतर कर्मचारी',
       roleEn: 'Non-Teaching Staff',
       qual: 'सातवी (7th Pass)',
@@ -647,7 +655,7 @@ export default function SKPPVDeptView() {
       sr: 39,
       catSr: 7,
       nameMr: 'हाबडे दिपाली सोमनाथ',
-      nameEn: 'Mrs. Dipali Somnath Habade',
+      nameEn: 'Smt. Dipali Somnath Habade',
       roleMr: 'शिक्षकेतर कर्मचारी',
       roleEn: 'Non-Teaching Staff',
       qual: 'S.S.C.',
@@ -661,7 +669,7 @@ export default function SKPPVDeptView() {
       sr: 40,
       catSr: 8,
       nameMr: 'सौ. पवार पूजा सुरेश',
-      nameEn: 'Mrs. Pooja Suresh Pawar',
+      nameEn: 'Smt. Pooja Suresh Pawar',
       roleMr: 'शिक्षकेतर कर्मचारी',
       roleEn: 'Non-Teaching Staff',
       qual: 'S.S.C.',
@@ -952,7 +960,7 @@ export default function SKPPVDeptView() {
                   {showMr ? 'सध्याच्या मुख्याध्यापिका' : 'Current Headmistress'}
                 </span>
                 <span className="text-sm font-bold text-white block">
-                  सौ. वंदना शं. काशिद (Mrs. Vandana Shankar Kashid)
+                  सौ. वंदना शं. काशिद (Smt. Vandana Shankar Kashid)
                 </span>
                 <span className="text-xs text-slate-400 block mt-1">
                   H.S.C., D.Ed, B.A., D.S.M (21+ Years Experience)
@@ -1059,6 +1067,51 @@ export default function SKPPVDeptView() {
                     <p className="text-xs text-amber-300 font-semibold font-sans">
                       {showMr ? ia.achievementMr : ia.achievementEn}
                     </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Student Achievement Photo Showcase Grid (5 Slots) */}
+            <div className="bg-slate-900/40 border border-amber-500/20 rounded-2xl p-5 space-y-3 shadow-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  <span className="text-xs font-bold text-amber-300 uppercase tracking-wider">
+                    {showMr ? 'विद्यार्थी यश व पारितोषिक क्षणचित्रे' : 'Student Achievement & Award Highlights'}
+                  </span>
+                </div>
+                <span className="text-[11px] text-amber-400/80 font-mono font-medium">
+                  ५ छायाचित्रे / 5 Photos
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                {[
+                  { src: skppImg1, titleEn: "Achievement Certificate 1", titleMr: "यशस्वी विद्यार्थी सन्मान १" },
+                  { src: skppImg2, titleEn: "Achievement Certificate 2", titleMr: "यशस्वी विद्यार्थी सन्मान २" },
+                  { src: skppImg3, titleEn: "Achievement Certificate 3", titleMr: "यशस्वी विद्यार्थी सन्मान ३" },
+                  { src: skppImg4, titleEn: "Achievement Certificate 4", titleMr: "यशस्वी विद्यार्थी सन्मान ४" },
+                  { src: skppImg5, titleEn: "Achievement Certificate 5", titleMr: "यशस्वी विद्यार्थी सन्मान ५" }
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => setPreviewImage(item.src)}
+                    className="group relative bg-slate-950/80 rounded-xl overflow-hidden border border-amber-500/30 hover:border-amber-400 transition-all duration-300 shadow-md hover:shadow-amber-500/20 cursor-pointer flex flex-col"
+                  >
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
+                      <img
+                        src={item.src}
+                        alt={item.titleEn}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-2">
+                        <span className="text-[11px] font-sans font-semibold text-amber-300 bg-slate-900/90 px-2 py-0.5 rounded border border-amber-500/40">
+                          {showMr ? item.titleMr : item.titleEn}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -1525,6 +1578,34 @@ export default function SKPPVDeptView() {
       {activeTab === 'gallery' && (
         <div className="animate-fadeIn">
           <SKPPVGallery />
+        </div>
+      )}
+
+      {/* Photo Preview Lightbox Modal */}
+      {previewImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fadeIn"
+          onClick={() => setPreviewImage(null)}
+        >
+          <div
+            className="relative max-w-4xl w-full bg-slate-900 border border-amber-500/40 rounded-2xl overflow-hidden shadow-2xl p-2"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setPreviewImage(null)}
+              className="absolute top-4 right-4 z-10 bg-slate-950/80 hover:bg-amber-500 hover:text-slate-950 text-white rounded-full p-2 border border-amber-500/40 transition-colors cursor-pointer"
+              aria-label="Close Preview"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="relative rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center max-h-[80vh]">
+              <img
+                src={previewImage}
+                alt="Student Achievement Preview"
+                className="w-full h-auto max-h-[80vh] object-contain rounded-xl"
+              />
+            </div>
+          </div>
         </div>
       )}
     </div>

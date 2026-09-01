@@ -1,12 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Trophy, Target, Award, Users, Flame, Dumbbell, Medal, Sparkles } from 'lucide-react';
-
-// @ts-ignore
-import boxingImg from '../assets/images/Sports_boxing.jpeg';
-// @ts-ignore
-import weightliftingImg from '../assets/images/sports_weightligting.jpeg';
-// @ts-ignore
-import karateImg from '../assets/images/Sports_karate.jpeg';
+import { Trophy, Target, Award, Users, Flame, Dumbbell, Medal } from 'lucide-react';
+import NationalAchievementsSection from './NationalAchievementsSection';
 
 interface SportsAthleticsSectionProps {
   selectedLang?: 'en' | 'mr' | 'both';
@@ -25,34 +19,6 @@ export default function SportsAthleticsSection({
 
   const showEn = selectedLang === 'both' || selectedLang === 'en';
   const showMr = selectedLang === 'both' || selectedLang === 'mr';
-
-  // 3-Photo Image Gallery Items
-  const photoBoxes = [
-    {
-      id: 'boxing',
-      image: boxingImg,
-      captionEn: 'Boxing Practice & National Championship',
-      captionMr: 'बॉक्सिंग सराव व राष्ट्रीय स्पर्धा',
-      tagEn: 'Boxing Arena',
-      tagMr: 'बॉक्सिंग'
-    },
-    {
-      id: 'weightlifting',
-      image: weightliftingImg,
-      captionEn: 'Weightlifting & State Level Achievements',
-      captionMr: 'वेटलिफ्टिंग व राज्यस्तरीय प्राविण्य',
-      tagEn: 'Weightlifting',
-      tagMr: 'वेटलिफ्टिंग'
-    },
-    {
-      id: 'coaching-ring',
-      image: boxingImg,
-      captionEn: 'Boxing Training Ring & Specialized Coaching',
-      captionMr: 'बॉक्सिंग रिंग व विशेष क्रीडा मार्गदर्शक',
-      tagEn: 'Training Ring',
-      tagMr: 'क्रीडा मार्गदर्शक'
-    }
-  ];
 
   // Achievement Stats Counter Grid (2025–26 Highlights)
   const achievementStats = [
@@ -149,14 +115,14 @@ export default function SportsAthleticsSection({
           <span className="text-amber-400 font-display font-bold text-xs uppercase tracking-widest flex items-center space-x-2 font-sans">
             <Dumbbell className="h-4 w-4 text-amber-400 shrink-0" />
             <span>
-              {selectedLang === 'en' && 'Sports & Athletic Facilities (Mahatma Gandhi Vidyalaya Wing)'}
-              {selectedLang === 'mr' && 'क्रीडा विभाग व यश (Mahatma Gandhi Vidyalaya Wing)'}
+              {selectedLang === 'en' && 'Sports & Athletic Facilities (Mahatma Gandhi Vidyalay Wing)'}
+              {selectedLang === 'mr' && 'क्रीडा विभाग व यश (Mahatma Gandhi Vidyalay Wing)'}
               {selectedLang === 'both' && 'क्रीडा व शारीरिक शिक्षण (Sports & Athletics)'}
             </span>
           </span>
           <h2 className="text-2xl md:text-3xl font-display font-black tracking-tight text-white">
-            {showEn && !showMr && 'Sports & Athletic Achievements (Mahatma Gandhi Vidyalaya Wing)'}
-            {!showEn && showMr && 'क्रीडा विभाग व यश (Mahatma Gandhi Vidyalaya Wing)'}
+            {showEn && !showMr && 'Sports & Athletic Achievements (Mahatma Gandhi Vidyalay Wing)'}
+            {!showEn && showMr && 'क्रीडा विभाग व यश (Mahatma Gandhi Vidyalay Wing)'}
             {showEn && showMr && 'Sports & Athletic Achievements / क्रीडा विभाग व यश'}
           </h2>
         </div>
@@ -190,7 +156,7 @@ export default function SportsAthleticsSection({
         </div>
         {showEn && (
           <p className="text-slate-200 text-sm md:text-base leading-relaxed font-sans">
-            At Mahatma Gandhi Vidyalaya & Junior College, Rajgurunagar, sports are given high priority for holistic development. Through regular practice and structured coaching, students actively participate across Taluka, District, Division, State, and National level competitions, nurturing confidence, athletic skills, and leadership qualities.
+            At Mahatma Gandhi Vidyalay & Junior College, Rajgurunagar, sports are given high priority for holistic development. Through regular practice and structured coaching, students actively participate across Taluka, District, Division, State, and National level competitions, nurturing confidence, athletic skills, and leadership qualities.
           </p>
         )}
         {showMr && (
@@ -200,50 +166,8 @@ export default function SportsAthleticsSection({
         )}
       </div>
 
-      {/* 3-Photo Image Gallery Box Layout */}
-      <div className="space-y-4 relative z-10">
-        <div className="flex items-center gap-2 border-b border-white/10 pb-3">
-          <Sparkles className="w-4 h-4 text-amber-400" />
-          <h3 className="font-display font-extrabold text-white text-lg">
-            {selectedLang === 'en' && 'Athletic Action & Training Gallery'}
-            {selectedLang === 'mr' && 'क्रीडा सराव व स्पर्धा क्षणचित्रे'}
-            {selectedLang === 'both' && 'Athletic Action Gallery (क्रीडा सराव व स्पर्धा क्षणचित्रे)'}
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {photoBoxes.map((box, idx) => (
-            <div
-              key={`${box.id}-${idx}`}
-              className="group relative h-64 sm:h-72 rounded-2.5xl overflow-hidden border border-white/15 bg-slate-950 shadow-2xl flex flex-col justify-end"
-            >
-              {/* Image with hover-zoom effect */}
-              <img
-                src={box.image}
-                alt={selectedLang === 'en' ? box.captionEn : box.captionMr}
-                className="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-500 filter brightness-[0.8] contrast-[1.05]"
-                referrerPolicy="no-referrer"
-              />
-
-              {/* Dark Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-
-              {/* Tag & Caption Container */}
-              <div className="relative z-10 p-5 space-y-2">
-                <span className="inline-block text-[10px] font-mono font-bold text-amber-300 bg-amber-400/20 border border-amber-400/30 px-2.5 py-1 rounded-md uppercase tracking-wider backdrop-blur-sm">
-                  {selectedLang === 'en' ? box.tagEn : box.tagMr}
-                </span>
-
-                <p className="font-display font-extrabold text-white text-sm sm:text-base leading-snug drop-shadow-md">
-                  {selectedLang === 'en' && box.captionEn}
-                  {selectedLang === 'mr' && box.captionMr}
-                  {selectedLang === 'both' && `${box.captionEn} / ${box.captionMr}`}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* National Achievements & Sports Excellence Component */}
+      <NationalAchievementsSection selectedLang={selectedLang} />
 
       {/* Achievement Stats Counter Grid (2025–26 Highlights) */}
       <div className="space-y-4 relative z-10">

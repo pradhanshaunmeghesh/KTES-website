@@ -58,7 +58,7 @@ export default function HscToppersTable({ selectedLang }: HscToppersTableProps) 
           </div>
 
           <h3 className="font-display font-black text-white text-lg sm:text-xl md:text-2xl leading-tight">
-            Mahatma Gandhi Vidyalaya & Junior College, Rajgurunagar - HSC Toppers & Results
+            Mahatma Gandhi Vidyalay & Junior College, Rajgurunagar - HSC Toppers & Results
             <span className="block text-amber-300 font-sans text-base sm:text-lg font-bold mt-1">
               (महात्मा गांधी विद्यालय व कनिष्ठ महाविद्यालय, राजगुरुनगर - एच.एस.सी. प्रथम विद्यार्थी व निकाल)
             </span>

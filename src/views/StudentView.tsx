@@ -9,25 +9,17 @@ import {
   Search,
   ExternalLink,
   Target,
-  Dribbble,
   Award
 } from 'lucide-react';
+// @ts-ignore
+import schoolSportsGroundImg from '../assets/images/school_sports_ground_1787645807351.jpg';
+import NationalSportsAchievers from '../components/NationalSportsAchievers';
+import NCCCarousel from '../components/NCCCarousel';
+import NCCGallerySection from '../components/NCCGallerySection';
 
 export default function StudentView() {
   const [activeSegment, setActiveSegment] = useState<'sports' | 'ncc' | 'arts'>('sports');
   const [isPlayingArtVideo, setIsPlayingArtVideo] = useState(false);
-
-  // Sports items
-  const sportsFacilities = [
-    { title: 'Olympic Running Turf Track', desc: '400 meters synthetic athletic lane configuration certified for state track meets.' },
-    { title: 'Football Stadium Bay', desc: 'Natural grass turf with seating gallery and automated twilight perimeter sports floodlights.' },
-    { title: 'Indoor Badminton & Weights Pavilion', desc: 'High-density timber flooring courts paired with a dedicated physiological physical training ward.' }
-  ];
-
-  const sportsMatches = [
-    { opponent: 'National Academy High', game: 'Under-19 Football Finals', date: 'June 28, 2026', venue: 'KTES Main Arena' },
-    { opponent: 'District Combined College', game: 'Inter-Collegiate Volleyball League', date: 'July 05, 2026', venue: 'Trust Sports Complex' }
-  ];
 
   // NCC activities
   const nccPrograms = [
@@ -89,71 +81,40 @@ export default function StudentView() {
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs font-bold text-secondary tracking-widest uppercase flex items-center space-x-1">
                 <Flame className="h-4 w-4 text-amber-500" />
-                <span>Athletics & Physical Cultivation</span>
+                <span>Athletics & Physical Cultivation | क्रीडा व शारीरिक विकास</span>
               </span>
-              <h1 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">
-                Fostering Sportsmanship & Dynamic Physical Discipline
-              </h1>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Khed Taluka Education Society provides comprehensive coaching setups, Olympic-grade grounds tracking and professional clinical advisors, ensuring that mental academic performance enjoys a robust physical buffer.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div className="border border-white/10 bg-[#000c24]/30 p-4 rounded-xl shadow-xl hover:bg-white/5 transition-all">
-                  <div className="text-2xl md:text-3xl font-display font-black text-white">30 Acres</div>
-                  <span className="text-slate-400 text-[10px] font-bold uppercase">Sports Space</span>
-                </div>
-                <div className="border border-white/10 bg-[#000c24]/30 p-4 rounded-xl shadow-xl hover:bg-white/5 transition-all">
-                  <div className="text-2xl md:text-3xl font-display font-black text-white">6+ Trophies</div>
-                  <span className="text-slate-400 text-[10px] font-bold uppercase">State Championships</span>
-                </div>
-                <div className="border border-white/10 bg-[#000c24]/30 p-4 rounded-xl shadow-xl hover:bg-white/5 transition-all">
-                  <div className="text-2xl md:text-3xl font-display font-black text-white">5 Coaches</div>
-                  <span className="text-slate-400 text-[10px] font-bold uppercase">NIs Certified</span>
-                </div>
+              
+              <div className="space-y-2">
+                <h1 className="text-2xl sm:text-3xl md:text-4.5xl font-display font-black text-white leading-tight">
+                  Fostering Sportsmanship & Athletic Excellence
+                </h1>
+                <p className="text-lg sm:text-xl font-display font-bold text-amber-400">
+                  क्रीडावृत्ती आणि उत्कृष्ट खेळाडूवृत्तीचा विकास
+                </p>
+              </div>
+
+              <div className="space-y-2.5 text-slate-300 text-sm leading-relaxed font-sans">
+                <p>
+                  Khed Taluka Education Society provides vast sports grounds, professional coaching, and modern athletic facilities—ensuring our students build physical strength, discipline, and strong academic focus.
+                </p>
+                <p className="text-slate-300/90 font-medium">
+                  खेड तालुका एज्युकेशन सोसायटी विशाल क्रीडांगणे, व्यावसायिक प्रशिक्षण आणि आधुनिक क्रीडा सुविधा उपलब्ध करून देते—ज्यामुळे विद्यार्थ्यांमध्ये शारीरिक क्षमता, शिस्त आणि अभ्यासावर उत्तम लक्ष केंद्रित करण्याची क्षमता निर्माण होते.
+                </p>
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative rounded-2.5xl overflow-hidden shadow-2xl aspect-video border border-white/10 bg-slate-900">
+            <div className="lg:col-span-5 relative rounded-2.5xl overflow-hidden shadow-2xl aspect-video border border-white/10 bg-slate-900 group">
               <img
-                src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=600&q=80"
-                alt="Track Fields"
-                className="w-full h-full object-cover"
+                src={schoolSportsGroundImg}
+                alt="School Sports Ground & Assembly"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                referrerPolicy="no-referrer"
               />
             </div>
           </section>
 
-          {/* Facilities */}
-          <section className="space-y-6">
-            <h3 className="font-display font-bold text-white text-lg">Central Sports Facilities</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {sportsFacilities.map((fac, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl hover:bg-white/10 hover:border-amber-400/40 transition-all space-y-3 text-white">
-                  <div className="h-10 w-10 bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-xl flex items-center justify-center font-bold">
-                    <Dribbble className="h-5 w-5 text-blue-300" />
-                  </div>
-                  <h4 className="font-display font-bold text-white text-base">{fac.title}</h4>
-                  <p className="text-slate-300 text-xs leading-relaxed">{fac.desc}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Match / Event Alerts block */}
-          <section className="bg-amber-500/10 border border-amber-500/20 rounded-3xl p-6 md:p-8 space-y-6">
-            <h3 className="font-display font-bold text-amber-200 text-lg flex items-center space-x-2">
-              <Trophy className="h-5 w-5 text-secondary" />
-              <span>Upcoming Inter-Institutional Fixtures 2026</span>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {sportsMatches.map((match, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 shadow-lg text-sm space-y-1.5 text-white">
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-amber-400 block">{match.game}</span>
-                  <div className="font-display font-bold text-white">K.T.E.S vs {match.opponent}</div>
-                  <div className="text-slate-300 text-xs">Date: {match.date} | Location: <span className="text-amber-300 font-semibold">{match.venue}</span></div>
-                </div>
-              ))}
-            </div>
-          </section>
+          {/* National Level Sports Achievers & Participants */}
+          <NationalSportsAchievers />
         </div>
       )}
 
@@ -161,35 +122,45 @@ export default function StudentView() {
       {activeSegment === 'ncc' && (
         <div className="space-y-16">
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold text-secondary tracking-widest uppercase flex items-center space-x-1">
-                <ShieldCheck className="h-4 w-4 text-secondary" />
-                <span>National Cadet Corps (K.T.E.S Army Wing)</span>
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-xs font-bold text-secondary tracking-widest uppercase flex items-center space-x-1.5 font-sans">
+                <ShieldCheck className="h-4 w-4 text-amber-400" />
+                <span>NATIONAL CADET CORPS (NO. 3 MAH AIR SQN NCC, PUNE)</span>
               </span>
-              <h1 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">
-                Discipline, Courage and Social Character
-              </h1>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Our active National Cadet Corps unit operates under rigorous defense instruction guides, molding cadettes into values of community aid, weapon assembly, parade postures, and high-order leadership routines.
-              </p>
-              <div className="bg-[#000c24]/30 border-l-4 border-amber-400 border border-white/10 p-4 rounded-xl text-xs space-y-2 text-slate-300">
-                <p><strong>Cadet Code:</strong> Duty, Unity, Discipline.</p>
-                <p><strong>Training Grade:</strong> Authorized for Certificate A and B evaluation credentials.</p>
+              
+              <div className="space-y-2">
+                <h1 className="text-2xl sm:text-3xl md:text-4.5xl font-display font-black text-white leading-tight">
+                  Discipline, Courage and Leadership
+                </h1>
+                <p className="text-lg sm:text-xl font-display font-bold text-amber-400">
+                  शिस्त, धैर्य आणि नेतृत्व
+                </p>
+              </div>
+
+              <div className="space-y-2.5 text-slate-300 text-sm leading-relaxed font-sans">
+                <p>
+                  Our active National Cadet Corps Air Wing (Troop No. 10 / No. 3 MAH Air Sqn NCC, Pune) operates under defense instruction guides, molding cadets into values of national service, aviation awareness, drill discipline, and high-order leadership routines.
+                </p>
+                <p className="text-slate-300/90 font-medium">
+                  आमची सक्रिय राष्ट्रीय छात्र सेना (एअर विंग - तुकडी क्र. १० / ३ महा एअर स्क्वाड्रन एनसीसी, पुणे) संरक्षण दलाच्या मार्गदर्शनाखाली कार्य करते; ज्यामुळे विद्यार्थ्यांमध्ये राष्ट्रसेवा, हवाई दल व विमान उड्डाणविषयक ज्ञान, संचलन शिस्त आणि उत्तम नेतृत्वगुण विकसित होतात.
+                </p>
+              </div>
+
+              <div className="bg-[#000c24]/40 border-l-4 border-amber-400 border border-white/10 p-4 rounded-xl text-xs space-y-1.5 text-slate-300">
+                <p><strong className="text-amber-300">Cadet Motto:</strong> Unity and Discipline (एकता आणि शिस्त).</p>
+                <p><strong className="text-amber-300">Troop Affiliation:</strong> Troop No. 10 / No. 3 Maharashtra Air Squadron NCC, Pune.</p>
+                <p><strong className="text-amber-300">Certification:</strong> Authorized for NCC 'A' Certificate Examination.</p>
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative rounded-2.5xl overflow-hidden shadow-2xl aspect-video border border-white/10 bg-slate-900">
-              <img
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80"
-                alt="NCC Cadets"
-                className="w-full h-full object-cover object-top"
-              />
+            <div className="lg:col-span-6 w-full">
+              <NCCCarousel />
             </div>
           </section>
 
           {/* NCC Programs & Campaigns */}
           <section className="space-y-6">
-            <h3 className="font-display font-bold text-white text-lg">NCC Camp Operations</h3>
+            <h3 className="font-display font-bold text-white text-lg">NCC Air Wing Training & Operations</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {nccPrograms.map((prog, i) => (
                 <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl hover:bg-white/10 hover:border-amber-400/40 transition-all space-y-3 text-white">
@@ -202,6 +173,9 @@ export default function StudentView() {
               ))}
             </div>
           </section>
+
+          {/* NCC Air Wing Photo Gallery Section */}
+          <NCCGallerySection />
         </div>
       )}
 

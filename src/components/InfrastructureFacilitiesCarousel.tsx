@@ -5,9 +5,17 @@ import { motion, AnimatePresence } from 'motion/react';
 // @ts-ignore
 import computerLabImg from '../assets/images/computer_lab.jpg';
 // @ts-ignore
+import computerLabPng from '../assets/images/computer_lab.png';
+// @ts-ignore
 import scienceLabImg from '../assets/images/science_lab.jpg';
 // @ts-ignore
 import scienceLabImg1 from '../assets/images/Science_lab1.jpg';
+// @ts-ignore
+import labImg from '../assets/images/lab.jpg';
+// @ts-ignore
+import physicsLabUploadedImg from '../assets/images/Physics lab.jpg';
+// @ts-ignore
+import biologyLabUploadedImg from '../assets/images/biology lab.jpg';
 // @ts-ignore
 import libraryImg from '../assets/images/library1.jpg';
 
@@ -32,7 +40,8 @@ export default function InfrastructureFacilitiesCarousel({
   const slides = [
     {
       id: 'computer-lab',
-      image: computerLabImg,
+      image: computerLabImg || computerLabPng,
+      altImage: computerLabPng || computerLabImg,
       overlayHeadingBoth: 'Computer Lab (संगणक प्रयोगशाळा)',
       leftCardTitleEn: '1. Computer Lab',
       leftCardTitleMr: '१. Computer Lab (संगणक प्रयोगशाळा)',
@@ -50,23 +59,23 @@ export default function InfrastructureFacilitiesCarousel({
       ]
     },
     {
-      id: 'science-lab',
+      id: 'chemistry-lab',
       image: scienceLabImg,
       altImage: scienceLabImg1,
-      overlayHeadingBoth: 'Science Lab (विज्ञान प्रयोगशाळा)',
-      leftCardTitleEn: '2. Science Lab',
-      leftCardTitleMr: '२. Science Lab (विज्ञान प्रयोगशाळा)',
-      rightPanelEn: 'A state-of-the-art science lab designed for Physics, Chemistry, and Biology experiments, enabling students to grasp scientific concepts through direct practical learning.',
-      rightPanelMr: 'भौतिकशास्त्र (Physics), रसायनशास्त्र (Chemistry) आणि जीवशास्त्र (Biology) या विषयांचे प्रयोग करण्यासाठी अत्याधुनिक विज्ञान प्रयोगशाळा उपलब्ध आहे. यामुळे विद्यार्थ्यांना विज्ञानातील संकल्पना प्रत्यक्ष प्रयोगांद्वारे समजून घेणे सोपे जाते.',
+      overlayHeadingBoth: 'Chemistry Lab (रसायनशास्त्र प्रयोगशाळा)',
+      leftCardTitleEn: '2. Chemistry Lab',
+      leftCardTitleMr: '२. रसायनशास्त्र प्रयोगशाळा',
+      rightPanelEn: 'A specialized Chemistry laboratory fitted with essential chemical reagents, safety apparatus, and glass workstations to conduct safe practical experiments.',
+      rightPanelMr: 'रसायनशास्त्र (Chemistry) मधील विविध प्रयोग सुरक्षितपणे करण्यासाठी आवश्यक रसायने, काचेची उपकरणे आणि आधुनिक कार्यपीठांनी सज्ज प्रयोगशाळा.',
       specsEn: [
-        'Dedicated Physics, Chemistry, and Biology lab apparatus',
-        'Direct practical experimentation & concept clarity',
-        'Comprehensive safety standards & expert lab guidance'
+        'Specialized chemical reagents & precision glass apparatus',
+        'Equipped with chemical workstations and safety standards',
+        'Guidance for practical experiments in analytical & organic chemistry'
       ],
       specsMr: [
-        'भौतिकशास्त्र, रसायनशास्त्र आणि जीवशास्त्रासाठी सुसज्ज उपकरणे',
-        'प्रत्यक्ष प्रयोगाद्वारे विज्ञान संकल्पनांचे सुलभ आकलन',
-        'उत्कृष्ट सुरक्षा मानके आणि अनुभवी प्रयोगशाळा मार्गदर्शन'
+        'विविध रासायनिक अभिकर्मके व अचूक काचेची उपकरणे',
+        'सुरक्षित कार्यपीठे आणि आधुनिक सुरक्षा नियमावलीने सज्ज',
+        'प्रात्यक्षिक रसायनशास्त्र प्रयोगांसाठी तज्ज्ञ मार्गदर्शन'
       ]
     },
     {
@@ -75,7 +84,7 @@ export default function InfrastructureFacilitiesCarousel({
       overlayHeadingBoth: 'Central Library (ग्रंथालय)',
       leftCardTitleEn: '3. Central Library',
       leftCardTitleMr: '३. Library (ग्रंथालय)',
-      rightPanelEn: 'To cultivate a reading culture and foster overall personality development, Mahatma Gandhi Vidyalaya & Junior College, Rajgurunagar maintains a well-equipped library with over 11,611 books. Dedicated reading sessions are held every Wednesday and Sunday.',
+      rightPanelEn: 'To cultivate a reading culture and foster overall personality development, Mahatma Gandhi Vidyalay & Junior College, Rajgurunagar maintains a well-equipped library with over 11,611 books. Dedicated reading sessions are held every Wednesday and Sunday.',
       rightPanelMr: 'महात्मा गांधी विद्यालय व कनिष्ठ महाविद्यालय, राजगुरूनगर येथे विद्यार्थ्यांमध्ये वाचन संस्कृती रुजवणे, ज्ञानसंपादनाची आवड निर्माण करणे व व्यक्तिमत्त्व विकासाला चालना देणे या उद्देशाने समृद्ध ग्रंथालय प्रभावीपणे कार्यरत असून त्यामध्ये सुमारे ११,६११ पुस्तके उपलब्ध आहेत. विद्यार्थ्यांसाठी वयोगटानुसार विविध विषयांवरील पुस्तके उपलब्ध करून देण्यात आली असून आठवड्यातील बुधवार व रविवार या दिवशी नियमित वाचन तास आयोजित केले जातात.',
       specsEn: [
         'Rich repository of 11,611+ age-appropriate books across various subjects.',
@@ -86,6 +95,46 @@ export default function InfrastructureFacilitiesCarousel({
         '११,६११+ पेक्षा जास्त पुस्तकांचा समृद्ध संग्रह (वयोगटानुसार वर्गवारी).',
         'भाषिक कौशल्य, विचारसरणी आणि सर्वांगीण ज्ञानवृद्धीस प्रोत्साहन.',
         'आठवड्यातील बुधवार व रविवार या दिवशी नियमित वाचन तास.'
+      ]
+    },
+    {
+      id: 'physics-lab',
+      image: physicsLabUploadedImg,
+      altImage: scienceLabImg1,
+      overlayHeadingBoth: 'Physics Lab (भौतिकशास्त्र प्रयोगशाळा)',
+      leftCardTitleEn: '4. Physics Lab',
+      leftCardTitleMr: '४. भौतिकशास्त्र प्रयोगशाळा',
+      rightPanelEn: 'A well-equipped Physics laboratory designed to help students explore the principles of mechanics, optics, electricity, and magnetism through practical experiments.',
+      rightPanelMr: 'भौतिकशास्त्र (Physics) मधील यांत्रिकी, प्रकाशशास्त्र, आणि विद्युतविषयक प्रयोग प्रात्यक्षिकांद्वारे समजून घेण्यासाठी अद्ययावत भौतिकशास्त्र प्रयोगशाळा उपलब्ध आहे.',
+      specsEn: [
+        'Modern apparatus for mechanics, optics, electricity & magnetism',
+        'Hands-on experimental verification of physics laws & principles',
+        'Precision instruments for accurate measurements and observation'
+      ],
+      specsMr: [
+        'यांत्रिकी, प्रकाशशास्त्र, विद्युत व चुंबकत्वासाठी अद्ययावत उपकरणे',
+        'भौतिकशास्त्र नियमांची प्रत्यक्ष प्रयोगांद्वारे पडताळणी',
+        'अचूक मोजमाप व निरीक्षणासाठी आधुनिक वैज्ञानिक उपकरणे'
+      ]
+    },
+    {
+      id: 'biology-lab',
+      image: biologyLabUploadedImg,
+      altImage: labImg,
+      overlayHeadingBoth: 'Biology Lab (जीवशास्त्र प्रयोगशाळा)',
+      leftCardTitleEn: '5. Biology Lab',
+      leftCardTitleMr: '५. जीवशास्त्र प्रयोगशाळा',
+      rightPanelEn: 'A modern Biology laboratory featuring high-grade microscopes, botanical specimens, and anatomical models to foster hands-on learning in life sciences.',
+      rightPanelMr: 'जीवशास्त्र (Biology) विषयातील विविध घटक, सूक्ष्मजीव, वनस्पती आणि मानवी शरीररचना यांचा सखोल अभ्यास करण्यासाठी सर्व सुविधांनी युक्त प्रयोगशाळा.',
+      specsEn: [
+        'High-grade compound & stereoscopic microscopes',
+        'Preserved botanical specimens, herbariums & anatomical models',
+        'Hands-on practical training in life sciences and cytological studies'
+      ],
+      specsMr: [
+        'उच्च दर्जाचे सूक्ष्मदर्शक (Microscopes) व प्रात्यक्षिक संच',
+        'वनस्पती, प्राणी नमुने (Specimens) व मानवी शरीररचना मॉडेल',
+        'जीवशास्त्र व सूक्ष्मजीव अभ्यासासाठी सखोल प्रात्यक्षिक सुविधा'
       ]
     }
   ];
@@ -174,6 +223,11 @@ export default function InfrastructureFacilitiesCarousel({
                 <img
                   src={currentSlide.image}
                   alt={currentSlide.overlayHeadingBoth}
+                  onError={(e) => {
+                    if (currentSlide.altImage && e.currentTarget.src !== currentSlide.altImage) {
+                      e.currentTarget.src = currentSlide.altImage;
+                    }
+                  }}
                   className="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.05]"
                   referrerPolicy="no-referrer"
                 />
@@ -240,25 +294,25 @@ export default function InfrastructureFacilitiesCarousel({
           </div>
 
           {/* Quick Select Buttons Below Carousel */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 pt-1">
             {slides.map((slide, idx) => (
               <button
                 key={slide.id}
                 onClick={() => setCurrentIndex(idx)}
-                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-center justify-between ${
+                className={`p-2.5 sm:p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-center justify-between ${
                   currentIndex === idx
                     ? 'bg-amber-400/10 border-amber-400/50 text-amber-300 shadow-lg'
                     : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10'
                 }`}
               >
-                <div>
-                  <span className="text-[10px] font-mono text-slate-400 block uppercase">
-                    Option {idx + 1}
+                <div className="min-w-0 pr-1">
+                  <span className="text-[9px] font-mono text-slate-400 block uppercase">
+                    Facility {idx + 1}
                   </span>
-                  <span className="text-xs font-bold block">
+                  <span className="text-[11px] sm:text-xs font-bold block truncate">
                     {selectedLang === 'en' && slide.leftCardTitleEn}
                     {selectedLang === 'mr' && slide.leftCardTitleMr}
-                    {selectedLang === 'both' && slide.leftCardTitleMr}
+                    {selectedLang === 'both' && slide.leftCardTitleEn}
                   </span>
                 </div>
                 {currentIndex === idx && (

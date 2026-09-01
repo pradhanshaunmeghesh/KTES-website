@@ -14,7 +14,7 @@ export interface MAVStaffRecord {
 export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   {
     sr: 1,
-    nameEn: "Mrs. Jadhav Rekha Chandrashekhar",
+    nameEn: "Smt. Jadhav Rekha Chandrashekhar",
     nameMr: "श्रीम. जाधव रेखा चंद्रशेखर",
     designationEn: "Principal / मुख्याध्यापिका",
     designationMr: "मुख्याध्यापिका",
@@ -25,8 +25,8 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 2,
-    nameEn: "Mr. Panasare Sopan Tatyaba",
-    nameMr: "श्री. पनसरड सोपान तात्याबा",
+    nameEn: "Mr. Nisrad Sopan Tatyaba",
+    nameMr: "श्री. निसरड सोपान तात्याबा",
     designationEn: "Vice Principal / उपमुख्याध्यापक",
     designationMr: "उपमुख्याध्यापक",
     qualificationEn: "M.A. B.Ed",
@@ -36,8 +36,8 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 3,
-    nameEn: "Mr. Muthe Haushiram Krishnaji",
-    nameMr: "श्री. मुठे हौशीराम कृष्णाजी",
+    nameEn: "Mr. Muthe Haushiram Kamaji",
+    nameMr: "श्री. मुठे हौशीराम कामाजी",
     designationEn: "Supervisor / पर्यवेक्षक",
     designationMr: "पर्यवेक्षक",
     qualificationEn: "M.A. B.Ed",
@@ -47,7 +47,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 4,
-    nameEn: "Mrs. Thakur Sunita Atul",
+    nameEn: "Smt. Thakur Sunita Atul",
     nameMr: "सौ. ठाकूर सुनिता अतूल",
     designationEn: "Supervisor / पर्यवेक्षिका",
     designationMr: "पर्यवेक्षिका",
@@ -69,7 +69,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 6,
-    nameEn: "Mr. Owhal Chandrakant Ananda",
+    nameEn: "Mr. Ovhal Chandrakant Ananda",
     nameMr: "श्री. ओव्हाळ चंद्रकांत आनंदा",
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
@@ -80,8 +80,8 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 7,
-    nameEn: "Mrs. Chavan Usha Nomu",
-    nameMr: "सौ. चव्हाण उषा नोमू",
+    nameEn: "Smt. Chavan Usha Pomu",
+    nameMr: "सौ. चव्हाण उषा पोमू",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
     qualificationEn: "M.A. B.Ed",
@@ -124,7 +124,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 11,
-    nameEn: "Mrs. Shelar Kanchan Arvind",
+    nameEn: "Smt. Shelar Kanchan Arvind",
     nameMr: "सौ. शेलार कांचन अरविंद",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -146,7 +146,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 13,
-    nameEn: "Mr. Zaid Subhash Bhaguji",
+    nameEn: "Mr. Jaid Subhash Bhaguji",
     nameMr: "श्री. जैद सुभाष भागुजी",
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
@@ -157,7 +157,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 14,
-    nameEn: "Mrs. Kalbhor Madhuri Mahendra",
+    nameEn: "Smt. Kalbhor Madhuri Mahendra",
     nameMr: "सौ. काळभोर माधुरी महेंद्र",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -179,8 +179,8 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 16,
-    nameEn: "Mr. Pite Gulab Ramesh",
-    nameMr: "श्री. पिटे गुलाब रमेश",
+    nameEn: "Mr. Thite Gulab Ramesh",
+    nameMr: "श्री. थिटे गुलाब रमेश",
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
     qualificationEn: "H.S.C. D.Ed",
@@ -201,7 +201,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 18,
-    nameEn: "Mrs. Godse Archana Mandar",
+    nameEn: "Smt. Godse Archana Mandar",
     nameMr: "सौ. गोडसे अर्चना मंदार",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -223,7 +223,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 20,
-    nameEn: "Mrs. Ghorpade Varsha Kishor",
+    nameEn: "Smt. Ghorpade Varsha Kishor",
     nameMr: "सौ. घोरपडे वर्षा किशोर",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -234,7 +234,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 21,
-    nameEn: "Mrs. Bhangare Ranjana Ganesh",
+    nameEn: "Smt. Bhangare Ranjana Ganesh",
     nameMr: "सौ. भांगरे रंजना गणेश",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -246,7 +246,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   {
     sr: 22,
     nameEn: "Mr. Gholap Tulsiram Shankar",
-    nameMr: "श्री. घोलाप तुळशीराम शंकर",
+    nameMr: "श्री. घोलप तुळशीराम शंकर",
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
     qualificationEn: "B.A. D.Ed",
@@ -256,7 +256,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 23,
-    nameEn: "Mrs. Nikam Smita Ganesh",
+    nameEn: "Smt. Nikam Smita Ganesh",
     nameMr: "सौ. निकम स्मिता गणेश",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -267,7 +267,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 24,
-    nameEn: "Mrs. Sale Reshma Machhindranath",
+    nameEn: "Smt. Sale Reshma Machhindranath",
     nameMr: "सौ. साळे रेश्मा मच्छिंद्रनाथ",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -289,7 +289,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 26,
-    nameEn: "Mrs. Naikare Satish Sheila",
+    nameEn: "Smt. Naikare Sheela Satish",
     nameMr: "सौ. नाईकरे शीला सतीश",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -300,7 +300,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 27,
-    nameEn: "Mrs. Katle Sandhya Suresh",
+    nameEn: "Smt. Katle Sandhya Suresh",
     nameMr: "सौ. कातळे संध्या सुरेश",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -311,7 +311,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 28,
-    nameEn: "Mrs. Kalhatkar Sushma Vinod",
+    nameEn: "Smt. Kalhatkar Sushma Vinod",
     nameMr: "सौ. कल्हाटकर सुषमा विनोद",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -333,8 +333,8 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 30,
-    nameEn: "Mrs. Kanse Suvarna Santosh",
-    nameMr: "सौ. कणसे सुवर्णा संतोष",
+    nameEn: "Smt. Kapse Suvarna Santosh",
+    nameMr: "सौ. कापसे सुवर्णा संतोष",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
     qualificationEn: "M.Sc. B.Ed",
@@ -344,8 +344,8 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 31,
-    nameEn: "Mr. Ghodke Kisan Shankar",
-    nameMr: "श्री. घोडके किसन शंकर",
+    nameEn: "Mr. Gopale Kisan Shankar",
+    nameMr: "श्री. गोपाळे किसन शंकर",
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
     qualificationEn: "A.T.D., Gd.Art",
@@ -355,7 +355,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 32,
-    nameEn: "Mrs. Sane Neha Ninad",
+    nameEn: "Smt. Sane Neha Ninad",
     nameMr: "सौ. साने नेहा निनाद",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -366,7 +366,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 33,
-    nameEn: "Mrs. Jadhav Shilpa Ashok",
+    nameEn: "Smt. Jadhav Shilpa Ashok",
     nameMr: "सौ. जाधव शिल्पा अशोक",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -377,7 +377,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 34,
-    nameEn: "Mrs. Gutte Varsha Vishnu",
+    nameEn: "Smt. Gutte Varsha Vishnu",
     nameMr: "सौ. गुट्टे वर्षा विष्णू",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -388,7 +388,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 35,
-    nameEn: "Mrs. Bhosale Varsha Manoj",
+    nameEn: "Smt. Bhosale Varsha Manoj",
     nameMr: "सौ. भोसले वर्षा मनोज",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -410,7 +410,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 37,
-    nameEn: "Mrs. Sandbhor Aruna Bhanudas",
+    nameEn: "Smt. Sandbhor Aruna Bhanudas",
     nameMr: "सौ. सांडभोर अरुणा भानुदास",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -421,7 +421,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 38,
-    nameEn: "Mrs. Vayal Kavita Avinash",
+    nameEn: "Smt. Vayal Kavita Avinash",
     nameMr: "सौ. वायाळ कविता अविनाश",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -432,7 +432,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 39,
-    nameEn: "Mr. Aiwale Digambar Pandurang",
+    nameEn: "Mr. Aivale Digambar Pandurang",
     nameMr: "श्री. ऐवळे दिगंबर पांडुरंग",
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
@@ -443,7 +443,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 40,
-    nameEn: "Mrs. Kute Priya Prashant",
+    nameEn: "Smt. Kute Priya Prashant",
     nameMr: "सौ. कुटे प्रिया प्रशांत",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -454,7 +454,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 41,
-    nameEn: "Mrs. Lokhande Nayana Vilas",
+    nameEn: "Smt. Lokhande Nayana Vilas",
     nameMr: "सौ. लोखंडे नयना विलास",
     designationEn: "Teacher / शिक्षक",
     designationMr: "शिक्षक",
@@ -465,7 +465,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 42,
-    nameEn: "Mrs. Bangar Namrata Pradip",
+    nameEn: "Smt. Bangar Namrata Pradip",
     nameMr: "सौ. बांगर नम्रता प्रदीप",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -487,8 +487,8 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 44,
-    nameEn: "Mrs. Gorade Parinita Arun",
-    nameMr: "सौ. गोरडे परिणिता अरुण",
+    nameEn: "Smt. Gorade Pratipada Arun",
+    nameMr: "सौ. गोरडे प्रतिपदा अरुण",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
     qualificationEn: "B.A. B.Ed",
@@ -509,7 +509,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 46,
-    nameEn: "Mrs. Shinde Savita Sanjay",
+    nameEn: "Smt. Shinde Savita Sanjay",
     nameMr: "सौ. शिंदे सविता संजय",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -525,13 +525,13 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
     qualificationEn: "B.A. B.Ed",
-    appointmentDateEn: "14/09/2016",
+    appointmentDateEn: "12/06/1995",
     subjectEn: "History, Geography",
     subjectMr: "इतिहास, भूगोल"
   },
   {
     sr: 48,
-    nameEn: "Mrs. Patil Swati Arjun",
+    nameEn: "Smt. Patil Swati Arjun",
     nameMr: "सौ. पाटील स्वाती अर्जुन",
     designationEn: "Assistant Teacher / उपशिक्षिका",
     designationMr: "उपशिक्षिका",
@@ -568,7 +568,7 @@ export const MAV_AIDED_TEACHING_STAFF: MAVStaffRecord[] = [
 export const MAV_AIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   {
     sr: 1,
-    nameEn: "Shri. Bharmal Arvind Chintaman",
+    nameEn: "Mr. Bharmal Arvind Chintaman",
     nameMr: "श्री. भारमळ अरविंद चिंतामण",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -579,7 +579,7 @@ export const MAV_AIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 2,
-    nameEn: "Shri. Pawar Ganesh Sudhakar",
+    nameEn: "Mr. Pawar Ganesh Sudhakar",
     nameMr: "श्री. पवार गणेश सुधाकर",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -590,7 +590,7 @@ export const MAV_AIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 3,
-    nameEn: "Shri. Gujar Ashok Dattatraya",
+    nameEn: "Mr. Gujar Ashok Dattatraya",
     nameMr: "श्री. गुजर अशोक दत्तात्रय",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -601,7 +601,7 @@ export const MAV_AIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 4,
-    nameEn: "Shri. Shinde Suresh Musala",
+    nameEn: "Mr. Shinde Suresh Musala",
     nameMr: "श्री. शिंदे सुरेश मुसळा",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -693,7 +693,7 @@ export const MAV_UNAIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 8,
-    nameEn: "Shri. Chavan Deepak Dnyaneshwar",
+    nameEn: "Mr. Chavan Deepak Dnyaneshwar",
     nameMr: "श्री. चव्हाण दिपक ज्ञानेश्वर",
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
@@ -891,7 +891,7 @@ export const MAV_UNAIDED_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 26,
-    nameEn: "Shri. Sandbhor Sachin Ashok",
+    nameEn: "Mr. Sandbhor Sachin Ashok",
     nameMr: "श्री. सांडभोर सचिन अशोक",
     designationEn: "Assistant Teacher / उपशिक्षक",
     designationMr: "उपशिक्षक",
@@ -928,7 +928,7 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 2,
-    nameEn: "Shri. Gaikwad Rahul Tanhaji",
+    nameEn: "Mr. Gaikwad Rahul Tanhaji",
     nameMr: "श्री. गायकवाड राहुल तान्हाजी",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -939,8 +939,8 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 3,
-    nameEn: "Shri. Bhandalkar Abhay Ankush",
-    nameMr: "श्री. भंडलकर अभय अंकुश",
+    nameEn: "Mrs. Bhandarkar Aparna Ankush",
+    nameMr: "श्रीमती भंडारकर अपर्णा अंकुश",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
     qualificationEn: "B.Sc (Comp. Sci.)",
@@ -961,7 +961,7 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 5,
-    nameEn: "Shri. Walunj Vitthal Dagdu",
+    nameEn: "Mr. Walunj Vitthal Dagdu",
     nameMr: "श्री. वाळूंज विठ्ठल दगडू",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -972,7 +972,7 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 6,
-    nameEn: "Shri. Bhosale Sharad Krishnaji",
+    nameEn: "Mr. Bhosale Sharad Krishnaji",
     nameMr: "श्री. भोसले शरद कृष्णाजी",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -983,7 +983,7 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 7,
-    nameEn: "Shri. Salunke Shailesh Vijay",
+    nameEn: "Mr. Salunke Shailesh Vijay",
     nameMr: "श्री. साळुंके शैलेश विजय",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -994,7 +994,7 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 8,
-    nameEn: "Shri. Bairagi Tulsidas Bajarang",
+    nameEn: "Mr. Bairagi Tulsidas Bajarang",
     nameMr: "श्री. बैरागी तुळसीदास बजरंग",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
@@ -1005,8 +1005,8 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 9,
-    nameEn: "Shri. Maluk Ganesh Sambhaji",
-    nameMr: "श्री. मळूक गणेश संभाजी",
+    nameEn: "Mr. Maluk Ganesh Sambhaji",
+    nameMr: "श्री. मुळूक गणेश संभाजी",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
     qualificationEn: "8th",
@@ -1016,8 +1016,8 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 10,
-    nameEn: "Shri. Satkar Chandrakant Sudam",
-    nameMr: "श्री. सातकर चंद्रकांत सुदम",
+    nameEn: "Mr. Satkar Chandrakant Sudam",
+    nameMr: "श्री. सातकर चंद्रकांत सुदाम",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",
     qualificationEn: "B.A.",
@@ -1027,7 +1027,7 @@ export const MAV_UNAIDED_NON_TEACHING_STAFF: MAVStaffRecord[] = [
   },
   {
     sr: 11,
-    nameEn: "Shri. Lokhande Sainath",
+    nameEn: "Mr. Lokhande Sainath",
     nameMr: "श्री. लोखंडे साईनाथ",
     designationEn: "Non-Teaching Staff / शिक्षकेतर कर्मचारी",
     designationMr: "शिक्षकेतर कर्मचारी",

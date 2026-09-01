@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 // @ts-ignore
-import splashVideo1 from '../assets/Statue_standing_with_glowing_par…_202608131052.mp4';
-// @ts-ignore
-import splashVideo2 from '../assets/splash_video.mp4';
+import splashVideo from '../assets/splash_video.mp4';
 
-const videoSrc = splashVideo2 || splashVideo1;
+const videoSrc = splashVideo;
 
 export default function SplashScreen() {
   const [isVisible, setIsVisible] = useState(true);

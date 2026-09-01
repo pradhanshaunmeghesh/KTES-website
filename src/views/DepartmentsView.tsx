@@ -50,6 +50,8 @@ import InfrastructureFacilitiesCarousel from '../components/InfrastructureFacili
 import SportsAthleticsSection from '../components/SportsAthleticsSection';
 import MAVStaffSection from '../components/MAVStaffSection';
 import ExecutiveDesk from '../components/ExecutiveDesk';
+import PrincipalMessageDesk from '../components/PrincipalMessageDesk';
+import EMSPrincipalMessageDesk from '../components/EMSPrincipalMessageDesk';
 
 const mavKeyMetrics = [
   {
@@ -129,11 +131,11 @@ const mavAcademicStandards = [
   },
   {
     icon: GraduationCap,
-    titleEn: "Scholarship Success",
+    titleEn: "Scholarship Guidance",
     titleMr: "शिष्यवृत्ती मार्गदर्शन",
-    tag: "338 NMMS Awardees",
-    detailsEn: "Special guidance for 5th & 8th Grade Scholarship Exams; 338 students awarded NMMS scholarships to date.",
-    detailsMr: "५ वी व ८ वी शिष्यवृत्ती परीक्षांसाठी विशेष मार्गदर्शन; आतापर्यंत ३३८ विद्यार्थ्यांना NMMS शिष्यवृत्ती.",
+    tag: "63 Merit Students (2026-27)",
+    detailsEn: "In the 2026-27 academic year, the only school in the district to secure a spot on the merit list for 63 total students: 11 students in 5th Grade Scholarship, 22 students in 7th Grade Scholarship, 30 students in 8th Grade Scholarship, and 15 students in the NMMS Examination.",
+    detailsMr: "सन २०२६-२७ मध्ये इ. ५वी शिष्यवृत्ती परीक्षेत ११ विद्यार्थी, ७वी शिष्यवृत्ती परीक्षेत २२ विद्यार्थी, ८वी शिष्यवृत्ती परीक्षेत ३० विद्यार्थी तर NMMS परीक्षेत १५ विद्यार्थी, असे एकूण ६३ विद्यार्थ्यांनी गुणवत्ता यादीत स्थान मिळविणारे जिल्ह्यातील एकमेव विद्यालय.",
     color: "border-blue-400/30 text-blue-400 bg-blue-400/10"
   },
   {
@@ -163,14 +165,14 @@ const mavHallOfFame = [
   },
   {
     id: "hof-2",
-    titleEn: "National Level Sports Achievers",
-    titleMr: "राष्ट्रीय क्रीडापटू",
-    nameEn: "4 National Level Sports Achievers",
-    nameMr: "४ राष्ट्रीय क्रीडापटू विद्यार्थी",
+    titleEn: "National & State Level School Games Achievements",
+    titleMr: "राष्ट्रीय व राज्यस्तरीय शालेय क्रीडा यश",
+    nameEn: "National & State Level Sports Achievers",
+    nameMr: "राष्ट्रीय व राज्यस्तरीय क्रीडापटू विद्यार्थी",
     tagEn: "National Recognition",
     tagMr: "राष्ट्रीय सन्मान",
-    detailsEn: "4 Students Secured National Recognition in sports competitions.",
-    detailsMr: "उत्कृष्ट क्रीडांगणामुळे ४ विद्यार्थ्यांनी राष्ट्रीय स्तरावर यश मिळवले.",
+    detailsEn: "Continuing to create successful players from our Vidyalay...",
+    detailsMr: "आमच्या विद्यालयातून यशस्वी खेळाडू घडवण्याची परंपरा निरंतर सुरू...",
     icon: Trophy,
     badgeColor: "bg-emerald-400/20 text-emerald-300 border-emerald-400/40"
   },
@@ -192,9 +194,10 @@ const mavHallOfFame = [
 interface DepartmentsViewProps {
   facultyList: FacultyMember[];
   initialDept?: DepartmentType;
+  onNavigateTab?: (tab: string) => void;
 }
 
-export default function DepartmentsView({ facultyList, initialDept }: DepartmentsViewProps) {
+export default function DepartmentsView({ facultyList, initialDept, onNavigateTab }: DepartmentsViewProps) {
   const [activeDept, setActiveDept] = useState<DepartmentType>(initialDept || 'College');
   const [scienceSubTab, setScienceSubTab] = useState<'brochure' | 'banner' | 'toolkit'>('brochure');
   const [selectedLang, setSelectedLang] = useState<'en' | 'mr' | 'both'>('both');
@@ -225,9 +228,9 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
 
   const getDeptLabel = (dept: string) => {
     if (dept === 'College') return 'Junior College';
-    if (dept === 'MAV') return 'Mahatma Gandhi Vidyalaya';
+    if (dept === 'MAV') return 'Mahatma Gandhi Vidyalay';
     if (dept === 'EMS') return 'English Medium School';
-    if (dept === 'SKPPV') return 'Sheth Kesharchand Parakh Prathamik Vidyalaya';
+    if (dept === 'SKPPV') return 'Sheth Kesharchand Parakh Prathamik Vidyalay';
     return dept;
   };
 
@@ -246,13 +249,13 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
       resultsSummary: { passRate: '100%', boardToppers: 'Consistent regional toppers & perfect pass outturns' }
     },
     MAV: {
-      fullName: 'Mahatma Gandhi Vidyalaya',
-      slogan: 'Excellence in Marathi Medium Education',
+      fullName: 'Mahatma Gandhi Vidyalay',
+      slogan: 'Excellence in Marathi & Semi-English Medium Education',
       bgImg: '',
-      description: 'The Mahatma Gandhi Vidyalaya wing provides comprehensive schooling for 5th to 10th standard students in Marathi medium, building a strong academic foundation for State Board (SSC) examinations.',
+      description: 'The Mahatma Gandhi Vidyalay wing provides comprehensive schooling for 5th to 10th standard students in both Marathi and Semi-English mediums, building a strong academic foundation for State Board (SSC) examinations while continuously striving for the all-round development of students.',
       programs: [
-        { name: 'Primary Division (Classes 1 to 4) / प्राथमिक विभाग (इयत्ता १ ली ते ४ थी)', duration: '4 Years / ४ वर्षे', eligibility: 'Age 6+ / वय ६+ वर्षे' },
-        { name: 'Secondary Division (Classes 5 to 10) / माध्यमिक विभाग (इयत्ता ५ वी ते १० वी)', duration: '6 Years / ६ वर्षे', eligibility: 'Passed Class 4 / ४ थी उत्तीर्ण' }
+        { name: 'Upper Primary Division (Classes 5 to 8) / उच्च प्राथमिक विभाग (इयत्ता ५ वी ते ८ वी)', duration: '4 Years / ४ वर्षे', eligibility: 'Passed Class 4 / ४ थी उत्तीर्ण' },
+        { name: 'Secondary Division (Classes 9 to 10) / माध्यमिक विभाग (इयत्ता ९ वी ते १० वी)', duration: '2 Years / २ वर्षे', eligibility: 'Passed Class 8 / ८ वी उत्तीर्ण' }
       ],
       facilities: ['Separate highly equipped science lab / स्वतंत्र सुसज्ज विज्ञान प्रयोगशाळा', 'Spacious school playground / प्रशस्त खेळण्याचे मैदान', 'Traditional performing arts hall / पारंपारिक कला व नाटक हॉल'],
       placements: ['Higher secondary education alignment', 'Eminent academic counselors guiding transition to junior colleges'],
@@ -272,10 +275,10 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
       resultsSummary: { passRate: '100%', boardToppers: 'SSC Merit Scholarship qualifiers, Chinmayee D. (99.4%)' }
     },
     SKPPV: {
-      fullName: 'Sheth Kesharchand Parakh Prathamik Vidyalaya',
+      fullName: 'Sheth Kesharchand Parakh Prathamik Vidyalay',
       slogan: 'Early Childhood Care and Play-way Skill Development',
       bgImg: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80',
-      description: 'Pioneering early stage childhood development since decades, the Sheth Kesharchand Parakh Prathamik Vidyalaya preschool wing prioritizes Montessori play-way schemas, personal care, fine motor skills and creative cognitive development.',
+      description: 'Pioneering early stage childhood development since decades, the Sheth Kesharchand Parakh Prathamik Vidyalay preschool wing prioritizes Montessori play-way schemas, personal care, fine motor skills and creative cognitive development.',
       programs: [
         { name: 'Preschool Division (Nursery, LKG, UKG)', duration: '3 Years', eligibility: 'Age 3+ years' },
         { name: 'Preparatory primary classes (Grades 1 & 2)', duration: '2 Years', eligibility: 'Completed UKG' }
@@ -325,14 +328,14 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
     },
     former: [
       { en: 'Mr. Kulkarni Sir', mr: 'श्री. कुलकर्णी सर' },
-      { en: 'Mrs. Sambhus Madam', mr: 'सौ. संभुस मॅडम' },
-      { en: 'Mrs. Nair Madam', mr: 'सौ. नायर मॅडम' },
+      { en: 'Smt. Sambhus Madam', mr: 'सौ. संभुस मॅडम' },
+      { en: 'Smt. Nair Madam', mr: 'सौ. नायर मॅडम' },
       { en: 'Mr. Ganesh Dethe Sir', mr: 'श्री. गणेश देठे सर' },
-      { en: 'Mrs. Anita Gujrathi Madam', mr: 'सौ. अनिता गुजराती मॅडम' },
+      { en: 'Smt. Anita Gujrathi Madam', mr: 'सौ. अनिता गुजराती मॅडम' },
       { en: 'Mr. Chitalkar Yashwant Sir', mr: 'श्री. चितळकर यशवंत सर' },
-      { en: 'Mrs. Thakur Jyoti Madam', mr: 'सौ. ठाकूर ज्योती मॅडम' },
-      { en: 'Mrs. Bhujbal Manisha Madam', mr: 'सौ. भुजबळ मनिषा मॅडम' },
-      { en: 'Mrs. Medge Mansi Madam', mr: 'सौ. मेडगे मानसी मॅडम' },
+      { en: 'Smt. Thakur Jyoti Madam', mr: 'सौ. ठाकूर ज्योती मॅडम' },
+      { en: 'Smt. Bhujbal Manisha Madam', mr: 'सौ. भुजबळ मनिषा मॅडम' },
+      { en: 'Smt. Medge Mansi Madam', mr: 'सौ. मेडगे मानसी मॅडम' },
       { en: 'Mr. Prasad John Sir', mr: 'श्री. प्रसाद जॉन सर' }
     ]
   };
@@ -496,10 +499,10 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
     titleMr: 'शालेय समित्या आणि शैक्षणिक विषय विभाग',
     items: [
       { nameEn: 'Discipline Committee', nameMr: 'शिस्त समिती', headEn: 'Academic Board', headMr: 'शिक्षक मंडळ' },
-      { nameEn: 'Examination Committee', nameMr: 'परीक्षा समिती', headEn: 'Headed by Mrs. Anuradha Gaikwad', headMr: 'प्रमुख: सौ. अनुराधा गायकवाड' },
-      { nameEn: 'Cultural Committee', nameMr: 'सांस्कृतिक समिती', headEn: 'Headed by Mrs. Pushpalata Satkar', headMr: 'प्रमुख: सौ. पुष्पलता सातकर' },
+      { nameEn: 'Examination Committee', nameMr: 'परीक्षा समिती', headEn: 'Headed by Smt. Anuradha Gaikwad', headMr: 'प्रमुख: सौ. अनुराधा गायकवाड' },
+      { nameEn: 'Cultural Committee', nameMr: 'सांस्कृतिक समिती', headEn: 'Headed by Smt. Pushpalata Satkar', headMr: 'प्रमुख: सौ. पुष्पलता सातकर' },
       { nameEn: 'Sports Committee', nameMr: 'क्रीडा समिती', headEn: 'Headed by Mr. Prathmesh Manjare', headMr: 'प्रमुख: श्री. प्रथमेश मंजरे' },
-      { nameEn: 'Parent Teachers Association (PTA)', nameMr: 'शिक्षक पालक संघ (PTA)', headEn: 'Headed by Mrs. Mansi Medge', headMr: 'प्रमुख: सौ. मानसी मेडगे' },
+      { nameEn: 'Parent Teachers Association (PTA)', nameMr: 'शिक्षक पालक संघ (PTA)', headEn: 'Headed by Smt. Mansi Medge', headMr: 'प्रमुख: सौ. मानसी मेडगे' },
       { nameEn: 'Anti Bullying Committee', nameMr: 'अँटी बुलिंग (रागिंग विरोधी) समिती', headEn: 'Executive Board', headMr: 'मुख्य कार्यकारी समिती' },
       { nameEn: 'Safety and Hygiene Committee', nameMr: 'सुरक्षा आणि स्वच्छता समिती', headEn: 'Supervising Staff', headMr: 'पर्यवेक्षक कर्मचारी वर्ग' }
     ],
@@ -510,72 +513,72 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
   // Complete Staff Directory Lists
   const staffSecondary = [
     { name: 'Mr. Ganesh Chandrbhan Dethe', desEn: 'Principal', desMr: 'मुख्याध्यापक', qual: 'M.Sc. M.Ed, DSM', joined: '01-05-2026' },
-    { name: 'Mrs. Mansi Santosh Medage', desEn: 'Vice Principal', desMr: 'उपमुख्याध्यापिका', qual: 'M.A. M.Ed', joined: '1.6.2025' },
-    { name: 'Mrs. Anuradha Dattatray Gaikwad', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.Sc. B.Ed, DSM', joined: '06-09-2006' },
-    { name: 'Mrs. Jyoti Satyawan Thakur', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. M.Ed, DSM', joined: '14/6/1999' },
-    { name: 'Mrs. Jyoti Hemant Rathod', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed, DSM', joined: '08-12-2004' },
-    { name: 'Mrs. Vaishali Dilip Bacche', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. ATD', joined: '09-01-1999' },
-    { name: 'Mrs. Manisha Vikas Bhujbal', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '11-10-2003' },
-    { name: 'Mrs. Seema Ganesh Anande', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '06-01-2013' },
-    { name: 'Mrs. Rupali Jalinder Manjare', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '03-08-2016' },
-    { name: 'Mrs. Vasanti Nitin Gunjal', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15/6/2017' },
-    { name: 'Mrs. Sakshi Ajay Mudrankit', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '19/6/2013' },
-    { name: 'Mrs. Sonali Jivan Sabale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '17/08/2022' },
-    { name: 'Mrs. Urmila Santosh Aawate', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '07-01-2023' },
-    { name: 'Mrs. Sarika Vikas Ghanwat', desEn: 'Lab. Assistant', desMr: 'प्रयोगशाळा सहाय्यक', qual: 'B.Sc.', joined: '12-07-2021' },
+    { name: 'Smt. Mansi Santosh Medage', desEn: 'Vice Principal', desMr: 'उपमुख्याध्यापिका', qual: 'M.A. M.Ed', joined: '1.6.2025' },
+    { name: 'Smt. Anuradha Dattatray Gaikwad', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.Sc. B.Ed, DSM', joined: '06-09-2006' },
+    { name: 'Smt. Jyoti Satyawan Thakur', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. M.Ed, DSM', joined: '14/6/1999' },
+    { name: 'Smt. Jyoti Hemant Rathod', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed, DSM', joined: '08-12-2004' },
+    { name: 'Smt. Vaishali Dilip Bacche', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. ATD', joined: '09-01-1999' },
+    { name: 'Smt. Manisha Vikas Bhujbal', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '11-10-2003' },
+    { name: 'Smt. Seema Ganesh Anande', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '06-01-2013' },
+    { name: 'Smt. Rupali Jalinder Manjare', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '03-08-2016' },
+    { name: 'Smt. Vasanti Nitin Gunjal', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15/6/2017' },
+    { name: 'Smt. Sakshi Ajay Mudrankit', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '19/6/2013' },
+    { name: 'Smt. Sonali Jivan Sabale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '17/08/2022' },
+    { name: 'Smt. Urmila Santosh Aawate', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '07-01-2023' },
+    { name: 'Smt. Sarika Vikas Ghanwat', desEn: 'Lab. Assistant', desMr: 'प्रयोगशाळा सहाय्यक', qual: 'B.Sc.', joined: '12-07-2021' },
     { name: 'Mr. Rushikesh Rajendra Khedkar', desEn: 'Clerk', desMr: 'लिपिक (क्लर्क)', qual: 'B.Com', joined: '03-08-2016' },
-    { name: 'Mrs. Sangita Shankar Rokade', desEn: 'Peon', desMr: 'शिपाई', qual: 'SSC', joined: '23/6/2005' },
+    { name: 'Smt. Sangita Shankar Rokade', desEn: 'Peon', desMr: 'शिपाई', qual: 'SSC', joined: '23/6/2005' },
     { name: 'Mr. Namdev Nivrutti Sandbhor', desEn: 'Peon', desMr: 'शिपाई', qual: '9th', joined: '05-02-2010' }
   ];
 
   const staffPrimary = [
-    { name: 'Mrs. Sunita Ramdas Pawar', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.Com. D.Ed DSM', joined: '07-01-1994' },
-    { name: 'Mrs. Pushpalata Milind Satkar', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.A. D.Ed', joined: '18/6/1996' },
+    { name: 'Smt. Sunita Ramdas Pawar', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.Com. D.Ed DSM', joined: '07-01-1994' },
+    { name: 'Smt. Pushpalata Milind Satkar', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.A. D.Ed', joined: '18/6/1996' },
     { name: 'Smt. Angelina Vinod Bhakare', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'S.S.C. DPED', joined: '14/6/1990' },
-    { name: 'Mrs. Ujwala Rajendra Pachpute', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '26/7/2004' },
-    { name: 'Mrs. Rahima Nazim Inamdar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. D.Ed', joined: '09-01-2005' },
-    { name: 'Mrs. Deepali Nilesh Kumbhar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '19/6/2006' },
-    { name: 'Mrs. Manasi Sainath Shivale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. A.T.D. A.M', joined: '07-12-2006' },
-    { name: 'Mrs. Vanita Dnyaneshwar Shinde', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. TTC', joined: '07-10-2006' },
-    { name: 'Mrs. Smita Chandrashekhar Rale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '06-02-2008' },
-    { name: 'Mrs. Nayana Ramdas Hole', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. D.Ed', joined: '06-02-2008' },
+    { name: 'Smt. Ujwala Rajendra Pachpute', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '26/7/2004' },
+    { name: 'Smt. Rahima Nazim Inamdar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. D.Ed', joined: '09-01-2005' },
+    { name: 'Smt. Deepali Nilesh Kumbhar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '19/6/2006' },
+    { name: 'Smt. Manasi Sainath Shivale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. A.T.D. A.M', joined: '07-12-2006' },
+    { name: 'Smt. Vanita Dnyaneshwar Shinde', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. TTC', joined: '07-10-2006' },
+    { name: 'Smt. Smita Chandrashekhar Rale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '06-02-2008' },
+    { name: 'Smt. Nayana Ramdas Hole', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. D.Ed', joined: '06-02-2008' },
     { name: 'Miss. Vasanti Manohar Tamhane', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Com', joined: '22/6/2009' },
-    { name: 'Mrs. Supriya Ganesh Thigale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. / MBA', joined: '07-01-2013' },
-    { name: 'Mrs. Supriya Ganesh Chaudhri', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. D.Ed', joined: '07-01-2014' },
-    { name: 'Mrs. Vidhya Dipak Kashid', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '06-08-2015' },
-    { name: 'Mrs. Hemangi Rakesh Patil', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Com. B.Ed', joined: '18/06/2015' },
-    { name: 'Mrs. Vidula Mahesh Deshmukh', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '12-08-2015' },
-    { name: 'Mrs. Adika Baban Divekar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '12-01-2018' },
-    { name: 'Mrs. Sushma Sopan Kale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '15/6/2018' },
-    { name: 'Mrs. Manisha Laxman Supe', desEn: 'Co-Teacher', desMr: 'सह-शिक्षिका', qual: 'B.Com. B.Ed', joined: '6/8/2018' },
-    { name: 'Mrs. Nilam Ganesh Totre', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.Sc. B.Ed', joined: '12/1/2022' },
-    { name: 'Mrs. Tarannum Shabbir Momin', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc.', joined: '06-08-2022' },
-    { name: 'Mrs. Aparna Mangesh Ronghe', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'HSC', joined: '06-08-2022' },
-    { name: 'Mrs. Smita Amol Raut', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.Com.', joined: '18/08/2022' },
-    { name: 'Mrs. Sayli Lokesh Chavan', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15-06-2023' },
-    { name: 'Mrs. Vasudha Vikrant Wakchaure', desEn: 'Librarian', desMr: 'ग्रंथपाल', qual: 'B.A., Librarian', joined: '17-06-2017' },
-    { name: 'Mrs. Asha Shrihari Satpute', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: 'N/A' },
-    { name: 'Mrs. Ashwini Amol Mali', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: 'N/A' },
-    { name: 'Mrs. Sanjana Avinash Khangate', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'Quals N/A', joined: 'N/A' },
-    { name: 'Mrs. Aparna Rahul Tanpure', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: 'N/A' },
-    { name: 'Mrs. Rupali Somnath Medage', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. M.Ed', joined: 'N/A' },
+    { name: 'Smt. Supriya Ganesh Thigale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. / MBA', joined: '07-01-2013' },
+    { name: 'Smt. Supriya Ganesh Chaudhri', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. D.Ed', joined: '07-01-2014' },
+    { name: 'Smt. Vidhya Dipak Kashid', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '06-08-2015' },
+    { name: 'Smt. Hemangi Rakesh Patil', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Com. B.Ed', joined: '18/06/2015' },
+    { name: 'Smt. Vidula Mahesh Deshmukh', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '12-08-2015' },
+    { name: 'Smt. Adika Baban Divekar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '12-01-2018' },
+    { name: 'Smt. Sushma Sopan Kale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '15/6/2018' },
+    { name: 'Smt. Manisha Laxman Supe', desEn: 'Co-Teacher', desMr: 'सह-शिक्षिका', qual: 'B.Com. B.Ed', joined: '6/8/2018' },
+    { name: 'Smt. Nilam Ganesh Totre', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.Sc. B.Ed', joined: '12/1/2022' },
+    { name: 'Smt. Tarannum Shabbir Momin', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc.', joined: '06-08-2022' },
+    { name: 'Smt. Aparna Mangesh Ronghe', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'HSC', joined: '06-08-2022' },
+    { name: 'Smt. Smita Amol Raut', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.Com.', joined: '18/08/2022' },
+    { name: 'Smt. Sayli Lokesh Chavan', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15-06-2023' },
+    { name: 'Smt. Vasudha Vikrant Wakchaure', desEn: 'Librarian', desMr: 'ग्रंथपाल', qual: 'B.A., Librarian', joined: '17-06-2017' },
+    { name: 'Smt. Asha Shrihari Satpute', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: 'N/A' },
+    { name: 'Smt. Ashwini Amol Mali', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: 'N/A' },
+    { name: 'Smt. Sanjana Avinash Khangate', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'Quals N/A', joined: 'N/A' },
+    { name: 'Smt. Aparna Rahul Tanpure', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: 'N/A' },
+    { name: 'Smt. Rupali Somnath Medage', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. M.Ed', joined: 'N/A' },
     { name: 'Mr. Prathamesh Bhanudas Manjare', desEn: 'Asst. Teacher', desMr: 'क्रीडा शिक्षक / PT Teacher', qual: 'B.P.Ed', joined: 'N/A' },
-    { name: 'Mrs. Ankita Ganesh Pokharkar', desEn: 'Clerk', desMr: 'लिपिक (क्लर्क)', qual: 'B.Com', joined: '02-02-2022' },
+    { name: 'Smt. Ankita Ganesh Pokharkar', desEn: 'Clerk', desMr: 'लिपिक (क्लर्क)', qual: 'B.Com', joined: '02-02-2022' },
     { name: 'Mr. Vishal Bharat Bhosale', desEn: 'Peon', desMr: 'शिपाई', qual: '8th', joined: '06-02-2008' },
     { name: 'Smt. Manisha Ramdas Chavan', desEn: 'Peon', desMr: 'शिपाई', qual: 'N/A', joined: '06-01-2011' },
     { name: 'Smt. Mangal Rahul Shinde', desEn: 'Peon', desMr: 'शिपाई', qual: '8th', joined: '06-01-2022' },
-    { name: 'Mrs. Manisha Dattatray Sandbhor', desEn: 'Peon', desMr: 'शिपाई', qual: '7th', joined: '21/11/2022' },
+    { name: 'Smt. Manisha Dattatray Sandbhor', desEn: 'Peon', desMr: 'शिपाई', qual: '7th', joined: '21/11/2022' },
     { name: 'Smt. Manisha Shravan Adagale', desEn: 'Safai Kamgar', desMr: 'सफाई कामगार', qual: '7th', joined: '21/11/2022' },
     { name: 'Mr. Vishal Phulaware', desEn: 'Safai Kamgar', desMr: 'सफाई कामगार', qual: 'N/A', joined: 'N/A' },
     { name: 'Mr. Akshay Sunil Deshmukh', desEn: 'Peon (Night)', desMr: 'रात्रीचे शिपाई', qual: '10th', joined: '13/1/2022' }
   ];
 
   const staffPrePrimary = [
-    { name: 'Mrs. Monali Bhagvan Pacharane', desEn: 'Co-Teacher', desMr: 'सह-शिक्षिका', qual: 'H.S.C. D.Ed', joined: '15/6/2012' },
-    { name: 'Mrs. Sima Chandrakant Gaikwad', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15/6/2022' },
-    { name: 'Mrs. Shweta Ganesh Satkar', desEn: 'Computer Teacher', desMr: 'संगणक शिक्षिका', qual: 'B.Sc. B.Ed / MCA', joined: '23/07/2014' },
-    { name: 'Mrs. Vrushali Rutuj Deshmukh', desEn: 'Computer Teacher', desMr: 'संगणक शिक्षिका', qual: 'MCS', joined: '25/06/2015' },
-    { name: 'Mrs. Hira Rohidas Kokane', desEn: 'Peon', desMr: 'शिपाई', qual: '10th', joined: '18-06-2025' }
+    { name: 'Smt. Monali Bhagvan Pacharane', desEn: 'Co-Teacher', desMr: 'सह-शिक्षिका', qual: 'H.S.C. D.Ed', joined: '15/6/2012' },
+    { name: 'Smt. Sima Chandrakant Gaikwad', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15/6/2022' },
+    { name: 'Smt. Shweta Ganesh Satkar', desEn: 'Computer Teacher', desMr: 'संगणक शिक्षिका', qual: 'B.Sc. B.Ed / MCA', joined: '23/07/2014' },
+    { name: 'Smt. Vrushali Rutuj Deshmukh', desEn: 'Computer Teacher', desMr: 'संगणक शिक्षिका', qual: 'MCS', joined: '25/06/2015' },
+    { name: 'Smt. Hira Rohidas Kokane', desEn: 'Peon', desMr: 'शिपाई', qual: '10th', joined: '18-06-2025' }
   ];
 
   // Helper filter function for search
@@ -665,6 +668,16 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
 
       {/* Chairman's Message / Executive Desk Banner at top of department views */}
       <ExecutiveDesk />
+
+      {/* Dedicated Principal's Message / प्राचार्यांचे मनोगत for Junior College & MGV */}
+      {(activeDept === 'College' || activeDept === 'MAV') && (
+        <PrincipalMessageDesk />
+      )}
+
+      {/* Dedicated Principal's Message / प्राचार्य संदेश for English Medium School (EMS) */}
+      {activeDept === 'EMS' && (
+        <EMSPrincipalMessageDesk />
+      )}
 
       {activeDept === 'EMS' ? (
         <EMSDeptView />
@@ -780,7 +793,7 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
                   {/* Sub-heading */}
                   <h1 className="text-3xl md:text-5xl font-display font-black leading-tight tracking-tight space-y-1 md:space-y-2">
                     {(selectedLang === 'en' || selectedLang === 'both') && (
-                      <span className="block text-white">Mahatma Gandhi Vidyalaya</span>
+                      <span className="block text-white">Mahatma Gandhi Vidyalay</span>
                     )}
                     {(selectedLang === 'mr' || selectedLang === 'both') && (
                       <span 
@@ -826,12 +839,12 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
               <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-2 pt-4">
                 {(selectedLang === 'en' || selectedLang === 'both') && (
                   <p>
-                    The Mahatma Gandhi Vidyalaya wing provides comprehensive schooling for 5th to 10th standard students in Marathi medium, building a strong academic foundation for State Board (SSC) examinations.
+                    The Mahatma Gandhi Vidyalay wing provides comprehensive schooling for 5th to 10th standard students in both Marathi and Semi-English mediums, building a strong academic foundation for State Board (SSC) examinations while continuously striving for the all-round development of students.
                   </p>
                 )}
                 {(selectedLang === 'mr' || selectedLang === 'both') && (
                   <p className="font-sans text-slate-350">
-                    महात्मा गांधी विद्यालय हे इयत्ता ५ वी ते १० वी च्या विद्यार्थ्यांसाठी मराठी माध्यमातून परिपूर्ण शिक्षण प्रदान करते, जे स्टेट बोर्ड (SSC) परीक्षेसाठी विद्यार्थ्यांचा भक्कम शैक्षणिक पाया तयार करते.
+                    महात्मा गांधी विद्यालय हे इयत्ता ५ वी ते १० वी च्या विद्यार्थ्यांसाठी मराठी तसेच सेमी-इंग्लिश माध्यमातून परिपूर्ण शिक्षण प्रदान करते, जे स्टेट बोर्ड (SSC) परीक्षेसाठी विद्यार्थ्यांचा भक्कम शैक्षणिक पाया तयार करते. जे विद्यार्थ्यांच्या सर्वांगीण विकासासाठी सातत्यपूर्ण प्रयत्न करते.
                   </p>
                 )}
               </div>
@@ -852,7 +865,7 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
         </div>
       </section>
 
-      {/* Mahatma Gandhi Vidyalaya (MAV) Wing - Key Metrics, Academic Standards & Hall of Fame */}
+      {/* Mahatma Gandhi Vidyalay (MAV) Wing - Key Metrics, Academic Standards & Hall of Fame */}
       {activeDept === 'MAV' && (
         <section id="mav-overview" className="space-y-12 relative z-10 font-sans border-b border-white/10 pb-12">
           {/* Key Metrics Section */}
@@ -866,7 +879,7 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
               </h2>
               <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto font-sans">
                 {selectedLang === 'en'
-                  ? 'Highlights of infrastructure, student strength, dedicated staff, and co-curricular facilities at Mahatma Gandhi Vidyalaya.'
+                  ? 'Highlights of infrastructure, student strength, dedicated staff, and co-curricular facilities at Mahatma Gandhi Vidyalay.'
                   : selectedLang === 'mr'
                   ? 'महात्मा गांधी विद्यालयातील पायाभूत सुविधा, पटसंख्या, समर्पित शिक्षकवृंद व सहशालेय सुविधा.'
                   : 'Highlights of infrastructure, student strength, dedicated staff, and co-curricular facilities.'}
@@ -920,7 +933,7 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
               </h2>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
                 {selectedLang === 'en'
-                  ? 'Academic milestones, scholarship achievements, competitive exam successes, and quality ratings earned by Mahatma Gandhi Vidyalaya.'
+                  ? 'Academic milestones, scholarship achievements, competitive exam successes, and quality ratings earned by Mahatma Gandhi Vidyalay.'
                   : selectedLang === 'mr'
                   ? 'महात्मा गांधी विद्यालयाने संपादन केलेले शैक्षणिक टप्पे, शिष्यवृत्ती यश, स्पर्धा परीक्षा यश व गुणवत्ता मानांकने.'
                   : 'Academic milestones, scholarship achievements, competitive exam successes, and quality ratings.'}
@@ -1399,10 +1412,26 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
                         <div><strong>Eligibility:</strong> {prog.eligibility}</div>
                       </div>
                     </div>
-                    <div className="pt-4 mt-4 border-t border-white/10 flex items-center text-xs text-secondary font-semibold">
-                      <span>Register Course Interest</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (onNavigateTab) {
+                          onNavigateTab('contact');
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                          const contactEl = document.getElementById('contact');
+                          if (contactEl) {
+                            contactEl.scrollIntoView({ behavior: 'smooth' });
+                          } else {
+                            window.location.hash = 'contact';
+                          }
+                        }
+                      }}
+                      className="pt-4 mt-4 border-t border-white/10 flex items-center text-xs text-secondary font-semibold cursor-pointer w-full text-left bg-transparent border-0 p-0 focus:outline-none"
+                    >
+                      <span>Register</span>
                       <ArrowRight className="h-3 w-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </div>
+                    </button>
                   </div>
                 ))}
               </div>
@@ -1860,28 +1889,6 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
         </div>
       )}
 
-      {/* Placements block - Render only if College is active */}
-      {activeDept === 'College' && (
-        <section className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 space-y-6 relative z-10">
-          <div className="flex items-center space-x-3">
-            <div className="bg-secondary/10 border border-secondary/20 text-secondary p-2.5 rounded-xl">
-              <Trophy className="h-6 w-6 text-amber-300" />
-            </div>
-            <div>
-              <h3 className="font-display font-bold text-white text-lg">Junior College Careers & Placements Cell</h3>
-              <p className="text-slate-300 text-xs">Direct campus avenues leading to stellar professional growth</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
-            {currentInfo.placements!.map((item, i) => (
-              <div key={i} className="bg-[#000c24]/50 border border-white/10 rounded-2xl p-5 shadow-inner text-sm space-y-2 text-white">
-                <span className="text-amber-400 font-mono text-[10px] uppercase font-bold tracking-wider">Placement Criterion {i+1}</span>
-                <p className="text-slate-300 leading-relaxed">{item}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* English Medium School - Principal's Message */}
       {activeDept === 'EMS' && (
@@ -1950,24 +1957,6 @@ export default function DepartmentsView({ facultyList, initialDept }: Department
           </div>
         </section>
       )}
-
-
-
-      {/* Department Photos */}
-      <section className="space-y-6 border-t border-white/10 pt-12 relative z-10">
-        <h3 className="font-display font-bold text-white text-lg">Departmental Snapshots</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {deptImages.map((img) => (
-            <div key={img.id} className="relative rounded-2xl overflow-hidden shadow-md h-48 bg-white/5 border border-white/10 group">
-              <img src={img.mediaUrl || undefined} alt={img.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000c24] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                <span className="text-[10px] text-amber-300 font-mono uppercase">Fine arts/Exhibits</span>
-                <h4 className="text-white text-xs font-bold truncate">{img.title}</h4>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
         </>
       )}
     </div>

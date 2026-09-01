@@ -125,7 +125,7 @@ export default function MAVStaffSection({ selectedLang = 'both' }: MAVStaffSecti
             <span>Staff Directory / शिक्षक व शिक्षकेतर कर्मचारी माहिती</span>
           </span>
           <h2 className="font-display font-black text-white text-2xl sm:text-3xl tracking-tight">
-            Mahatma Gandhi Vidyalaya <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-amber-400">/ कर्मचारी वृंद</span>
+            Mahatma Gandhi Vidyalay <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-amber-400">/ कर्मचारी वृंद</span>
           </h2>
           <p className="text-slate-300 text-xs sm:text-sm max-w-2xl font-sans">
             Comprehensive directory of Aided &amp; Unaided teaching and non-teaching personnel dedicated to student growth and academic quality.
@@ -240,7 +240,6 @@ export default function MAVStaffSection({ selectedLang = 'both' }: MAVStaffSecti
             <tr className="bg-slate-900/90 text-amber-300 border-b border-white/10 text-xs font-mono uppercase tracking-wider">
               <th className="py-4 px-4 w-16 text-center border-r border-white/10">Sr. No.</th>
               <th className="py-4 px-6 border-r border-white/10">Name (English &amp; Marathi) / नाव</th>
-              <th className="py-4 px-4 border-r border-white/10">Designation / पद</th>
               <th className="py-4 px-4 border-r border-white/10">Qualification / पात्रता</th>
               <th className="py-4 px-4 border-r border-white/10 w-36">Appointment Date</th>
               <th className="py-4 px-6">
@@ -251,7 +250,7 @@ export default function MAVStaffSection({ selectedLang = 'both' }: MAVStaffSecti
           <tbody className="divide-y divide-white/5 text-xs sm:text-sm">
             {displayedData.length === 0 ? (
               <tr>
-                <td colSpan={6} className="py-12 text-center text-slate-400 font-sans">
+                <td colSpan={5} className="py-12 text-center text-slate-400 font-sans">
                   <div className="space-y-2">
                     <User className="h-8 w-8 text-slate-500 mx-auto" />
                     <p className="text-base font-bold text-white">No Matching Staff Records Found</p>
@@ -277,13 +276,6 @@ export default function MAVStaffSection({ selectedLang = 'both' }: MAVStaffSecti
                     </div>
                     <div className="text-amber-200/90 font-medium text-xs font-sans">
                       {record.nameMr}
-                    </div>
-                  </td>
-
-                  {/* Designation */}
-                  <td className="py-4 px-4 border-r border-white/5 text-slate-300 font-medium">
-                    <div className="inline-block bg-white/5 px-2.5 py-1 rounded-lg border border-white/10 text-slate-200 text-xs">
-                      {record.designationEn}
                     </div>
                   </td>
 
@@ -341,15 +333,9 @@ export default function MAVStaffSection({ selectedLang = 'both' }: MAVStaffSecti
                 <h5 className="text-amber-300 text-xs font-medium">{record.nameMr}</h5>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-white/5">
-                <div>
-                  <span className="text-slate-400 block text-[10px] uppercase font-mono">Designation</span>
-                  <span className="text-slate-200 font-medium">{record.designationEn}</span>
-                </div>
-                <div>
-                  <span className="text-slate-400 block text-[10px] uppercase font-mono">Qualification</span>
-                  <span className="text-emerald-300 font-mono">{record.qualificationEn}</span>
-                </div>
+              <div className="pt-1 border-t border-white/5 text-xs">
+                <span className="text-slate-400 block text-[10px] uppercase font-mono">Qualification</span>
+                <span className="text-emerald-300 font-mono">{record.qualificationEn}</span>
               </div>
 
               <div className="pt-2 border-t border-white/5 text-xs">

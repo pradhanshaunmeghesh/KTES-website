@@ -77,9 +77,9 @@ export default function HistoryTimeline() {
     },
     {
       year: '1948',
-      titleEn: 'Renaming to Mahatma Gandhi Vidyalaya',
+      titleEn: 'Renaming to Mahatma Gandhi Vidyalay',
       titleMr: 'महात्मा गांधी विद्यालय असे नामकरण',
-      descEn: "In profound memory of the Father of the Nation, Mahatma Gandhi, the school was proudly renamed 'Mahatma Gandhi Vidyalaya'.",
+      descEn: "In profound memory of the Father of the Nation, Mahatma Gandhi, the school was proudly renamed 'Mahatma Gandhi Vidyalay'.",
       descMr: "राष्ट्रपिता महात्मा गांधी यांच्या पवित्र स्मृतीप्रित्यर्थ, शाळेचे नाव अत्यंत अभिमानाने 'महात्मा गांधी विद्यालय' असे ठेवण्यात आले.",
       icon: Award,
       category: 'landmark'
@@ -113,12 +113,12 @@ export default function HistoryTimeline() {
       detailsEn: [
         "Statue of Mahatma Gandhi & Library: Under the leadership of then Director Hon. Shri. Haribhausheth Sandbhor, the statue of Mahatma Gandhi was erected. The unveiling of the statue and inauguration of Lunawat Library were performed by Chief Minister Hon. Sharadchandraji Pawar.",
         "Renaming of Primary School: In memory of their late father Sheth Keshavchand Parakh, the Parakh brothers made a generous donation of ₹1,11,111/- to the primary section. To honor this contribution, on November 27, 1988, the primary wing was renamed 'Sheth Keshavchand Parakh Primary School'.",
-        "NCC Unit & Computer Education: Beginning in 1988 at Mahatma Gandhi Vidyalaya, an official NCC Unit and Computer Education program were established through the dedicated efforts of Hon. Secretary Air Commodore Shri. Ganesh Joshi."
+        "NCC Unit & Computer Education: Beginning in 1988 at Mahatma Gandhi Vidyalay, an official NCC Unit and Computer Education program were established through the dedicated efforts of Hon. Secretary Air Commodore Shri. Ganesh Joshi."
       ],
       detailsMr: [
         "महात्मा गांधीजींचा पुतळा व ग्रंथालय: तत्कालीन संचालक मा. श्री. हरीभाऊशेठ सांडभोर यांच्या प्रयत्नातून राष्ट्रपिता महात्मा गांधीजींचा पुतळा उभारण्यात आला. या पुतळ्याचे अनावरण व 'लुणावत ग्रंथालयाचे' उद्घाटन मुख्यमंत्री मा. शरदचंद्रजी पवार साहेब यांच्या हस्ते झाले.",
         "प्राथमिक विद्यालयाचे नामकरण: पारख बंधूंनी आपले वडील कै. केशरचंद पारख यांच्या स्मृतिप्रीत्यर्थ प्राथमिक विभागास ₹१,११,१११/- ची देणगी दिली. या सहकार्याची आठवण म्हणून २७ नोव्हेंबर १९८८ रोजी प्राथमिक विभागाचे नामकरण 'शेठ केशरचंद पारख प्राथमिक विद्यालय' असे करण्यात आले.",
-        "एन.सी.सी. (NCC) युनिट व संगणक शिक्षण: १९८८ पासून महात्मा गांधी विद्यालयात मानद सचिव एअर कमोडोर मा. श्री. गणेश जोशी यांच्या विशेष प्रयत्नाने NCC युनिट आणि संगणक शिक्षण (Computer Education) उपक्रम सुरू करण्यात आला."
+        "एन.सी.सी. (NCC) युनिट व संगणक शिक्षण: १९८८ पासून महात्मा गांधी विद्यालयात मानद सचिव एयर कमोडर मा. श्री. गणेश जोशी यांच्या विशेष प्रयत्नाने NCC युनिट आणि संगणक शिक्षण (Computer Education) उपक्रम सुरू करण्यात आला."
       ]
     },
     {
@@ -144,7 +144,7 @@ export default function HistoryTimeline() {
       titleEn: 'Diamond Jubilee Milestone',
       titleMr: 'हीरक महोत्सव टप्पा (६० वर्षे)',
       descEn: "Celebrated the Diamond Jubilee (60 years). The grand main entrance was formally named 'Guruvarya G. N. Deshpande'.",
-      descMr: "संस्थेची हीरक महोत्सवी ६० वर्षे साजरी करण्यात आली. या प्रसंगी भव्य मुख्य प्रवेशद्वाराचे अधिकृतपणे 'गुरुवर्य जी. एन. देशपांडे' असे नामकरण करण्यात आले.",
+      descMr: "संस्थेची हीरक महोत्सवी ६० वर्षे साजरी करण्यात आली. या प्रसंगी भव्य मुख्य प्रवेशद्वाराचे अधिकृतपणे 'गुरुवर्य ग. न. देशपांडे' असे नामकरण करण्यात आले.",
       icon: Award,
       category: 'landmark'
     },
@@ -153,7 +153,7 @@ export default function HistoryTimeline() {
       titleEn: 'State-Level Academic Triumph',
       titleMr: 'राज्यस्तरीय शैक्षणिक यश',
       descEn: "Student Vaibhav Vitthal Gorde ranked 1st across the entire state of Maharashtra in the S.S.C. Merit List, etching KTES' name in history.",
-      descMr: "इयत्ता १०वी (S.S.C.) परीक्षेच्या गुणवत्ता यादीत विद्यार्थी 'वैभव विठ्ठल गोरडे' याने संपूर्ण महाराष्ट्र राज्यात प्रथम क्रमांक मिळवून केटीएसचे नाव इतिहासात सुवर्णाक्षरांनी कोरले.",
+      descMr: "इयत्ता १०वी (S.S.C.) परीक्षेच्या गुणवत्ता यादीत विद्यार्थी 'वैभव विठ्ठल गोरडे' याने संपूर्ण महाराष्ट्र राज्यात प्रथम क्रमांक मिळवून संस्थेचे नाव इतिहासात सुवर्णाक्षरांनी कोरले.",
       icon: Trophy,
       category: 'landmark'
     },

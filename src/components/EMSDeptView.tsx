@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import LibraryCarousel from './LibraryCarousel';
 import InfrastructureFacilitiesCarousel from './InfrastructureFacilitiesCarousel';
-import SportsAthleticsSection from './SportsAthleticsSection';
+import EMSExtraActivitiesGallery from './EMSExtraActivitiesGallery';
 import {
   Award,
   BookOpen,
@@ -42,14 +42,14 @@ export default function EMSDeptView() {
   const formerPrincipals = [
     { en: 'Mr. Shaikh Sir (First Principal - 1989)', mr: 'श्री. शेख सर (पहिले मुख्याध्यापक - १९८९)' },
     { en: 'Mr. Kulkarni Sir', mr: 'श्री. कुलकर्णी सर' },
-    { en: 'Mrs. Sambhus Madam', mr: 'सौ. संभुस मॅडम' },
-    { en: 'Mrs. Nair Madam', mr: 'सौ. नायर मॅडम' },
+    { en: 'Smt. Sambhus Madam', mr: 'सौ. संभुस मॅडम' },
+    { en: 'Smt. Nair Madam', mr: 'सौ. नायर मॅडम' },
     { en: 'Mr. Ganesh Dethe Sir', mr: 'श्री. गणेश देठे सर' },
-    { en: 'Mrs. Anita Gujrathi Madam', mr: 'सौ. अनिता गुजराती मॅडम' },
+    { en: 'Smt. Anita Gujrathi Madam', mr: 'सौ. अनिता गुजराती मॅडम' },
     { en: 'Mr. Chitalkar Yashwant Sir', mr: 'श्री. चितळकर यशवंत सर' },
-    { en: 'Mrs. Thakur Jyoti Madam', mr: 'सौ. ठाकूर ज्योती मॅडम' },
-    { en: 'Mrs. Bhujbal Manisha Madam', mr: 'सौ. भुजबळ मनिषा मॅडम' },
-    { en: 'Mrs. Medge Mansi Madam', mr: 'सौ. मेडगे मानसी मॅडम' },
+    { en: 'Smt. Thakur Jyoti Madam', mr: 'सौ. ठाकूर ज्योती मॅडम' },
+    { en: 'Smt. Bhujbal Manisha Madam', mr: 'सौ. भुजबळ मनिषा मॅडम' },
+    { en: 'Smt. Medge Mansi Madam', mr: 'सौ. मेडगे मानसी मॅडम' },
     { en: 'Mr. Prasad John Sir', mr: 'श्री. प्रसाद जॉन सर' }
   ];
 
@@ -124,72 +124,72 @@ export default function EMSDeptView() {
   // 5. Complete Staff Directory
   const staffSecondary = [
     { name: 'Mr. Ganesh Chandrbhan Dethe', desEn: 'Principal', desMr: 'मुख्याध्यापक', qual: 'M.Sc. M.Ed, DSM', joined: '01-05-2026' },
-    { name: 'Mrs. Mansi Santosh Medage', desEn: 'Vice Principal', desMr: 'उपमुख्याध्यापिका', qual: 'M.A. M.Ed', joined: '01-06-2025' },
-    { name: 'Mrs. Anuradha Dattatray Gaikwad', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.Sc. B.Ed, DSM', joined: '06-09-2006' },
-    { name: 'Mrs. Jyoti Satyawan Thakur', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. M.Ed, DSM', joined: '14-06-1999' },
-    { name: 'Mrs. Jyoti Hemant Rathod', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed, DSM', joined: '08-12-2004' },
-    { name: 'Mrs. Vaishali Dilip Bacche', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. ATD', joined: '09-01-1999' },
-    { name: 'Mrs. Manisha Vikas Bhujbal', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '11-10-2003' },
-    { name: 'Mrs. Seema Ganesh Anande', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '06-01-2013' },
-    { name: 'Mrs. Rupali Jalinder Manjare', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '03-08-2016' },
-    { name: 'Mrs. Vasanti Nitin Gunjal', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15-06-2017' },
-    { name: 'Mrs. Sakshi Ajay Mudrankit', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '19-06-2013' },
-    { name: 'Mrs. Sonali Jivan Sabale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '17-08-2022' },
-    { name: 'Mrs. Urmila Santosh Aawate', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '07-01-2023' },
-    { name: 'Mrs. Sarika Vikas Ghanwat', desEn: 'Lab. Assistant', desMr: 'प्रयोगशाळा सहाय्यक', qual: 'B.Sc.', joined: '12-07-2021' },
+    { name: 'Smt. Mansi Santosh Medage', desEn: 'Vice Principal', desMr: 'उपमुख्याध्यापिका', qual: 'M.A. M.Ed', joined: '01-06-2025' },
+    { name: 'Smt. Anuradha Dattatray Gaikwad', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.Sc. B.Ed, DSM', joined: '06-09-2006' },
+    { name: 'Smt. Jyoti Satyawan Thakur', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. M.Ed, DSM', joined: '14-06-1999' },
+    { name: 'Smt. Jyoti Hemant Rathod', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed, DSM', joined: '08-12-2004' },
+    { name: 'Smt. Vaishali Dilip Bacche', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. ATD', joined: '09-01-1999' },
+    { name: 'Smt. Manisha Vikas Bhujbal', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '11-10-2003' },
+    { name: 'Smt. Seema Ganesh Anande', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '06-01-2013' },
+    { name: 'Smt. Rupali Jalinder Manjare', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '03-08-2016' },
+    { name: 'Smt. Vasanti Nitin Gunjal', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15-06-2017' },
+    { name: 'Smt. Sakshi Ajay Mudrankit', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '19-06-2013' },
+    { name: 'Smt. Sonali Jivan Sabale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '17-08-2022' },
+    { name: 'Smt. Urmila Santosh Aawate', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '07-01-2023' },
+    { name: 'Smt. Sarika Vikas Ghanwat', desEn: 'Lab. Assistant', desMr: 'प्रयोगशाळा सहाय्यक', qual: 'B.Sc.', joined: '12-07-2021' },
     { name: 'Mr. Rushikesh Rajendra Khedkar', desEn: 'Clerk', desMr: 'लिपिक (क्लर्क)', qual: 'B.Com', joined: '03-08-2016' },
-    { name: 'Mrs. Sangita Shankar Rokade', desEn: 'Peon', desMr: 'शिपाई', qual: 'SSC', joined: '23-06-2005' },
+    { name: 'Smt. Sangita Shankar Rokade', desEn: 'Peon', desMr: 'शिपाई', qual: 'SSC', joined: '23-06-2005' },
     { name: 'Mr. Namdev Nivrutti Sandbhor', desEn: 'Peon', desMr: 'शिपाई', qual: '9th', joined: '05-02-2010' }
   ];
 
   const staffPrimary = [
-    { name: 'Mrs. Sunita Ramdas Pawar', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.Com. D.Ed DSM', joined: '07-01-1994' },
-    { name: 'Mrs. Pushpalata Milind Satkar', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.A. D.Ed', joined: '18-06-1996' },
+    { name: 'Smt. Sunita Ramdas Pawar', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.Com. D.Ed DSM', joined: '07-01-1994' },
+    { name: 'Smt. Pushpalata Milind Satkar', desEn: 'Supervisor', desMr: 'पर्यवेक्षिका', qual: 'B.A. D.Ed', joined: '18-06-1996' },
     { name: 'Smt. Angelina Vinod Bhakare', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'S.S.C. DPED', joined: '14-06-1990' },
-    { name: 'Mrs. Ujwala Rajendra Pachpute', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '26-07-2004' },
-    { name: 'Mrs. Rahima Nazim Inamdar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. D.Ed', joined: '09-01-2005' },
-    { name: 'Mrs. Deepali Nilesh Kumbhar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '19-06-2006' },
-    { name: 'Mrs. Manasi Sainath Shivale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. A.T.D. A.M', joined: '07-12-2006' },
-    { name: 'Mrs. Vanita Dnyaneshwar Shinde', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. TTC', joined: '07-10-2006' },
-    { name: 'Mrs. Smita Chandrashekhar Rale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '06-02-2008' },
-    { name: 'Mrs. Nayana Ramdas Hole', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. D.Ed', joined: '06-02-2008' },
+    { name: 'Smt. Ujwala Rajendra Pachpute', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '26-07-2004' },
+    { name: 'Smt. Rahima Nazim Inamdar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. D.Ed', joined: '09-01-2005' },
+    { name: 'Smt. Deepali Nilesh Kumbhar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '19-06-2006' },
+    { name: 'Smt. Manasi Sainath Shivale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. A.T.D. A.M', joined: '07-12-2006' },
+    { name: 'Smt. Vanita Dnyaneshwar Shinde', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. TTC', joined: '07-10-2006' },
+    { name: 'Smt. Smita Chandrashekhar Rale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '06-02-2008' },
+    { name: 'Smt. Nayana Ramdas Hole', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'H.S.C. D.Ed', joined: '06-02-2008' },
     { name: 'Miss. Vasanti Manohar Tamhane', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Com', joined: '22-06-2009' },
-    { name: 'Mrs. Supriya Ganesh Thigale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. / MBA', joined: '07-01-2013' },
-    { name: 'Mrs. Supriya Ganesh Chaudhri', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. D.Ed', joined: '07-01-2014' },
-    { name: 'Mrs. Vidhya Dipak Kashid', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '06-08-2015' },
-    { name: 'Mrs. Hemangi Rakesh Patil', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Com. B.Ed', joined: '18-06-2015' },
-    { name: 'Mrs. Vidula Mahesh Deshmukh', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '12-08-2015' },
-    { name: 'Mrs. Adika Baban Divekar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '12-01-2018' },
-    { name: 'Mrs. Sushma Sopan Kale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '15-06-2018' },
-    { name: 'Mrs. Manisha Laxman Supe', desEn: 'Co-Teacher', desMr: 'सह-शिक्षिका', qual: 'B.Com. B.Ed', joined: '06-08-2018' },
-    { name: 'Mrs. Nilam Ganesh Totre', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.Sc. B.Ed', joined: '12-01-2022' },
-    { name: 'Mrs. Tarannum Shabbir Momin', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc.', joined: '06-08-2022' },
-    { name: 'Mrs. Aparna Mangesh Ronghe', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'HSC', joined: '06-08-2022' },
-    { name: 'Mrs. Smita Amol Raut', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.Com.', joined: '18-08-2022' },
-    { name: 'Mrs. Sayli Lokesh Chavan', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15-06-2023' },
-    { name: 'Mrs. Vasudha Vikrant Wakchaure', desEn: 'Librarian', desMr: 'ग्रंथपाल', qual: 'B.A., Librarian', joined: '17-06-2017' },
-    { name: 'Mrs. Asha Shrihari Satpute', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: 'N/A' },
-    { name: 'Mrs. Ashwini Amol Mali', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: 'N/A' },
-    { name: 'Mrs. Sanjana Avinash Khangate', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'Quals N/A', joined: 'N/A' },
-    { name: 'Mrs. Aparna Rahul Tanpure', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: 'N/A' },
-    { name: 'Mrs. Rupali Somnath Medage', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. M.Ed', joined: 'N/A' },
+    { name: 'Smt. Supriya Ganesh Thigale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. / MBA', joined: '07-01-2013' },
+    { name: 'Smt. Supriya Ganesh Chaudhri', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. D.Ed', joined: '07-01-2014' },
+    { name: 'Smt. Vidhya Dipak Kashid', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '06-08-2015' },
+    { name: 'Smt. Hemangi Rakesh Patil', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Com. B.Ed', joined: '18-06-2015' },
+    { name: 'Smt. Vidula Mahesh Deshmukh', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '12-08-2015' },
+    { name: 'Smt. Adika Baban Divekar', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: '12-01-2018' },
+    { name: 'Smt. Sushma Sopan Kale', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: '15-06-2018' },
+    { name: 'Smt. Manisha Laxman Supe', desEn: 'Co-Teacher', desMr: 'सह-शिक्षिका', qual: 'B.Com. B.Ed', joined: '06-08-2018' },
+    { name: 'Smt. Nilam Ganesh Totre', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.Sc. B.Ed', joined: '12-01-2022' },
+    { name: 'Smt. Tarannum Shabbir Momin', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc.', joined: '06-08-2022' },
+    { name: 'Smt. Aparna Mangesh Ronghe', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'HSC', joined: '06-08-2022' },
+    { name: 'Smt. Smita Amol Raut', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.Com.', joined: '18-08-2022' },
+    { name: 'Smt. Sayli Lokesh Chavan', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15-06-2023' },
+    { name: 'Smt. Vasudha Vikrant Wakchaure', desEn: 'Librarian', desMr: 'ग्रंथपाल', qual: 'B.A., Librarian', joined: '17-06-2017' },
+    { name: 'Smt. Asha Shrihari Satpute', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: 'N/A' },
+    { name: 'Smt. Ashwini Amol Mali', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.Sc. B.Ed', joined: 'N/A' },
+    { name: 'Smt. Sanjana Avinash Khangate', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'Quals N/A', joined: 'N/A' },
+    { name: 'Smt. Aparna Rahul Tanpure', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'B.A. B.Ed', joined: 'N/A' },
+    { name: 'Smt. Rupali Somnath Medage', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. M.Ed', joined: 'N/A' },
     { name: 'Mr. Prathamesh Bhanudas Manjare', desEn: 'Asst. Teacher', desMr: 'क्रीडा शिक्षक / PT Teacher', qual: 'B.P.Ed', joined: 'N/A' },
-    { name: 'Mrs. Ankita Ganesh Pokharkar', desEn: 'Clerk', desMr: 'लिपिक (क्लर्क)', qual: 'B.Com', joined: '02-02-2022' },
+    { name: 'Smt. Ankita Ganesh Pokharkar', desEn: 'Clerk', desMr: 'लिपिक (क्लर्क)', qual: 'B.Com', joined: '02-02-2022' },
     { name: 'Mr. Vishal Bharat Bhosale', desEn: 'Peon', desMr: 'शिपाई', qual: '8th', joined: '06-02-2008' },
     { name: 'Smt. Manisha Ramdas Chavan', desEn: 'Peon', desMr: 'शिपाई', qual: 'N/A', joined: '06-01-2011' },
     { name: 'Smt. Mangal Rahul Shinde', desEn: 'Peon', desMr: 'शिपाई', qual: '8th', joined: '06-01-2022' },
-    { name: 'Mrs. Manisha Dattatray Sandbhor', desEn: 'Peon', desMr: 'शिपाई', qual: '7th', joined: '21-11-2022' },
+    { name: 'Smt. Manisha Dattatray Sandbhor', desEn: 'Peon', desMr: 'शिपाई', qual: '7th', joined: '21-11-2022' },
     { name: 'Smt. Manisha Shravan Adagale', desEn: 'Safai Kamgar', desMr: 'सफाई कामगार', qual: '7th', joined: '21-11-2022' },
     { name: 'Mr. Vishal Phulaware', desEn: 'Safai Kamgar', desMr: 'सफाई कामगार', qual: 'N/A', joined: 'N/A' },
     { name: 'Mr. Akshay Sunil Deshmukh', desEn: 'Peon (Night)', desMr: 'रात्रीचे शिपाई', qual: '10th', joined: '13-01-2022' }
   ];
 
   const staffPrePrimary = [
-    { name: 'Mrs. Monali Bhagvan Pacharane', desEn: 'Co-Teacher', desMr: 'सह-शिक्षिका', qual: 'H.S.C. D.Ed', joined: '15-06-2012' },
-    { name: 'Mrs. Sima Chandrakant Gaikwad', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15-06-2022' },
-    { name: 'Mrs. Shweta Ganesh Satkar', desEn: 'Computer Teacher', desMr: 'संगणक शिक्षिका', qual: 'B.Sc. B.Ed / MCA', joined: '23-07-2014' },
-    { name: 'Mrs. Vrushali Rutuj Deshmukh', desEn: 'Computer Teacher', desMr: 'संगणक शिक्षिका', qual: 'MCS', joined: '25-06-2015' },
-    { name: 'Mrs. Hira Rohidas Kokane', desEn: 'Peon', desMr: 'शिपाई', qual: '10th', joined: '18-06-2025' }
+    { name: 'Smt. Monali Bhagvan Pacharane', desEn: 'Co-Teacher', desMr: 'सह-शिक्षिका', qual: 'H.S.C. D.Ed', joined: '15-06-2012' },
+    { name: 'Smt. Sima Chandrakant Gaikwad', desEn: 'Asst. Teacher', desMr: 'सहाय्यक शिक्षिका', qual: 'M.A. B.Ed', joined: '15-06-2022' },
+    { name: 'Smt. Shweta Ganesh Satkar', desEn: 'Computer Teacher', desMr: 'संगणक शिक्षिका', qual: 'B.Sc. B.Ed / MCA', joined: '23-07-2014' },
+    { name: 'Smt. Vrushali Rutuj Deshmukh', desEn: 'Computer Teacher', desMr: 'संगणक शिक्षिका', qual: 'MCS', joined: '25-06-2015' },
+    { name: 'Smt. Hira Rohidas Kokane', desEn: 'Peon', desMr: 'शिपाई', qual: '10th', joined: '18-06-2025' }
   ];
 
   // Search filtering
@@ -561,8 +561,8 @@ export default function EMSDeptView() {
       {/* Campus Infrastructure & Facilities Carousel */}
       <InfrastructureFacilitiesCarousel selectedLang={selectedLang} />
 
-      {/* Sports & Athletic Facilities Section */}
-      <SportsAthleticsSection selectedLang={selectedLang} />
+      {/* Extra Activities (अतिरिक्त उपक्रम) - Extracurricular & Sports Gallery */}
+      <EMSExtraActivitiesGallery selectedLang={selectedLang} />
 
       {/* Campus Facilities Carousel */}
       <LibraryCarousel selectedLang={selectedLang} />

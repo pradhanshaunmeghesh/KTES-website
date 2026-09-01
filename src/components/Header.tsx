@@ -102,9 +102,9 @@ export default function Header({ currentTab, onChangeTab }: HeaderProps) {
                     <div className="absolute left-0 mt-1 w-64 rounded-xl bg-slate-900/95 border border-white/10 shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-250 z-50 backdrop-blur-md">
                       {[
                         { label: 'Junior College', dept: 'College' },
-                        { label: 'Mahatma Gandhi Vidyalaya', dept: 'MAV' },
+                        { label: 'Mahatma Gandhi Vidyalay', dept: 'MAV' },
                         { label: 'English Medium School', dept: 'EMS' },
-                        { label: 'Sheth Parakh Prathamik Vidyalaya', dept: 'SKPPV' }
+                        { label: 'Sheth Parakh Prathamik Vidyalay', dept: 'SKPPV' }
                       ].map((sub, i) => (
                         <button
                           key={i}
@@ -196,7 +196,7 @@ export default function Header({ currentTab, onChangeTab }: HeaderProps) {
                     <div className="grid grid-cols-2 gap-2 pt-1">
                       {[
                         { label: 'Junior College', dept: 'College' },
-                        { label: 'M.G. Vidyalaya', dept: 'MAV' },
+                        { label: 'Mahatma Gandhi Vidyalay', dept: 'MAV' },
                         { label: 'English Medium School', dept: 'EMS' },
                         { label: 'SKPPV Primary', dept: 'SKPPV' }
                       ].map((sub, i) => (

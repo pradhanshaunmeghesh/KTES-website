@@ -42,13 +42,13 @@ export default function ContactView() {
 
   const contactRegistry = [
     { name: 'Junior College Administrative Office', email: 'registrar@ktescollege.edu', phone: '+91 22 2567-9034' },
-    { name: 'Mahatma Gandhi Vidyalaya desk', email: 'secretary@ktesmav.edu', phone: '+91 22 2568-9122' },
+    { name: 'Mahatma Gandhi Vidyalay desk', email: 'secretary@ktesmav.edu', phone: '+91 22 2568-9122' },
     { name: 'English Medium School admissions', email: 'admissions@ktesems.edu', phone: '+91 22 2569-8012' },
-    { name: 'Sheth Kesharchand Parakh Prathamik Vidyalaya', email: 'preschool@ktesskppv.edu', phone: '+91 22 2567-3341' }
+    { name: 'Sheth Kesharchand Parakh Prathamik Vidyalay', email: 'preschool@ktesskppv.edu', phone: '+91 22 2567-3341' }
   ];
 
   return (
-    <div className="space-y-16 pb-16 pt-6 text-slate-200 relative z-10">
+    <div id="contact" className="space-y-16 pb-16 pt-6 text-slate-200 relative z-10">
       {/* Visual Header */}
       <section className="text-center space-y-4">
         <span className="text-xs font-bold text-secondary tracking-widest uppercase flex items-center justify-center space-x-1">
@@ -238,7 +238,7 @@ export default function ContactView() {
               <MapPin className="h-4 w-4 text-amber-400 mt-1 shrink-0" />
               <div>
                 <strong className="text-white">Central Address Location:</strong>
-                <p className="text-slate-300 font-medium">KTES Hills Campus, Kelkar Marg, MH-400080</p>
+                <p className="text-slate-300 font-medium">VV4P+JPR, Rajgurunagar, Maharashtra 410505</p>
               </div>
             </div>
             <div className="flex items-start space-x-3 leading-relaxed">

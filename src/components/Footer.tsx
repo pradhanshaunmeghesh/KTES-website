@@ -93,17 +93,17 @@ export default function Footer({ onChangeTab }: FooterProps) {
             <ul className="space-y-3 text-sm text-gray-400">
               <li>
                 <button onClick={() => onChangeTab('departments')} className="hover:text-amber-300 transition-colors cursor-pointer">
-                  Commerce & Science College
+                  Science College
                 </button>
               </li>
               <li>
                 <button onClick={() => onChangeTab('departments')} className="hover:text-amber-300 transition-colors cursor-pointer">
-                  Mahatma Gandhi Vidyalaya
+                  Mahatma Gandhi Vidyalay
                 </button>
               </li>
               <li>
                 <button onClick={() => onChangeTab('departments')} className="hover:text-amber-300 transition-colors cursor-pointer">
-                  Sheth Kesharchand Parakh Prathamik Vidyalaya
+                  Sheth Kesharchand Parakh Prathamik Vidyalay
                 </button>
               </li>
             </ul>
@@ -143,7 +143,7 @@ export default function Footer({ onChangeTab }: FooterProps) {
             <div className="space-y-2 text-xs text-gray-400 border-t border-white/10 pt-4">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-secondary" />
-                <span>KTES Hills Campus, Kelkar Marg, MH-400080</span>
+                <span>VV4P+JPR, Rajgurunagar, Maharashtra 410505</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-secondary" />

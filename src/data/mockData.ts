@@ -11,6 +11,8 @@ import {
 } from '../types';
 // @ts-ignore
 import chairmanImg from '../assets/images/Chairman.png';
+// @ts-ignore
+import computerLabImg from '../assets/images/computer_lab.jpg';
 
 export const INITIAL_ANNOUNCEMENTS: Announcement[] = [
   {
@@ -146,7 +148,7 @@ export const INITIAL_FACULTY: FacultyMember[] = [
   },
   {
     id: 'fac-4',
-    name: 'Mrs. Pallavi R. Deshpande',
+    name: 'Smt. Pallavi R. Deshpande',
     department: 'MAV',
     designation: 'Headmistress of Mahatma Gandhi English Section',
     qualifications: 'M.Sc. (Maths), B.Ed',
@@ -156,7 +158,7 @@ export const INITIAL_FACULTY: FacultyMember[] = [
   },
   {
     id: 'fac-5',
-    name: 'Mrs. Kalpana G. Kelkar',
+    name: 'Smt. Kalpana G. Kelkar',
     department: 'SKPPV',
     designation: 'Lead Coordinator of Sheth Kesharchand Parakh Prathamik Vidyalaya',
     qualifications: 'B.A. (Child Psychology), Montessori Diploma (London)',
@@ -272,9 +274,9 @@ export const INITIAL_GALLERY: GalleryItem[] = [
     id: 'gal-2',
     title: 'Computer Research Wing & Coding Terminals',
     category: 'campus',
-    mediaUrl: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80',
+    mediaUrl: computerLabImg,
     mediaType: 'image',
-    description: 'Students working on cloud server instances and code libraries.'
+    description: 'Students working on modern computer terminals and digital curriculum.'
   },
   {
     id: 'gal-3',

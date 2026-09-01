@@ -491,9 +491,9 @@ export default function AdminPanel({
                         className="w-full bg-white/10 border border-white/20 text-white rounded-lg px-3 py-2  focus:outline-none focus:ring-2 focus:ring-amber-400 [&>option]:bg-slate-900"
                       >
                         <option value="College">Junior College</option>
-                        <option value="MAV">Mahatma Gandhi Vidyalaya</option>
+                        <option value="MAV">Mahatma Gandhi Vidyalay</option>
                         <option value="EMS">English Medium School</option>
-                        <option value="SKPPV">Sheth Kesharchand Parakh Prathamik Vidyalaya</option>
+                        <option value="SKPPV">Sheth Kesharchand Parakh Prathamik Vidyalay</option>
                       </select>
                     </div>
 
