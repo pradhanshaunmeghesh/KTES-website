@@ -33,7 +33,7 @@ export interface SKPPVPhotoItem {
   customMediaUrl?: string; // For user uploaded or preview media
 }
 
-// Initial 22 official image mapping targets reflecting the Website Fotos folder
+// Initial 22 official image mapping targets reflecting the Website Photos folder
 const INITIAL_FOTOS: SKPPVPhotoItem[] = [
   // ==========================================
   // Category 1: Annual Gathering & Cultural Events (वार्षिक स्नेहसम्मेलन व सांस्कृतिक कार्यक्रम)
@@ -393,7 +393,7 @@ export default function SKPPVGallery() {
               style={{ backgroundColor: '#ffc107' }}
             >
               <Camera className="w-3.5 h-3.5 text-slate-950" />
-              Website Fotos Archive
+              Website Photos Archive
             </span>
             <span className="text-xs text-amber-300/80 font-mono bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full">
               {photos.length} Total Slots
@@ -405,12 +405,11 @@ export default function SKPPVGallery() {
               ५) छायाचित्र दालन - अधिकृत फोटो संग्रह
             </span>
             <span className="block text-slate-100 text-lg sm:text-xl font-semibold mt-0.5">
-              Sheth Kesharchand Parakh Primary School Media Gallery
+              Sheth Kesharchand Parakh Prathamik Vidyalay, Rajgurunagar - Media Gallery
             </span>
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-3xl leading-relaxed">
             वार्षिक स्नेहसंमेलन, क्रीडा स्पर्धा आणि शाळा परिसरातील विविध उपक्रमांचे डिजिटल छायाचित्र दालन.
-            (Target: <span className="font-mono text-amber-300">Website Fotos.zip</span>)
           </p>
         </div>
 
@@ -537,115 +536,41 @@ export default function SKPPVGallery() {
               <div
                 key={photo.id}
                 id={`skppv-foto-${photo.id}`}
-                className="group rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between border"
+                onClick={() => handleOpenLightbox(index)}
+                className="group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col cursor-pointer border hover:-translate-y-1"
                 style={{
-                  backgroundColor: '#1e293b',
-                  borderColor: 'rgba(255, 255, 255, 0.1)',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)'
+                  backgroundColor: '#151d2e',
+                  borderColor: 'rgba(255, 255, 255, 0.08)',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)'
                 }}
               >
-                {/* Media Container or Blank Placeholder Container */}
-                <div
-                  className="relative h-56 w-full cursor-pointer overflow-hidden flex flex-col items-center justify-center"
-                  onClick={() => handleOpenLightbox(index)}
-                >
+                {/* Plain rectangular image container */}
+                <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
                   {hasCustomMedia ? (
                     <img
                       src={photo.customMediaUrl}
-                      alt={photo.titleEn}
+                      alt={photo.titleEn || photo.titleMr}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    /* Blank Placeholder Container matching specification: <div class="img-placeholder"></div> */
-                    <div className="img-placeholder w-full h-full flex flex-col items-center justify-center p-6 text-center group-hover:border-amber-400 transition-colors">
-                      <div
-                        className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 shadow-inner group-hover:scale-110 transition-transform"
-                        style={{
-                          backgroundColor: 'rgba(255, 193, 7, 0.12)',
-                          border: '1px solid rgba(255, 193, 7, 0.3)'
-                        }}
-                      >
-                        <ImageIcon className="w-6 h-6" style={{ color: '#ffc107' }} />
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-slate-900/60 group-hover:bg-slate-900/90 transition-colors p-4">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 group-hover:border-amber-400/30 group-hover:bg-amber-400/10 transition-colors">
+                        <ImageIcon className="w-6 h-6 text-slate-500 group-hover:text-amber-400 transition-colors" />
                       </div>
-                      <span className="text-xs font-mono font-semibold text-amber-300/90 truncate max-w-full px-2">
-                        {photo.filename}
-                      </span>
-                      <span className="text-[10px] text-slate-400 mt-1 uppercase tracking-wider font-sans">
-                        [Website Fotos Asset Slot]
-                      </span>
                     </div>
                   )}
-
-                  {/* Category Pill Tag */}
-                  <div
-                    className="absolute top-3 left-3 text-[10px] font-black tracking-wide px-3 py-1 rounded-full uppercase z-10 shadow-md backdrop-blur"
-                    style={{
-                      backgroundColor: 'rgba(10, 14, 26, 0.85)',
-                      color: '#ffc107',
-                      border: '1px solid rgba(255, 193, 7, 0.3)'
-                    }}
-                  >
-                    {photo.category === 'annual_gathering'
-                      ? 'स्नेहसंमेलन / Gathering'
-                      : photo.category === 'sports_cocurricular'
-                      ? 'क्रीडा / Sports'
-                      : 'परिसर / Campus'}
-                  </div>
-
-                  {/* Hover Zoom Prompt */}
-                  <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                    <span
-                      className="px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-lg text-slate-950"
-                      style={{ backgroundColor: '#ffc107' }}
-                    >
-                      <ZoomIn className="w-4 h-4" />
-                      पहा / Zoom
-                    </span>
-                  </div>
                 </div>
 
-                {/* Dual Language Captions: Marathi / English Subtitle Slots */}
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                  <div className="space-y-1.5">
-                    {/* Dual-language Main Title */}
-                    <h3 className="text-sm font-bold text-white leading-snug group-hover:text-amber-300 transition-colors">
-                      <span className="block text-amber-300 font-sans">{photo.titleMr}</span>
-                      <span className="block text-slate-100 font-medium text-xs mt-0.5">
+                {/* Clean title text placed directly below */}
+                <div className="p-4 bg-slate-900/40 group-hover:bg-slate-900/70 transition-colors">
+                  <h3 className="text-sm font-semibold text-white group-hover:text-amber-300 transition-colors leading-snug">
+                    <span className="block font-sans">{photo.titleMr}</span>
+                    {photo.titleEn && (
+                      <span className="block text-slate-400 text-xs font-normal mt-0.5">
                         {photo.titleEn}
                       </span>
-                    </h3>
-
-                    {/* Dual-language Subtitle & Description */}
-                    <div className="text-xs text-slate-300 space-y-1 pt-1 border-t border-white/5 font-sans leading-relaxed">
-                      <p className="text-slate-300 line-clamp-2">{photo.descMr}</p>
-                      <p className="text-slate-400 text-[11px] line-clamp-2 italic font-normal">
-                        {photo.descEn}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Slot Footer & Direct Local Photo Uplink */}
-                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
-                    <div className="flex items-center gap-1 text-amber-400/90 font-sans">
-                      <Calendar className="w-3.5 h-3.5 shrink-0" />
-                      <span>{photo.eventDateMr || 'SKPPV Event'}</span>
-                    </div>
-
-                    {/* Uplink upload button so user can attach or replace file right here */}
-                    <label
-                      title="Upload or preview an image for this slot"
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-amber-300 border border-white/10 cursor-pointer transition-colors text-[10px]"
-                    >
-                      <Upload className="w-3 h-3 text-amber-400" />
-                      <span>{hasCustomMedia ? 'Change' : 'Attach'}</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={(e) => handlePhotoUpload(e, photo.id)}
-                      />
-                    </label>
-                  </div>
+                    )}
+                  </h3>
                 </div>
               </div>
             );
@@ -664,13 +589,13 @@ export default function SKPPVGallery() {
           <div className="flex justify-between items-center z-10 border-b border-white/10 pb-4">
             <div className="space-y-0.5">
               <span className="font-mono text-xs text-amber-300">
-                Slot {lightboxIdx + 1} of {filteredPhotos.length} | Category:{' '}
+                Photo {lightboxIdx + 1} of {filteredPhotos.length} | Category:{' '}
                 <strong className="uppercase">
                   {filteredPhotos[lightboxIdx].category.replace('_', ' ')}
                 </strong>
               </span>
-              <p className="text-xs text-slate-400 font-mono">
-                {filteredPhotos[lightboxIdx].filename}
+              <p className="text-xs text-slate-300 font-sans font-medium">
+                {filteredPhotos[lightboxIdx].titleMr}
               </p>
             </div>
 
@@ -702,21 +627,20 @@ export default function SKPPVGallery() {
                 />
               ) : (
                 <div
-                  className="img-placeholder max-h-[55vh] w-full max-w-xl h-80 rounded-2xl flex flex-col items-center justify-center p-8 text-center shadow-2xl"
+                  className="img-placeholder max-h-[55vh] w-full max-w-xl h-80 rounded-2xl flex flex-col items-center justify-center p-8 text-center shadow-2xl border"
                   style={{
-                    backgroundColor: '#1e293b',
-                    borderColor: '#ffc107'
+                    backgroundColor: '#151d2e',
+                    borderColor: 'rgba(255, 255, 255, 0.1)'
                   }}
                 >
-                  <ImageIcon className="w-16 h-16 mb-4" style={{ color: '#ffc107' }} />
-                  <span className="text-base font-bold text-amber-300 font-sans">
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 bg-white/5 border border-white/10">
+                    <ImageIcon className="w-8 h-8 text-slate-400" />
+                  </div>
+                  <span className="text-lg font-bold text-amber-300 font-sans">
                     {filteredPhotos[lightboxIdx].titleMr}
                   </span>
-                  <span className="text-sm font-semibold text-slate-200 mt-1">
+                  <span className="text-sm font-medium text-slate-300 mt-1">
                     {filteredPhotos[lightboxIdx].titleEn}
-                  </span>
-                  <span className="text-xs font-mono text-slate-400 mt-3 px-3 py-1 rounded bg-black/40 border border-white/10">
-                    Target: Website Fotos/{filteredPhotos[lightboxIdx].filename}
                   </span>
                 </div>
               )}

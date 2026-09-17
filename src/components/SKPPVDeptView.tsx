@@ -29,6 +29,7 @@ import {
   X
 } from 'lucide-react';
 import SKPPVGallery from './SKPPVGallery';
+import PrimaryStaffSection from './PrimaryStaffSection';
 
 import skppImg1 from '../assets/images/SKPP/SKPP.jpeg';
 import skppImg2 from '../assets/images/SKPP/SKPP_1.jpeg';
@@ -773,7 +774,7 @@ export default function SKPPVDeptView() {
               {showMr ? 'प्राथमिक शिक्षण विभाग (इयत्ता १ ली ते ४ थी व बालवाडी)' : 'Primary Education Wing (Grades 1 to 4 & Balwadi)'}
             </span>
             <h1 className="text-2xl sm:text-4xl font-display font-black text-white leading-tight">
-              {showEn && <span className="block">Sheth Kesharchand Parakh Prathamik School, Rajgurunagar</span>}
+              {showEn && <span className="block" id="skppv-main-title-en">Sheth Kesharchand Parakh Prathamik Vidyalay, Rajgurunagar</span>}
               {showMr && <span className="block text-amber-300 font-sans text-xl sm:text-3xl font-extrabold mt-1">शेठ केशरचंद पारख प्राथमिक विद्यालय, राजगुरुनगर</span>}
             </h1>
             <p className="text-slate-300 text-xs sm:text-sm max-w-3xl font-sans">
@@ -834,7 +835,7 @@ export default function SKPPVDeptView() {
             }`}
           >
             <Users className="w-4 h-4" />
-            {showMr ? '२) शिक्षक व कर्मचारी माहिती (४०)' : '2) Teachers & Staff (40)'}
+            {showMr ? '२) शिक्षक व कर्मचारी माहिती (४१)' : '2) Teachers & Staff (41)'}
           </button>
 
           <button
@@ -870,7 +871,7 @@ export default function SKPPVDeptView() {
             }`}
           >
             <Camera className="w-4 h-4" />
-            {showMr ? '५) छायाचित्र दालन (Website Fotos)' : '5) Photo Gallery (Website Fotos)'}
+            {showMr ? '५) छायाचित्र दालन (Website Photos)' : '5) Photo Gallery (Website Photos)'}
           </button>
         </div>
       </div>
@@ -1116,300 +1117,17 @@ export default function SKPPVDeptView() {
                 ))}
               </div>
             </div>
+
+            {/* New Staff Card Grid Section matching Secondary Section */}
+            <PrimaryStaffSection selectedLang={selectedLang} id="skpp-primary-staff-overview" />
           </div>
         </div>
       )}
 
-      {/* SECTION 2: STAFF LIST (40 MEMBERS) */}
+      {/* SECTION 2: STAFF LIST (41 MEMBERS) */}
       {activeTab === 'staff' && (
         <div className="space-y-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-5">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-bold uppercase tracking-wider">
-                  {showMr ? 'अधिकृत कर्मचारी नोंदवही' : 'Official Staff Directory'}
-                </span>
-                <span className="text-xs text-slate-400">
-                  {staffList.length} {showMr ? 'कर्मचारी' : 'Staff Members'}
-                </span>
-              </div>
-              <h2 className="text-xl sm:text-2xl font-display font-bold text-white">
-                {showMr && <span className="block text-amber-300 font-sans text-xl font-bold">२) शिक्षक व कर्मचारी माहिती (एकूण ४० सदस्य)</span>}
-                {showEn && <span className="block text-white text-lg font-semibold">Teachers & Staff Directory (40 Members)</span>}
-              </h2>
-              <p className="text-slate-400 text-xs mt-0.5">
-                {showMr
-                  ? 'अनुदानित शिक्षक, विनाअनुदानित शिक्षक आणि शिक्षकेतर कर्मचाऱ्यांची द्वैभाषिक (मराठी / इंग्रजी) माहिती.'
-                  : 'Complete dual-language (Marathi / English) staff records including qualifications and appointment dates.'}
-              </p>
-            </div>
-
-            {/* Search Box */}
-            <div className="relative w-full md:w-80">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder={showMr ? "नाव, पदनाम, पात्रता किंवा दिनांक शोधा..." : "Search by name, role, qualification..."}
-                value={staffSearchQuery}
-                onChange={(e) => setStaffSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-slate-900/90 border border-white/15 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 shadow-inner"
-              />
-              {staffSearchQuery && (
-                <button
-                  onClick={() => setStaffSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs cursor-pointer"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Staff Category Summary & Filter Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <button
-              onClick={() => setStaffCategoryFilter('all')}
-              className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
-                staffCategoryFilter === 'all'
-                  ? 'bg-amber-500/15 border-amber-400/50 shadow-lg ring-1 ring-amber-400/30'
-                  : 'bg-slate-900/60 border-white/10 hover:bg-white/5 hover:border-white/20'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-slate-300 font-sans">
-                  {showMr ? 'सर्व कर्मचारी' : 'All Staff Members'}
-                </span>
-                <span className={`text-xs font-mono font-black px-2 py-0.5 rounded-full ${staffCategoryFilter === 'all' ? 'bg-amber-400 text-slate-950' : 'bg-white/10 text-amber-300'}`}>
-                  {staffList.length}
-                </span>
-              </div>
-              <p className="text-[11px] text-amber-300 font-sans mt-1 font-semibold">
-                {showMr ? 'एकूण ४० शिक्षक व शिक्षकेतर' : 'Total 40 Teaching & Non-Teaching'}
-              </p>
-            </button>
-
-            <button
-              onClick={() => setStaffCategoryFilter('aided_teaching')}
-              className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
-                staffCategoryFilter === 'aided_teaching'
-                  ? 'bg-emerald-500/15 border-emerald-400/50 shadow-lg ring-1 ring-emerald-400/30'
-                  : 'bg-slate-900/60 border-white/10 hover:bg-white/5 hover:border-white/20'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-slate-300 font-sans">
-                  {showMr ? 'अनुदानित शिक्षक' : 'Aided Teaching Staff'}
-                </span>
-                <span className={`text-xs font-mono font-black px-2 py-0.5 rounded-full ${staffCategoryFilter === 'aided_teaching' ? 'bg-emerald-400 text-slate-950' : 'bg-white/10 text-emerald-300'}`}>
-                  {countAidedTeaching}
-                </span>
-              </div>
-              <p className="text-[11px] text-emerald-300 font-sans mt-1 font-semibold">
-                {showMr ? 'शिक्षक कर्मचारी माहिती अनुदानित (१६)' : 'Govt. Grant-in-Aid Teachers (16)'}
-              </p>
-            </button>
-
-            <button
-              onClick={() => setStaffCategoryFilter('unaided_teaching')}
-              className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
-                staffCategoryFilter === 'unaided_teaching'
-                  ? 'bg-blue-500/15 border-blue-400/50 shadow-lg ring-1 ring-blue-400/30'
-                  : 'bg-slate-900/60 border-white/10 hover:bg-white/5 hover:border-white/20'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-slate-300 font-sans">
-                  {showMr ? 'विनाअनुदानित शिक्षक' : 'Unaided Teaching Staff'}
-                </span>
-                <span className={`text-xs font-mono font-black px-2 py-0.5 rounded-full ${staffCategoryFilter === 'unaided_teaching' ? 'bg-blue-400 text-slate-950' : 'bg-white/10 text-blue-300'}`}>
-                  {countUnaidedTeaching}
-                </span>
-              </div>
-              <p className="text-[11px] text-blue-300 font-sans mt-1 font-semibold">
-                {showMr ? 'शिक्षक कर्मचारी विनाअनुदानित (१६)' : 'Self-Financed & Balwadi (16)'}
-              </p>
-            </button>
-
-            <button
-              onClick={() => setStaffCategoryFilter('unaided_non_teaching')}
-              className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
-                staffCategoryFilter === 'unaided_non_teaching'
-                  ? 'bg-purple-500/15 border-purple-400/50 shadow-lg ring-1 ring-purple-400/30'
-                  : 'bg-slate-900/60 border-white/10 hover:bg-white/5 hover:border-white/20'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-slate-300 font-sans">
-                  {showMr ? 'शिक्षकेतर कर्मचारी' : 'Non-Teaching Staff'}
-                </span>
-                <span className={`text-xs font-mono font-black px-2 py-0.5 rounded-full ${staffCategoryFilter === 'unaided_non_teaching' ? 'bg-purple-400 text-slate-950' : 'bg-white/10 text-purple-300'}`}>
-                  {countUnaidedNonTeaching}
-                </span>
-              </div>
-              <p className="text-[11px] text-purple-300 font-sans mt-1 font-semibold">
-                {showMr ? 'शिक्षकेतर कर्मचारी विनाअनुदानित (८)' : 'Admin, Clerical & Support (8)'}
-              </p>
-            </button>
-          </div>
-
-          {/* Active Filter Indicator */}
-          <div className="flex items-center justify-between px-1 text-xs text-slate-400">
-            <span>
-              {showMr ? 'दर्शविलेले कर्मचारी:' : 'Showing records:'} <strong className="text-amber-300">{filteredStaff.length}</strong> / {staffList.length}
-            </span>
-            {staffCategoryFilter !== 'all' && (
-              <button
-                onClick={() => setStaffCategoryFilter('all')}
-                className="text-amber-400 hover:underline text-[11px] font-sans cursor-pointer"
-              >
-                {showMr ? 'सर्व वर्गवारी दाखवा (Show All)' : 'Clear Category Filter'}
-              </button>
-            )}
-          </div>
-
-          {/* Staff Table */}
-          <div className="overflow-x-auto bg-slate-900/80 border border-white/10 rounded-2xl shadow-2xl">
-            <table className="w-full text-left border-collapse text-xs">
-              <thead>
-                <tr className="bg-white/5 text-amber-300 font-bold border-b border-white/10">
-                  <th className="py-3.5 px-4 whitespace-nowrap">
-                    <span className="block font-sans">अ. क्र.</span>
-                    <span className="block text-[10px] text-slate-400 font-normal">Sr. No.</span>
-                  </th>
-                  <th className="py-3.5 px-4 min-w-[260px]">
-                    <span className="block font-sans">कर्मचाऱ्यांचे नाव (मराठी / English)</span>
-                    <span className="block text-[10px] text-slate-400 font-normal">Employee Name [Marathi Name] / [English Name]</span>
-                  </th>
-                  <th className="py-3.5 px-4 min-w-[160px]">
-                    <span className="block font-sans">पदनाम</span>
-                    <span className="block text-[10px] text-slate-400 font-normal">Designation</span>
-                  </th>
-                  <th className="py-3.5 px-4 min-w-[180px]">
-                    <span className="block font-sans">शैक्षणिक पात्रता</span>
-                    <span className="block text-[10px] text-slate-400 font-normal">Educational Qualification</span>
-                  </th>
-                  <th className="py-3.5 px-4 whitespace-nowrap min-w-[130px]">
-                    <span className="block font-sans">नियुक्ती दिनांक</span>
-                    <span className="block text-[10px] text-slate-400 font-normal">Appointment Date</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                {filteredStaff.length === 0 ? (
-                  <tr>
-                    <td colSpan={5} className="py-12 text-center text-slate-400 font-sans">
-                      <Users className="w-8 h-8 mx-auto mb-2 text-slate-600" />
-                      <p className="text-sm font-semibold text-slate-300">
-                        {showMr ? "कोणतीही माहिती सापडली नाही." : "No matching staff records found."}
-                      </p>
-                      <p className="text-xs text-slate-500 mt-1">
-                        {showMr ? "कृपया शोध शब्द किंवा वर्गवारी तपासा." : "Try adjusting your search keywords or filter."}
-                      </p>
-                    </td>
-                  </tr>
-                ) : (
-                  filteredStaff.map((st) => {
-                    const isAidedTeaching = st.category === 'aided_teaching';
-                    const isUnaidedTeaching = st.category === 'unaided_teaching';
-                    const isUnaidedNonTeaching = st.category === 'unaided_non_teaching';
-
-                    return (
-                      <tr
-                        key={st.sr}
-                        className="hover:bg-white/[0.04] transition-colors group"
-                      >
-                        {/* Serial Number */}
-                        <td className="py-3.5 px-4 text-slate-400 font-mono font-bold align-top">
-                          <div className="flex flex-col">
-                            <span className="text-amber-400 text-sm font-black">{st.sr}</span>
-                            <span className="text-[10px] text-slate-500">#{st.catSr}</span>
-                          </div>
-                        </td>
-
-                        {/* Dual Language Name: [Marathi Name] / [English Name] */}
-                        <td className="py-3.5 px-4 align-top">
-                          <div className="font-sans">
-                            {/* Formatted as [Marathi Name] / [English Name] */}
-                            <div className="text-sm font-bold text-white group-hover:text-amber-200 transition-colors leading-relaxed">
-                              <span className="text-amber-300 font-semibold">{st.nameMr}</span>
-                              <span className="mx-2 text-slate-500 font-normal">/</span>
-                              <span className="text-slate-100 font-medium">{st.nameEn}</span>
-                            </div>
-                            <div className="mt-1 flex items-center gap-2">
-                              <span
-                                className={`text-[10px] font-sans px-2 py-0.5 rounded-md font-medium ${
-                                  isAidedTeaching
-                                    ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/20'
-                                    : isUnaidedTeaching
-                                    ? 'bg-blue-500/10 text-blue-300 border border-blue-500/20'
-                                    : 'bg-purple-500/10 text-purple-300 border border-purple-500/20'
-                                }`}
-                              >
-                                {showMr ? st.categoryLabelMr : st.categoryLabelEn}
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* Designation (Role) */}
-                        <td className="py-3.5 px-4 align-top">
-                          <div className="font-sans">
-                            <span className="inline-block px-2.5 py-1 rounded-lg bg-amber-400/10 text-amber-300 border border-amber-400/25 font-semibold text-xs leading-snug">
-                              {st.roleMr}
-                            </span>
-                            <span className="block text-[11px] text-slate-400 font-normal mt-1">
-                              {st.roleEn}
-                            </span>
-                          </div>
-                        </td>
-
-                        {/* Qualification */}
-                        <td className="py-3.5 px-4 align-top">
-                          <div className="inline-flex items-center gap-1.5 font-sans font-medium text-slate-200 bg-white/5 px-2.5 py-1 rounded-lg border border-white/5">
-                            <GraduationCap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                            <span className="text-xs leading-relaxed">{st.qual}</span>
-                          </div>
-                        </td>
-
-                        {/* Appointment Date */}
-                        <td className="py-3.5 px-4 align-top whitespace-nowrap">
-                          <div className="flex items-center gap-1.5 text-slate-300 font-mono text-xs">
-                            <Calendar className="w-3.5 h-3.5 text-amber-400/80 shrink-0" />
-                            <span>{st.date}</span>
-                          </div>
-                          <span className="block text-[10px] text-slate-400 font-sans mt-0.5">
-                            {st.dateMr}
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })
-                )}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Category Legends / Footnote */}
-          <div className="bg-slate-900/60 border border-white/10 rounded-2xl p-4 text-xs text-slate-400 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-sans">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="text-white font-bold">{showMr ? 'वर्गवारी सूची:' : 'Categories:'}</span>
-              <span className="inline-flex items-center gap-1.5 text-emerald-300">
-                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                {showMr ? 'शिक्षक कर्मचारी माहिती अनुदानित (१ ते १६)' : 'Aided Teaching (1-16)'}
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-blue-300">
-                <span className="w-2 h-2 rounded-full bg-blue-400"></span>
-                {showMr ? 'शिक्षक कर्मचारी माहिती विनाअनुदानित (१७ ते ३२)' : 'Unaided Teaching (17-32)'}
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-purple-300">
-                <span className="w-2 h-2 rounded-full bg-purple-400"></span>
-                {showMr ? 'शिक्षकेतर कर्मचारी माहिती विनाअनुदानित (३३ ते ४०)' : 'Unaided Non-Teaching (33-40)'}
-              </span>
-            </div>
-            <div className="text-slate-400 text-[11px]">
-              {showMr ? 'शेठ केशरचंद पारख प्राथमिक विद्यालय, राजगुरुनगर' : 'SKPPV Staff Portal'}
-            </div>
-          </div>
+          <PrimaryStaffSection selectedLang={selectedLang} id="skpp-primary-staff-tab" />
         </div>
       )}
 
@@ -1574,7 +1292,7 @@ export default function SKPPVDeptView() {
         </div>
       )}
 
-      {/* SECTION 5: PHOTO GALLERY (WEBSITE FOTOS ARCHIVE) */}
+      {/* SECTION 5: PHOTO GALLERY (WEBSITE PHOTOS ARCHIVE) */}
       {activeTab === 'gallery' && (
         <div className="animate-fadeIn">
           <SKPPVGallery />

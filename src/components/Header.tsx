@@ -104,7 +104,7 @@ export default function Header({ currentTab, onChangeTab }: HeaderProps) {
                         { label: 'Junior College', dept: 'College' },
                         { label: 'Mahatma Gandhi Vidyalay', dept: 'MAV' },
                         { label: 'English Medium School', dept: 'EMS' },
-                        { label: 'Sheth Parakh Prathamik Vidyalay', dept: 'SKPPV' }
+                        { label: 'Sheth Kesharchand Parakh Prathamik Vidyalay', dept: 'SKPPV' }
                       ].map((sub, i) => (
                         <button
                           key={i}

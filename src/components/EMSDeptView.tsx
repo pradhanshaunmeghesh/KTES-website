@@ -2,6 +2,7 @@ import { useState } from 'react';
 import LibraryCarousel from './LibraryCarousel';
 import InfrastructureFacilitiesCarousel from './InfrastructureFacilitiesCarousel';
 import EMSExtraActivitiesGallery from './EMSExtraActivitiesGallery';
+import PrimaryStaffSection from './PrimaryStaffSection';
 import {
   Award,
   BookOpen,
@@ -591,9 +592,9 @@ export default function EMSDeptView() {
                     : 'text-slate-300 hover:text-white'
                 }`}
               >
-                {sec === 'all' && 'All Staff (61)'}
+                {sec === 'all' && 'All Staff (63)'}
                 {sec === 'secondary' && 'Secondary Wing (17)'}
-                {sec === 'primary' && 'Primary Wing (39)'}
+                {sec === 'primary' && 'Primary Section (41)'}
                 {sec === 'pre-primary' && 'Pre-Primary Wing (5)'}
               </button>
             ))}
@@ -656,41 +657,8 @@ export default function EMSDeptView() {
 
           {/* Primary Wing Subsection */}
           {(activeStaffSection === 'all' || activeStaffSection === 'primary') && (
-            <div className="space-y-4 pt-4">
-              <h3 className="font-display font-black text-amber-300 text-sm border-l-4 border-amber-400 pl-3 uppercase tracking-wider">
-                Primary Section / प्राथमिक विभाग (39 staff members)
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filterStaff(staffPrimary).length === 0 ? (
-                  <div className="col-span-full py-4 text-slate-400 text-xs italic">
-                    No matching primary section staff members found.
-                  </div>
-                ) : (
-                  filterStaff(staffPrimary).map((st, i) => (
-                    <div
-                      key={i}
-                      className="bg-white/5 rounded-2xl border border-white/10 p-5 shadow-xl hover:border-white/20 hover:bg-white/10 transition-all flex flex-col justify-between space-y-4 text-white"
-                    >
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-start">
-                          <h4 className="font-display font-black text-white text-sm">{st.name}</h4>
-                          <span className="text-[9px] font-bold bg-white/10 px-2 py-0.5 rounded-full text-slate-300">
-                            Pri-Staff
-                          </span>
-                        </div>
-                        <div className="text-xs text-amber-400 font-bold">{st.desEn}</div>
-                        {selectedLang === 'both' && st.desEn !== st.desMr && (
-                          <div className="text-[10px] text-slate-400 font-semibold">{st.desMr}</div>
-                        )}
-                      </div>
-                      <div className="border-t border-white/5 pt-3 space-y-1 text-[11px] text-slate-300">
-                        <div><strong>Qualifications:</strong> {st.qual}</div>
-                        <div><strong>Joined:</strong> {st.joined}</div>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
+            <div className="pt-4">
+              <PrimaryStaffSection selectedLang={selectedLang} id="ems-primary-staff-section" />
             </div>
           )}
 

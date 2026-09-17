@@ -88,7 +88,7 @@ export default function GalleryView({ galleryItems = INITIAL_GALLERY }: GalleryV
             }`}
           >
             <Camera className="w-4 h-4" />
-            <span>१) शेठ के. पारख प्राथमिक विद्यालय (Website Fotos)</span>
+            <span>१) शेठ के. पारख प्राथमिक विद्यालय (Website Photos)</span>
           </button>
 
           <button
