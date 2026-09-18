@@ -712,13 +712,13 @@ export default function SKPPVDeptView() {
     { en: 'Semester Examinations (1st & 2nd Term)', mr: 'सत्रनिहाय परीक्षा (प्रथम व द्वितीय सत्र)' },
     { en: '4th Grade Scholarship Examination', mr: 'इ. ४ थी शिष्यवृत्ती परीक्षा' },
     { en: 'T.M.V. Mathematics Exam (Tilak Maharashtra Vidyapeeth)', mr: 'T.M.V. गणित परीक्षा (तिळक महाराष्ट्र विद्यापीठ)' },
-    { en: 'General Knowledge Exam (2nd to 4th Grade)', mr: 'सामान्य ज्ञान परीक्षा (इ. २ री ते ४ थी)' }
+    { en: 'Manthan General Knowledge Exam (2nd to 4th Grade)', mr: 'मंथन सामान्य ज्ञान परीक्षा (इ. २ री ते ४ थी)' }
   ];
 
   const manthanSuccess = [
-    { year: '2022-23', countEn: '33 Successful Students', countMr: '३३ विद्यार्थी यशस्वी' },
-    { year: '2023-24', countEn: '34 Successful Students', countMr: '३४ विद्यार्थी यशस्वी' },
-    { year: '2024-25', countEn: '36 Successful Students', countMr: '३६ विद्यार्थी यशस्वी' }
+    { year: '2022-23', countEn: '33 Students in Merit List', countMr: '३३ विद्यार्थी गुणवत्ता यादीत' },
+    { year: '2023-24', countEn: '34 Students in Merit List', countMr: '३४ विद्यार्थी गुणवत्ता यादीत' },
+    { year: '2024-25', countEn: '36 Students in Merit List', countMr: '३६ विद्यार्थी गुणवत्ता यादीत' }
   ];
 
   const schoolCommittees = [
@@ -1242,7 +1242,7 @@ export default function SKPPVDeptView() {
             </div>
           </div>
 
-          {/* Joyful Saturday & Cubs Bulbul */}
+          {/* Joyful Saturday & Cub Bulbul */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Joyful Saturday */}
             <div className="bg-slate-900/80 border border-white/10 rounded-3xl p-6 space-y-4">
@@ -1268,7 +1268,7 @@ export default function SKPPVDeptView() {
             <div className="bg-slate-900/80 border border-white/10 rounded-3xl p-6 space-y-6">
               <div className="space-y-3">
                 <span className="text-xs font-bold text-amber-400 uppercase tracking-wider block">
-                  {showMr ? 'कब्ज बुलबुल उपक्रम (Cubs & Bulbul Activity)' : 'Cubs & Bulbul Activity'}
+                  {showMr ? 'कब बुलबुल उपक्रम (Cub & Bulbul Activity)' : 'Cub & Bulbul Activity'}
                 </span>
                 <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
                   <p className="text-xs text-slate-200 font-sans leading-relaxed">

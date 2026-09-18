@@ -167,12 +167,12 @@ const INITIAL_FOTOS: SKPPVPhotoItem[] = [
     id: 'sp-5',
     filename: 'WhatsApp Image 2026-07-03 at 1.22.08 PM (1).jpeg',
     category: 'sports_cocurricular',
-    titleMr: 'कब्ज व बुलबुल - सामाजिक सेवा व रक्षाबंधन',
-    titleEn: 'Cubs & Bulbul Outreach & Raksha Bandhan',
-    descMr: 'कब्ज-बुलबुल पथकाचे अनाथआश्रमात रक्षाबंधन व सामाजिक जाणीव उपक्रम.',
+    titleMr: 'कब व बुलबुल - सामाजिक सेवा व रक्षाबंधन',
+    titleEn: 'Cub & Bulbul Outreach & Raksha Bandhan',
+    descMr: 'कब-बुलबुल पथकाचे अनाथआश्रमात रक्षाबंधन व सामाजिक जाणीव उपक्रम.',
     descEn: 'Scouting unit outreach initiative sharing festive affection and community service.',
-    eventDateMr: 'कब्ज-बुलबुल उपक्रम',
-    eventDateEn: 'Cubs & Bulbul'
+    eventDateMr: 'कब-बुलबुल उपक्रम',
+    eventDateEn: 'Cub & Bulbul'
   },
   {
     id: 'sp-6',
