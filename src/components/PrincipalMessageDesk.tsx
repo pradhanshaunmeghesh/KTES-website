@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Quote, Sparkles, GraduationCap, ChevronDown, ChevronUp, Award, BookOpen } from 'lucide-react';
 import { motion } from 'motion/react';
+import defaultPrincipalPhoto from '../assets/images/principal junior and MGV/Smt. Rekha Jadhav.jpeg';
 
 interface PrincipalMessageDeskProps {
   className?: string;
@@ -13,14 +14,16 @@ interface PrincipalMessageDeskProps {
 
 export default function PrincipalMessageDesk({
   className = '',
-  principalNameEn = '[प्रभारी प्राचार्य / Principal Name]',
-  principalNameMr = '[प्रभारी प्राचार्य / Principal Name]',
+  principalNameEn = 'Principal Smt. Rekha Jadhav',
+  principalNameMr = 'प्राचार्य सौ. रेखा जाधव / Principal Smt. Rekha Jadhav',
   designationEn = 'Principal, MGV & Junior College',
-  designationMr = 'प्राचार्य, महात्मा गांधी विद्यालय व ज्युनिअर कॉलेज',
+  designationMr = 'प्राचार्य, महात्मा गांधी विद्यालय व जूनियर कॉलेज',
   photoUrl
 }: PrincipalMessageDeskProps) {
   const [showFullMessage, setShowFullMessage] = useState(true);
   const [activeTab, setActiveTab] = useState<'both' | 'mr' | 'en'>('both');
+
+  const resolvedPhoto = photoUrl || defaultPrincipalPhoto;
 
   return (
     <section
@@ -41,12 +44,18 @@ export default function PrincipalMessageDesk({
               <div className="absolute -inset-1 bg-gradient-to-tr from-amber-500 via-amber-300 to-yellow-600 rounded-2xl blur-xs opacity-70 group-hover:opacity-100 transition duration-500"></div>
               
               <div className="w-36 h-36 md:w-44 md:h-44 rounded-2xl overflow-hidden border-2 border-amber-400/50 bg-slate-950 shadow-2xl relative flex items-center justify-center">
-                {photoUrl ? (
+                {resolvedPhoto ? (
                   <img
-                    src={photoUrl}
+                    src={resolvedPhoto}
                     alt={principalNameEn}
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('public/images') && !target.src.includes('/images/principal')) {
+                        target.src = '/images/principal junior and MGV/Smt. Rekha Jadhav.jpeg';
+                      }
+                    }}
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-b from-slate-900 to-slate-950 flex flex-col items-center justify-center p-4 text-center">
@@ -71,16 +80,21 @@ export default function PrincipalMessageDesk({
             </div>
 
             {/* Sub-label under photo */}
-            <div className="mt-5 text-center">
+            <div className="mt-5 text-center max-w-[240px]">
               <h4 className="text-sm md:text-base font-display font-bold text-white tracking-wide">
                 {principalNameEn}
               </h4>
-              <p className="text-[11px] font-sans font-medium text-amber-400/90 mt-0.5">
-                {designationEn}
+              <p className="text-xs font-sans font-semibold text-amber-300 mt-1">
+                {principalNameMr}
               </p>
-              <p className="text-[10px] font-sans text-slate-400 mt-0.5">
-                {designationMr}
-              </p>
+              <div className="mt-2.5 pt-2 border-t border-amber-500/30">
+                <p className="text-[11px] font-sans font-medium text-slate-200 leading-snug">
+                  {designationEn}
+                </p>
+                <p className="text-[10px] font-sans text-amber-400/90 mt-0.5 leading-snug">
+                  {designationMr}
+                </p>
+              </div>
             </div>
           </div>
 
