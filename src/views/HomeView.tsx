@@ -34,6 +34,7 @@ import {
   Landmark
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import kailashPacharneImg from '../assets/images/presidents/Shri Kailash Raghunath Pacharne.jpg';
 const ktesCampusImg = '/images/ktes_actual_banner_1783586668608.jpg';
 const chairmanImg = '/images/Chairman.png';
 
@@ -155,6 +156,10 @@ const CURRENT_BODY_IMAGE_PATHS: Record<string, string> = {
   'rahul kumbhar': rahulKumbharImg,
   'shri swanand vilas khedkar': swanandKhedkarImg,
   'swanand khedkar': swanandKhedkarImg,
+  'shri kailash raghunath pacharne': kailashPacharneImg,
+  'kailash raghunath pacharne': kailashPacharneImg,
+  'kailash pacharne': kailashPacharneImg,
+  'pacharne': kailashPacharneImg,
 };
 
 function getBodyMemberImage(nameEn: string, staticImg?: string | null): string | null {
@@ -356,7 +361,7 @@ const ADMIN_OFFICERS = [
     nameMr: 'श्री. कैलास रघुनाथ पाचारणे',
     designationEn: 'Administrative Officer',
     designationMr: 'प्रशासकीय अधिकारी',
-    image: getBodyMemberImage('Shri Kailash Raghunath Pacharne')
+    image: kailashPacharneImg
   },
   {
     id: 'ao-2',
@@ -425,6 +430,12 @@ function MemberAvatar({
       if (stripped.includes('kulkarni')) {
         if (currentSrc !== '/images/presidents/Late Narhar Kulkarni.jpg') {
           setCurrentSrc('/images/presidents/Late Narhar Kulkarni.jpg');
+          return;
+        }
+      }
+      if (stripped.includes('pacharne')) {
+        if (currentSrc !== '/images/presidents/Shri Kailash Raghunath Pacharne.jpg') {
+          setCurrentSrc('/images/presidents/Shri Kailash Raghunath Pacharne.jpg');
           return;
         }
       }
