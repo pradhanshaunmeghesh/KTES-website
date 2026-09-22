@@ -38,20 +38,124 @@ import { motion } from 'motion/react';
 import ktesCampusImg from '../assets/images/ktes_actual_banner_1783586668608.jpg';
 // @ts-ignore
 import chairmanImg from '../assets/images/Chairman.png';
+// Dynamic Vite asset URLs for past presidents
+const dhanrajKatareImg = new URL('../assets/images/presidents/dhanraj katare.jpg', import.meta.url).href;
+const khushalchandLunawatImg = new URL('../assets/images/presidents/khushalchand lunawat.jpg', import.meta.url).href;
+const moreshwarSutarImg = new URL('../assets/images/presidents/Late Moreshwar Sutar.jpg', import.meta.url).href;
+const narharKulkarniImg = new URL('../assets/images/presidents/Late Narhar Kulkarni.jpg', import.meta.url).href;
+const naryanGhumatkarImg = new URL('../assets/images/presidents/Late Naryan Ghumatkar.jpg', import.meta.url).href;
+const raghunathJoshiImg = new URL('../assets/images/presidents/raghunath joshi.jpg', import.meta.url).href;
+const vishnuPathakImg = new URL('../assets/images/presidents/vishnu (dadasaheb) pathak.jpg', import.meta.url).href;
+
+// Vite dynamic asset resolution & mapping for presidents
+const presidentImages = import.meta.glob<{ default: string }>(
+  '../assets/images/presidents/*.{jpg,jpeg,JPG,JPEG}',
+  { eager: true }
+);
+
+const PRESIDENT_PHOTO_MAP: Record<string, string> = {
+  // Late Naryan Ghumatkar
+  'Late Naryan Ghumatkar': naryanGhumatkarImg,
+  'Late Narayan Ghumatkar': naryanGhumatkarImg,
+  'Naryan Ghumatkar': naryanGhumatkarImg,
+  'Narayan Ghumatkar': naryanGhumatkarImg,
+  '/src/assets/images/presidents/Late Naryan Ghumatkar.jpg': naryanGhumatkarImg,
+  '/src/assets/images/presidents/Late Narayan Ghumatkar.jpg': naryanGhumatkarImg,
+  '/src/assets/images/presidents/Naryan Ghumatkar.jpg': naryanGhumatkarImg,
+  '/src/assets/images/presidents/Narayan Ghumatkar.jpg': naryanGhumatkarImg,
+
+  // Late Moreshwar Sutar
+  'Late Moreshwar Sutar': moreshwarSutarImg,
+  'Moreshwar Sutar': moreshwarSutarImg,
+  '/src/assets/images/presidents/Late Moreshwar Sutar.jpg': moreshwarSutarImg,
+  '/src/assets/images/presidents/Moreshwar Sutar.jpg': moreshwarSutarImg,
+
+  // Late Narhar Kulkarni
+  'Late Narhar Kulkarni': narharKulkarniImg,
+  'Narhar Kulkarni': narharKulkarniImg,
+  '/src/assets/images/presidents/Late Narhar Kulkarni.jpg': narharKulkarniImg,
+  '/src/assets/images/presidents/Narhar Kulkarni.jpg': narharKulkarniImg,
+};
+
+function resolvePresidentPath(pathOrUrl: string, nameEn?: string): string {
+  if (!pathOrUrl && !nameEn) return '';
+  if (pathOrUrl && PRESIDENT_PHOTO_MAP[pathOrUrl]) {
+    return PRESIDENT_PHOTO_MAP[pathOrUrl];
+  }
+  if (nameEn && PRESIDENT_PHOTO_MAP[nameEn]) {
+    return PRESIDENT_PHOTO_MAP[nameEn];
+  }
+  const cleanFilename = pathOrUrl ? decodeURIComponent(pathOrUrl.split('/').pop()?.split('?')[0] || '').toLowerCase() : '';
+  for (const [key, value] of Object.entries(presidentImages)) {
+    const keyClean = key.split('/').pop()?.toLowerCase() || '';
+    if (cleanFilename && (keyClean === cleanFilename || keyClean.includes(cleanFilename) || cleanFilename.includes(keyClean))) {
+      return typeof value === 'string' ? value : value?.default;
+    }
+    if (nameEn) {
+      const stripped = nameEn.replace(/^late\s+/i, '').trim().toLowerCase();
+      if (keyClean.includes(stripped)) {
+        return typeof value === 'string' ? value : value?.default;
+      }
+    }
+  }
+  return pathOrUrl || '';
+}
+// Member photos from Ktes Current Body
 // @ts-ignore
-import dhanrajKatareImg from '../assets/images/presidents/dhanraj katare.jpg';
+import ajitLunawatImg from '../assets/images/Ktes Current Body/Shri Ajit Lunawat.jpg';
 // @ts-ignore
-import khushalchandLunawatImg from '../assets/images/presidents/khushalchand lunawat.jpg';
+import ganeshJoshiImg from '../assets/images/Ktes Current Body/Air Commodore Shri Ganesh Joshi.jpg';
 // @ts-ignore
-import moreshwarSutarImg from '../assets/images/presidents/Moreshwar Sutar.jpg';
+import kailasSandbhorImg from '../assets/images/Ktes Current Body/Shri. Kailas Sandbhor.jpg';
 // @ts-ignore
-import narharKulkarniImg from '../assets/images/presidents/Narhar Kulkarni.jpg';
+import pradeepShewaleImg from '../assets/images/Ktes Current Body/Dr. Shri. Pradeep Shewale.jpg';
 // @ts-ignore
-import naryanGhumatkarImg from '../assets/images/presidents/Narayan Ghumatkar.jpg';
+import sandeepBhosaleImg from '../assets/images/Ktes Current Body/Adv. Shri. Sandeep Bhosale.jpg';
 // @ts-ignore
-import raghunathJoshiImg from '../assets/images/presidents/raghunath joshi.jpg';
+import urmilaSandbhorImg from '../assets/images/Ktes Current Body/Sau. Urmila Sandbhor.jpg';
 // @ts-ignore
-import vishnuPathakImg from '../assets/images/presidents/vishnu (dadasaheb) pathak.jpg';
+import rahulKumbharImg from '../assets/images/Ktes Current Body/Shri Rahul Prabhakar Kumbhar.jpg';
+// @ts-ignore
+import swanandKhedkarImg from '../assets/images/Ktes Current Body/Shri Swanand Vilas Khedkar.jpg';
+
+// Dynamically load any additional or future photos added into Ktes Current Body
+const bodyPhotoModules = import.meta.glob<{ default: string }>(
+  '../assets/images/Ktes Current Body/*.{jpg,jpeg,JPG,JPEG,png,PNG}',
+  { eager: true }
+);
+
+const currentBodyPhotosMap: Record<string, string> = {};
+Object.entries(bodyPhotoModules).forEach(([filePath, mod]) => {
+  const filename = filePath.split('/').pop() || '';
+  const cleanFilename = filename.replace(/\.[^/.]+$/, '').trim().toLowerCase();
+  const url = typeof mod === 'string' ? mod : mod?.default;
+  if (url) {
+    currentBodyPhotosMap[filename.toLowerCase()] = url;
+    currentBodyPhotosMap[cleanFilename] = url;
+    const stripped = cleanFilename
+      .replace(/^(air commodore|shri|smt|sau|dr|adv|\.)\s*/gi, '')
+      .replace(/\./g, '')
+      .trim();
+    currentBodyPhotosMap[stripped] = url;
+  }
+});
+
+function getBodyMemberImage(nameEn: string, staticImg?: string | null): string | null {
+  if (staticImg) return staticImg;
+  const clean = nameEn.trim().toLowerCase();
+  if (currentBodyPhotosMap[clean]) return currentBodyPhotosMap[clean];
+  const stripped = clean
+    .replace(/^(air commodore|shri|smt|sau|dr|adv|\.)\s*/gi, '')
+    .replace(/\./g, '')
+    .trim();
+  if (currentBodyPhotosMap[stripped]) return currentBodyPhotosMap[stripped];
+  for (const [key, url] of Object.entries(currentBodyPhotosMap)) {
+    if (stripped.length >= 4 && (key.includes(stripped) || stripped.includes(key))) {
+      return url;
+    }
+  }
+  return null;
+}
 
 const PAST_PRESIDENTS = [
   {
@@ -115,7 +219,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. अजित लुणावत',
     designationEn: 'Vice Chairman',
     designationMr: 'उपाध्यक्ष',
-    image: null,
+    image: ajitLunawatImg,
     isExecutive: true
   },
   {
@@ -124,7 +228,7 @@ const TRUST_BOARD = [
     nameMr: 'एयर कमोडोर श्री गणेश जोशी',
     designationEn: 'Honorary Secretary',
     designationMr: 'मानद सचिव',
-    image: null,
+    image: ganeshJoshiImg,
     isExecutive: true
   },
   // Board Members
@@ -134,7 +238,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. हिरामाण सातकर',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: null,
+    image: getBodyMemberImage('Shri. Hiraman Satkar'),
     isExecutive: false
   },
   {
@@ -143,7 +247,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. कैलास सांडभोर',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: null,
+    image: kailasSandbhorImg,
     isExecutive: false
   },
   {
@@ -152,7 +256,7 @@ const TRUST_BOARD = [
     nameMr: 'डॉ. श्री. प्रदीप शेवाळे',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: null,
+    image: pradeepShewaleImg,
     isExecutive: false
   },
   {
@@ -161,7 +265,7 @@ const TRUST_BOARD = [
     nameMr: 'ॲड. श्री. संदीप भोसले',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: null,
+    image: sandeepBhosaleImg,
     isExecutive: false
   },
   {
@@ -170,7 +274,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. प्रदीप कासवा',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: null,
+    image: getBodyMemberImage('Shri. Pradeep Kaswa'),
     isExecutive: false
   },
   {
@@ -179,7 +283,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. गणेश घुमटकर',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: null,
+    image: getBodyMemberImage('Shri. Ganesh Ghumatkar'),
     isExecutive: false
   },
   {
@@ -188,7 +292,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. प्रकाश भनसाळी',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: null,
+    image: getBodyMemberImage('Shri. Prakash Bhansali'),
     isExecutive: false
   },
   {
@@ -197,7 +301,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. दत्तात्रय सांडभोर',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: null,
+    image: getBodyMemberImage('Shri. Dattatraya Sandbhor'),
     isExecutive: false
   },
   {
@@ -206,7 +310,7 @@ const TRUST_BOARD = [
     nameMr: 'श्रीमती सुरेखा श्रोत्रिय',
     designationEn: 'Member',
     designationMr: 'संचालिका',
-    image: null,
+    image: getBodyMemberImage('Smt. Surekha Shrotriya'),
     isExecutive: false
   },
   {
@@ -215,7 +319,7 @@ const TRUST_BOARD = [
     nameMr: 'सौ. उर्मिला सांडभोर',
     designationEn: 'Member',
     designationMr: 'संचालिका',
-    image: null,
+    image: urmilaSandbhorImg,
     isExecutive: false
   }
 ];
@@ -227,7 +331,7 @@ const ADMIN_OFFICERS = [
     nameMr: 'श्री. कैलास रघुनाथ पाचारणे',
     designationEn: 'Administrative Officer',
     designationMr: 'प्रशासकीय अधिकारी',
-    image: null
+    image: getBodyMemberImage('Shri Kailash Raghunath Pacharne')
   },
   {
     id: 'ao-2',
@@ -235,7 +339,7 @@ const ADMIN_OFFICERS = [
     nameMr: 'श्री. राहुल प्रभाकर कुंभार',
     designationEn: 'Local Auditor',
     designationMr: 'स्थानिक हिशोब तपासनीस',
-    image: null
+    image: rahulKumbharImg
   },
   {
     id: 'ao-3',
@@ -243,7 +347,7 @@ const ADMIN_OFFICERS = [
     nameMr: 'श्री. स्वानंद विलास खेडकर',
     designationEn: 'Local Auditor',
     designationMr: 'स्थानिक हिशोब तपासनीस',
-    image: null
+    image: swanandKhedkarImg
   }
 ];
 
@@ -254,6 +358,69 @@ function getInitials(name: string): string {
     return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
   }
   return clean.substring(0, 2).toUpperCase();
+}
+
+function MemberAvatar({
+  src,
+  nameEn,
+  borderClasses = "border-amber-400/50 group-hover:border-amber-400",
+  sizeClasses = "w-36 h-36 sm:w-40 sm:h-40",
+  extraClasses = "",
+}: {
+  src?: string | null;
+  nameEn: string;
+  borderClasses?: string;
+  sizeClasses?: string;
+  extraClasses?: string;
+}) {
+  const [currentSrc, setCurrentSrc] = useState<string | null>(src || null);
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    setCurrentSrc(src || null);
+    setImageError(false);
+  }, [src]);
+
+  const handleImageError = () => {
+    // If the primary image failed to load, attempt fallback from presidentImages glob
+    if (nameEn) {
+      const stripped = nameEn.replace(/^late\s+/i, '').trim().toLowerCase();
+      for (const [key, value] of Object.entries(presidentImages)) {
+        const keyLower = key.toLowerCase();
+        const altUrl = typeof value === 'string' ? value : value?.default;
+        if (altUrl && altUrl !== currentSrc && keyLower.includes(stripped.slice(0, 5))) {
+          setCurrentSrc(altUrl);
+          return;
+        }
+      }
+    }
+    setImageError(true);
+  };
+
+  return (
+    <div
+      className={`relative ${sizeClasses} rounded-full p-1 border-2 ${borderClasses} bg-slate-950 flex items-center justify-center overflow-hidden shadow-md transition-all duration-300 shrink-0 ${extraClasses}`}
+    >
+      <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
+        {currentSrc && !imageError ? (
+          <img
+            src={currentSrc}
+            alt={nameEn}
+            referrerPolicy="no-referrer"
+            onError={handleImageError}
+            className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex flex-col items-center justify-center space-y-1 select-none">
+            <User className="w-10 h-10 sm:w-12 sm:h-12 text-amber-400/70 mb-0.5" />
+            <span className="text-amber-300 font-display font-bold text-xs sm:text-sm tracking-wider uppercase">
+              {getInitials(nameEn)}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 interface HomeViewProps {
@@ -604,22 +771,11 @@ export default function HomeView({
                 className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center space-y-4 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group shadow-lg"
               >
                 {/* Larger Circular container with gold border ring */}
-                <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/50 bg-slate-950 flex items-center justify-center overflow-hidden shadow-md group-hover:border-amber-400 transition-all duration-300 shrink-0">
-                  <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
-                    {pres.image ? (
-                      <img
-                        src={pres.image}
-                        alt={pres.nameEn}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
-                      />
-                    ) : (
-                      <span className="text-slate-400 font-display font-bold text-base tracking-widest">
-                        {pres.nameEn.replace('Late ', '').split(' ').map(p => p[0]).join('').substring(0, 2).toUpperCase()}
-                      </span>
-                    )}
-                  </div>
-                </div>
+                <MemberAvatar
+                  src={resolvePresidentPath(pres.image, pres.nameEn)}
+                  nameEn={pres.nameEn}
+                  borderClasses="border-amber-400/50 group-hover:border-amber-400"
+                />
 
                 {/* Stylized Gold Badge / Ribbon Label */}
                 <div className="w-full bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border border-amber-400/30 rounded-xl px-3 py-2.5 flex flex-col items-center justify-center min-h-[60px] shadow-sm">
@@ -679,25 +835,12 @@ export default function HomeView({
                   </div>
 
                   {/* Spacious Circular Photo Frame */}
-                  <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/60 bg-slate-950 flex items-center justify-center overflow-hidden shadow-lg group-hover:border-amber-400 transition-all duration-300 shrink-0 mt-2">
-                    <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
-                      {member.image ? (
-                        <img
-                          src={member.image}
-                          alt={member.nameEn}
-                          referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="flex flex-col items-center justify-center space-y-1">
-                          <User className="w-10 h-10 sm:w-12 sm:h-12 text-amber-400/80 mb-0.5" />
-                          <span className="text-amber-300 font-display font-bold text-sm sm:text-base tracking-wider uppercase">
-                            {getInitials(member.nameEn)}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <MemberAvatar
+                    src={member.image}
+                    nameEn={member.nameEn}
+                    borderClasses="border-amber-400/60 group-hover:border-amber-400"
+                    extraClasses="mt-2"
+                  />
 
                   {/* Name and Designation Card Content */}
                   <div className="w-full bg-gradient-to-r from-amber-500/15 via-amber-500/25 to-amber-500/15 border border-amber-400/40 rounded-xl px-3 py-2.5 flex flex-col items-center justify-center min-h-[64px] shadow-sm">
@@ -736,25 +879,11 @@ export default function HomeView({
                   className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center space-y-4 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group shadow-lg"
                 >
                   {/* Spacious Circular Photo Frame */}
-                  <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/50 bg-slate-950 flex items-center justify-center overflow-hidden shadow-md group-hover:border-amber-400 transition-all duration-300 shrink-0">
-                    <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
-                      {member.image ? (
-                        <img
-                          src={member.image}
-                          alt={member.nameEn}
-                          referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="flex flex-col items-center justify-center space-y-1">
-                          <User className="w-10 h-10 sm:w-12 sm:h-12 text-amber-400/70 mb-0.5" />
-                          <span className="text-amber-300 font-display font-bold text-xs sm:text-sm tracking-wider uppercase">
-                            {getInitials(member.nameEn)}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <MemberAvatar
+                    src={member.image}
+                    nameEn={member.nameEn}
+                    borderClasses="border-amber-400/50 group-hover:border-amber-400"
+                  />
 
                   {/* Name and Designation Tag */}
                   <div className="w-full bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border border-amber-400/30 rounded-xl px-3 py-2.5 flex flex-col items-center justify-center min-h-[64px] shadow-sm">
@@ -796,25 +925,11 @@ export default function HomeView({
                   className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center space-y-4 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group shadow-lg"
                 >
                   {/* Spacious Circular Photo Frame */}
-                  <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/50 bg-slate-950 flex items-center justify-center overflow-hidden shadow-md group-hover:border-amber-400 transition-all duration-300 shrink-0">
-                    <div className="relative w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-amber-400 font-display font-black text-xl overflow-hidden">
-                      {officer.image ? (
-                        <img
-                          src={officer.image}
-                          alt={officer.nameEn}
-                          referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover object-top rounded-full relative z-10 transition-transform duration-300 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="flex flex-col items-center justify-center space-y-1">
-                          <User className="w-10 h-10 sm:w-12 sm:h-12 text-amber-400/70 mb-0.5" />
-                          <span className="text-amber-300 font-display font-bold text-xs sm:text-sm tracking-wider uppercase">
-                            {getInitials(officer.nameEn)}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <MemberAvatar
+                    src={officer.image}
+                    nameEn={officer.nameEn}
+                    borderClasses="border-amber-400/50 group-hover:border-amber-400"
+                  />
 
                   {/* Name and Designation Tag */}
                   <div className="w-full bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-amber-500/10 border border-amber-400/30 rounded-xl px-3 py-2.5 flex flex-col items-center justify-center min-h-[64px] shadow-sm">
