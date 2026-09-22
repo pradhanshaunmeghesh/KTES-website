@@ -2,22 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Building2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-// @ts-ignore
-import computerLabImg from '../assets/images/computer_lab.jpg';
-// @ts-ignore
-import computerLabPng from '../assets/images/computer_lab.png';
-// @ts-ignore
-import scienceLabImg from '../assets/images/science_lab.jpg';
-// @ts-ignore
-import scienceLabImg1 from '../assets/images/Science_lab1.jpg';
-// @ts-ignore
-import labImg from '../assets/images/lab.jpg';
-// @ts-ignore
-import physicsLabUploadedImg from '../assets/images/Physics lab.jpg';
-// @ts-ignore
-import biologyLabUploadedImg from '../assets/images/biology lab.jpg';
-// @ts-ignore
-import libraryImg from '../assets/images/library1.jpg';
+const computerLabImg = '/images/computer_lab.jpg';
+const computerLabPng = '/images/computer_lab.png';
+const scienceLabImg = '/images/science_lab.jpg';
+const scienceLabImg1 = '/images/Science_lab1.jpg';
+const labImg = '/images/lab.jpg';
+const physicsLabUploadedImg = '/images/Physics lab.jpg';
+const biologyLabUploadedImg = '/images/biology lab.jpg';
+const libraryImg = '/images/library1.jpg';
 
 interface InfrastructureFacilitiesCarouselProps {
   selectedLang?: 'en' | 'mr' | 'both';

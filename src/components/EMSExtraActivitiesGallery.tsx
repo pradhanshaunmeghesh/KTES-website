@@ -15,54 +15,30 @@ import {
 } from 'lucide-react';
 
 // Imports of EMS and English Medium School extra activity images
-// @ts-ignore
-import emsImg01 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.02 PM.jpeg';
-// @ts-ignore
-import emsImg02 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.03 PM (1).jpeg';
-// @ts-ignore
-import emsImg03 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.03 PM (2).jpeg';
-// @ts-ignore
-import emsImg04 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM.jpeg';
-// @ts-ignore
-import emsImg05 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM (1).jpeg';
-// @ts-ignore
-import emsImg06 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM (2).jpeg';
-// @ts-ignore
-import emsImg07 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.05 PM.jpeg';
-// @ts-ignore
-import emsImg08 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.05 PM (1).jpeg';
-// @ts-ignore
-import emsImg09 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.06 PM.jpeg';
-// @ts-ignore
-import emsImg10 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.06 PM (1).jpeg';
-// @ts-ignore
-import emsImg11 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM.jpeg';
-// @ts-ignore
-import emsImg12 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM (1).jpeg';
-// @ts-ignore
-import emsImg13 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM (2).jpeg';
-// @ts-ignore
-import emsImg14 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.08 PM (1).jpeg';
-// @ts-ignore
-import emsImg15 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.08 PM (2).jpeg';
-// @ts-ignore
-import emsImg16 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.09 PM (1).jpeg';
-// @ts-ignore
-import emsImg17 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.09 PM (2).jpeg';
-// @ts-ignore
-import emsImg18 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.10 PM (2).jpeg';
-// @ts-ignore
-import emsImg19 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.10 PM (3).jpeg';
-// @ts-ignore
-import emsImg20 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.11 PM (1).jpeg';
-// @ts-ignore
-import emsImg21 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.12 PM.jpeg';
-// @ts-ignore
-import emsImg22 from '../assets/images/ems/WhatsApp Image 2026-07-03 at 1.22.12 PM (1).jpeg';
-// @ts-ignore
-import emsScoutImg from '../assets/images/ems/scout.jpg';
-// @ts-ignore
-import emsAssemblyImg from '../assets/images/ems/assembly.jpg';
+const emsImg01 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.02 PM.jpeg';
+const emsImg02 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.03 PM (1).jpeg';
+const emsImg03 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.03 PM (2).jpeg';
+const emsImg04 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM.jpeg';
+const emsImg05 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM (1).jpeg';
+const emsImg06 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM (2).jpeg';
+const emsImg07 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.05 PM.jpeg';
+const emsImg08 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.05 PM (1).jpeg';
+const emsImg09 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.06 PM.jpeg';
+const emsImg10 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.06 PM (1).jpeg';
+const emsImg11 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM.jpeg';
+const emsImg12 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM (1).jpeg';
+const emsImg13 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM (2).jpeg';
+const emsImg14 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.08 PM (1).jpeg';
+const emsImg15 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.08 PM (2).jpeg';
+const emsImg16 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.09 PM (1).jpeg';
+const emsImg17 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.09 PM (2).jpeg';
+const emsImg18 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.10 PM (2).jpeg';
+const emsImg19 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.10 PM (3).jpeg';
+const emsImg20 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.11 PM (1).jpeg';
+const emsImg21 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.12 PM.jpeg';
+const emsImg22 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.12 PM (1).jpeg';
+const emsScoutImg = '/images/ems/scout.jpg';
+const emsAssemblyImg = '/images/ems/assembly.jpg';
 
 interface EMSExtraActivitiesGalleryProps {
   selectedLang?: 'en' | 'mr' | 'both';

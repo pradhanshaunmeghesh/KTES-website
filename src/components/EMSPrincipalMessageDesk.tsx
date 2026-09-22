@@ -14,7 +14,7 @@ export default function EMSPrincipalMessageDesk({
   const [imgError, setImgError] = useState(false);
 
   // Default image path specified in requirements
-  const defaultPhotoPath = '/src/assets/images/ems/principal.jpg';
+  const defaultPhotoPath = '/images/ems/principal.jpg';
   const photoSrc = customPhotoUrl || defaultPhotoPath;
 
   return (

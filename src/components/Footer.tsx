@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Youtube, ExternalLink, GraduationCap, CheckCircle } from 'lucide-react';
-import ktesLogo from '../assets/images/ktes_official_logo_1783686643223.jpg';
+const ktesLogo = '/images/ktes_official_logo_1783686643223.jpg';
 
 interface FooterProps {
   onChangeTab: (tab: string) => void;

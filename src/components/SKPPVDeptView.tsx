@@ -31,11 +31,11 @@ import {
 import SKPPVGallery from './SKPPVGallery';
 import PrimaryStaffSection from './PrimaryStaffSection';
 
-import skppImg1 from '../assets/images/SKPP/SKPP.jpeg';
-import skppImg2 from '../assets/images/SKPP/SKPP_1.jpeg';
-import skppImg3 from '../assets/images/SKPP/SKPP_2.jpeg';
-import skppImg4 from '../assets/images/SKPP/SKPP_3.jpeg';
-import skppImg5 from '../assets/images/SKPP/SKPP_4.jpeg';
+const skppImg1 = '/images/SKPP/SKPP.jpeg';
+const skppImg2 = '/images/SKPP/SKPP_1.jpeg';
+const skppImg3 = '/images/SKPP/SKPP_2.jpeg';
+const skppImg4 = '/images/SKPP/SKPP_3.jpeg';
+const skppImg5 = '/images/SKPP/SKPP_4.jpeg';
 
 export default function SKPPVDeptView() {
   const [selectedLang, setSelectedLang] = useState<'en' | 'mr' | 'both'>('both');

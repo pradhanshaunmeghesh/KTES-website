@@ -11,8 +11,7 @@ import {
   Target,
   Award
 } from 'lucide-react';
-// @ts-ignore
-import schoolSportsGroundImg from '../assets/images/school_sports_ground_1787645807351.jpg';
+const schoolSportsGroundImg = '/images/school_sports_ground_1787645807351.jpg';
 import NationalSportsAchievers from '../components/NationalSportsAchievers';
 import NCCCarousel from '../components/NCCCarousel';
 import NCCGallerySection from '../components/NCCGallerySection';

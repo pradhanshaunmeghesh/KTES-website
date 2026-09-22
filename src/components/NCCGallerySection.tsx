@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'motion/react';
 // Dynamically import all images from NCC folders
 const nccFolderModules = import.meta.glob<{ default: string }>(
   [
+    '../../public/images/NCC/*.{jpg,jpeg,png,JPG,JPEG,PNG,webp,WEBP}',
+    '../../public/images/Gym/NCC/*.{jpg,jpeg,png,JPG,JPEG,PNG,webp,WEBP}',
     '../assets/images/NCC/*.{jpg,jpeg,png,JPG,JPEG,PNG,webp,WEBP}',
     '../assets/images/Gym/NCC/*.{jpg,jpeg,png,JPG,JPEG,PNG,webp,WEBP}'
   ],
@@ -38,12 +40,12 @@ export default function NCCGallerySection({ selectedLang: initialLang = 'both' }
     const seenFilenames = new Set<string>();
 
     Object.entries(nccFolderModules).forEach(([filePath, mod], index) => {
-      const src = typeof mod === 'string' ? mod : (mod as { default?: string })?.default;
-      if (!src) return;
-
       const filename = filePath.split('/').pop() || `ncc-photo-${index + 1}`;
       if (seenFilenames.has(filename)) return;
       seenFilenames.add(filename);
+
+      const subfolder = filePath.includes('Gym/NCC') ? 'Gym/NCC' : 'NCC';
+      const src = `/images/${subfolder}/${filename}`;
 
       // Clean, professional title formatting for cadets gallery
       const photoNumber = uniqueEntries.length + 1;

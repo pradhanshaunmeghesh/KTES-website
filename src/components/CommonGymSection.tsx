@@ -2,19 +2,13 @@ import React, { useState } from 'react';
 import { Dumbbell, Sparkles, ChevronLeft, ChevronRight, X, Maximize2, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-// Import images from assets/images/Gym
-// @ts-ignore
-import gymImg1 from '../assets/images/Gym/WhatsApp Image 2024-08-14 at 10.34.54 AM.jpeg';
-// @ts-ignore
-import gymImg2 from '../assets/images/Gym/WhatsApp Image 2024-11-28 at 1.30.29 PM.jpeg';
-// @ts-ignore
-import gymImg3 from '../assets/images/Gym/WhatsApp Image 2024-11-28 at 1.30.30 PM (1).jpeg';
-// @ts-ignore
-import gymImg4 from '../assets/images/Gym/WhatsApp Image 2024-11-28 at 1.30.30 PM.jpeg';
-// @ts-ignore
-import gymImg5 from '../assets/images/Gym/WhatsApp Image 2024-11-28 at 1.30.32 PM (2).jpeg';
-// @ts-ignore
-import gymImg6 from '../assets/images/Gym/WhatsApp Image 2025-03-04 at 10.40.13 AM (2).jpeg';
+// Import images from public/images/Gym
+const gymImg1 = '/images/Gym/WhatsApp Image 2024-08-14 at 10.34.54 AM.jpeg';
+const gymImg2 = '/images/Gym/WhatsApp Image 2024-11-28 at 1.30.29 PM.jpeg';
+const gymImg3 = '/images/Gym/WhatsApp Image 2024-11-28 at 1.30.30 PM (1).jpeg';
+const gymImg4 = '/images/Gym/WhatsApp Image 2024-11-28 at 1.30.30 PM.jpeg';
+const gymImg5 = '/images/Gym/WhatsApp Image 2024-11-28 at 1.30.32 PM (2).jpeg';
+const gymImg6 = '/images/Gym/WhatsApp Image 2025-03-04 at 10.40.13 AM (2).jpeg';
 
 interface CommonGymSectionProps {
   selectedLang?: 'en' | 'mr' | 'both';

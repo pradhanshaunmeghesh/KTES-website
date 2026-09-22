@@ -1,14 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-// @ts-ignore
-import nccPilotInteraction from '../assets/images/ncc_pilot_interaction_1787651755440.jpg';
-// @ts-ignore
-import nccPilotTarmac from '../assets/images/ncc_pilot_tarmac_1787651772635.jpg';
-// @ts-ignore
-import nccAirForceGallery from '../assets/images/air_force_gallery_1787651788607.jpg';
-// @ts-ignore
-import nccTroopTen from '../assets/images/ncc_troop_ten_1787651805916.jpg';
+const nccPilotInteraction = '/images/ncc_pilot_interaction_1787651755440.jpg';
+const nccPilotTarmac = '/images/ncc_pilot_tarmac_1787651772635.jpg';
+const nccAirForceGallery = '/images/air_force_gallery_1787651788607.jpg';
+const nccTroopTen = '/images/ncc_troop_ten_1787651805916.jpg';
 
 export default function NCCCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);

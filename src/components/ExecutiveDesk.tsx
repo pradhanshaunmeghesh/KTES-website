@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion } from 'motion/react';
-// @ts-ignore
-import chairmanImg from '../assets/images/Chairman.png';
+const chairmanImg = '/images/Chairman.png';
 
 interface ExecutiveDeskProps {
   className?: string;

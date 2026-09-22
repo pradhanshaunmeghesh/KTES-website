@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, BookOpen, GraduationCap, ShieldAlert, Award, School } from 'lucide-react';
-import ktesLogo from '../assets/images/ktes_official_logo_1783686643223.jpg';
+const ktesLogo = '/images/ktes_official_logo_1783686643223.jpg';
 import NewsTicker from './NewsTicker';
 
 interface HeaderProps {

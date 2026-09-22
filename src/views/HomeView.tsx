@@ -34,24 +34,17 @@ import {
   Landmark
 } from 'lucide-react';
 import { motion } from 'motion/react';
-// @ts-ignore
-import ktesCampusImg from '../assets/images/ktes_actual_banner_1783586668608.jpg';
-// @ts-ignore
-import chairmanImg from '../assets/images/Chairman.png';
-// Dynamic Vite asset URLs for past presidents
-const dhanrajKatareImg = new URL('../assets/images/presidents/dhanraj katare.jpg', import.meta.url).href;
-const khushalchandLunawatImg = new URL('../assets/images/presidents/khushalchand lunawat.jpg', import.meta.url).href;
-const moreshwarSutarImg = new URL('../assets/images/presidents/Late Moreshwar Sutar.jpg', import.meta.url).href;
-const narharKulkarniImg = new URL('../assets/images/presidents/Late Narhar Kulkarni.jpg', import.meta.url).href;
-const naryanGhumatkarImg = new URL('../assets/images/presidents/Late Naryan Ghumatkar.jpg', import.meta.url).href;
-const raghunathJoshiImg = new URL('../assets/images/presidents/raghunath joshi.jpg', import.meta.url).href;
-const vishnuPathakImg = new URL('../assets/images/presidents/vishnu (dadasaheb) pathak.jpg', import.meta.url).href;
+const ktesCampusImg = '/images/ktes_actual_banner_1783586668608.jpg';
+const chairmanImg = '/images/Chairman.png';
 
-// Vite dynamic asset resolution & mapping for presidents
-const presidentImages = import.meta.glob<{ default: string }>(
-  '../assets/images/presidents/*.{jpg,jpeg,JPG,JPEG}',
-  { eager: true }
-);
+// Static /images/ asset URLs for past presidents
+const dhanrajKatareImg = '/images/presidents/dhanraj katare.jpg';
+const khushalchandLunawatImg = '/images/presidents/khushalchand lunawat.jpg';
+const moreshwarSutarImg = '/images/presidents/Late Moreshwar Sutar.jpg';
+const narharKulkarniImg = '/images/presidents/Late Narhar Kulkarni.jpg';
+const naryanGhumatkarImg = '/images/presidents/Late Naryan Ghumatkar.jpg';
+const raghunathJoshiImg = '/images/presidents/raghunath joshi.jpg';
+const vishnuPathakImg = '/images/presidents/vishnu (dadasaheb) pathak.jpg';
 
 const PRESIDENT_PHOTO_MAP: Record<string, string> = {
   // Late Naryan Ghumatkar
@@ -63,18 +56,51 @@ const PRESIDENT_PHOTO_MAP: Record<string, string> = {
   '/src/assets/images/presidents/Late Narayan Ghumatkar.jpg': naryanGhumatkarImg,
   '/src/assets/images/presidents/Naryan Ghumatkar.jpg': naryanGhumatkarImg,
   '/src/assets/images/presidents/Narayan Ghumatkar.jpg': naryanGhumatkarImg,
+  '/images/presidents/Late Naryan Ghumatkar.jpg': naryanGhumatkarImg,
+  '/images/presidents/Late Narayan Ghumatkar.jpg': naryanGhumatkarImg,
+  '/images/presidents/Naryan Ghumatkar.jpg': naryanGhumatkarImg,
+  '/images/presidents/Narayan Ghumatkar.jpg': naryanGhumatkarImg,
 
   // Late Moreshwar Sutar
   'Late Moreshwar Sutar': moreshwarSutarImg,
   'Moreshwar Sutar': moreshwarSutarImg,
   '/src/assets/images/presidents/Late Moreshwar Sutar.jpg': moreshwarSutarImg,
   '/src/assets/images/presidents/Moreshwar Sutar.jpg': moreshwarSutarImg,
+  '/images/presidents/Late Moreshwar Sutar.jpg': moreshwarSutarImg,
+  '/images/presidents/Moreshwar Sutar.jpg': moreshwarSutarImg,
 
   // Late Narhar Kulkarni
   'Late Narhar Kulkarni': narharKulkarniImg,
   'Narhar Kulkarni': narharKulkarniImg,
   '/src/assets/images/presidents/Late Narhar Kulkarni.jpg': narharKulkarniImg,
   '/src/assets/images/presidents/Narhar Kulkarni.jpg': narharKulkarniImg,
+  '/images/presidents/Late Narhar Kulkarni.jpg': narharKulkarniImg,
+  '/images/presidents/Narhar Kulkarni.jpg': narharKulkarniImg,
+
+  // Late Dhanraj Katare
+  'Late Dhanraj Katare': dhanrajKatareImg,
+  'Dhanraj Katare': dhanrajKatareImg,
+  '/src/assets/images/presidents/dhanraj katare.jpg': dhanrajKatareImg,
+  '/images/presidents/dhanraj katare.jpg': dhanrajKatareImg,
+
+  // Late Khushalchand Lunawat
+  'Late Khushalchand Lunawat': khushalchandLunawatImg,
+  'Khushalchand Lunawat': khushalchandLunawatImg,
+  '/src/assets/images/presidents/khushalchand lunawat.jpg': khushalchandLunawatImg,
+  '/images/presidents/khushalchand lunawat.jpg': khushalchandLunawatImg,
+
+  // Late Raghunath Joshi
+  'Late Raghunath Joshi': raghunathJoshiImg,
+  'Raghunath Joshi': raghunathJoshiImg,
+  '/src/assets/images/presidents/raghunath joshi.jpg': raghunathJoshiImg,
+  '/images/presidents/raghunath joshi.jpg': raghunathJoshiImg,
+
+  // Late Vishnu (Dadasaheb) Pathak
+  'Late Vishnu (Dadasaheb) Pathak': vishnuPathakImg,
+  'Vishnu (Dadasaheb) Pathak': vishnuPathakImg,
+  'Vishnu Pathak': vishnuPathakImg,
+  '/src/assets/images/presidents/vishnu (dadasaheb) pathak.jpg': vishnuPathakImg,
+  '/images/presidents/vishnu (dadasaheb) pathak.jpg': vishnuPathakImg,
 };
 
 function resolvePresidentPath(pathOrUrl: string, nameEn?: string): string {
@@ -85,71 +111,70 @@ function resolvePresidentPath(pathOrUrl: string, nameEn?: string): string {
   if (nameEn && PRESIDENT_PHOTO_MAP[nameEn]) {
     return PRESIDENT_PHOTO_MAP[nameEn];
   }
-  const cleanFilename = pathOrUrl ? decodeURIComponent(pathOrUrl.split('/').pop()?.split('?')[0] || '').toLowerCase() : '';
-  for (const [key, value] of Object.entries(presidentImages)) {
-    const keyClean = key.split('/').pop()?.toLowerCase() || '';
-    if (cleanFilename && (keyClean === cleanFilename || keyClean.includes(cleanFilename) || cleanFilename.includes(keyClean))) {
-      return typeof value === 'string' ? value : value?.default;
+  if (pathOrUrl) {
+    if (pathOrUrl.startsWith('/images/')) return pathOrUrl;
+    if (pathOrUrl.startsWith('/src/assets/images/')) {
+      return pathOrUrl.replace('/src/assets/images/', '/images/');
     }
-    if (nameEn) {
-      const stripped = nameEn.replace(/^late\s+/i, '').trim().toLowerCase();
-      if (keyClean.includes(stripped)) {
-        return typeof value === 'string' ? value : value?.default;
-      }
+    if (pathOrUrl.startsWith('../assets/images/')) {
+      return pathOrUrl.replace('../assets/images/', '/images/');
     }
+    return pathOrUrl;
   }
-  return pathOrUrl || '';
+  return '';
 }
-// Member photos from Ktes Current Body
-// @ts-ignore
-import ajitLunawatImg from '../assets/images/Ktes Current Body/Shri Ajit Lunawat.jpg';
-// @ts-ignore
-import ganeshJoshiImg from '../assets/images/Ktes Current Body/Air Commodore Shri Ganesh Joshi.jpg';
-// @ts-ignore
-import kailasSandbhorImg from '../assets/images/Ktes Current Body/Shri. Kailas Sandbhor.jpg';
-// @ts-ignore
-import pradeepShewaleImg from '../assets/images/Ktes Current Body/Dr. Shri. Pradeep Shewale.jpg';
-// @ts-ignore
-import sandeepBhosaleImg from '../assets/images/Ktes Current Body/Adv. Shri. Sandeep Bhosale.jpg';
-// @ts-ignore
-import urmilaSandbhorImg from '../assets/images/Ktes Current Body/Sau. Urmila Sandbhor.jpg';
-// @ts-ignore
-import rahulKumbharImg from '../assets/images/Ktes Current Body/Shri Rahul Prabhakar Kumbhar.jpg';
-// @ts-ignore
-import swanandKhedkarImg from '../assets/images/Ktes Current Body/Shri Swanand Vilas Khedkar.jpg';
+// Member photos from Ktes Current Body referencing static public /images/
+const ajitLunawatImg = '/images/Ktes Current Body/Shri Ajit Lunawat.jpg';
+const ganeshJoshiImg = '/images/Ktes Current Body/Air Commodore Shri Ganesh Joshi.jpg';
+const kailasSandbhorImg = '/images/Ktes Current Body/Shri. Kailas Sandbhor.jpg';
+const pradeepShewaleImg = '/images/Ktes Current Body/Dr. Shri. Pradeep Shewale.jpg';
+const sandeepBhosaleImg = '/images/Ktes Current Body/Adv. Shri. Sandeep Bhosale.jpg';
+const urmilaSandbhorImg = '/images/Ktes Current Body/Sau. Urmila Sandbhor.jpg';
+const rahulKumbharImg = '/images/Ktes Current Body/Shri Rahul Prabhakar Kumbhar.jpg';
+const swanandKhedkarImg = '/images/Ktes Current Body/Shri Swanand Vilas Khedkar.jpg';
 
-// Dynamically load any additional or future photos added into Ktes Current Body
-const bodyPhotoModules = import.meta.glob<{ default: string }>(
-  '../assets/images/Ktes Current Body/*.{jpg,jpeg,JPG,JPEG,png,PNG}',
-  { eager: true }
-);
-
-const currentBodyPhotosMap: Record<string, string> = {};
-Object.entries(bodyPhotoModules).forEach(([filePath, mod]) => {
-  const filename = filePath.split('/').pop() || '';
-  const cleanFilename = filename.replace(/\.[^/.]+$/, '').trim().toLowerCase();
-  const url = typeof mod === 'string' ? mod : mod?.default;
-  if (url) {
-    currentBodyPhotosMap[filename.toLowerCase()] = url;
-    currentBodyPhotosMap[cleanFilename] = url;
-    const stripped = cleanFilename
-      .replace(/^(air commodore|shri|smt|sau|dr|adv|\.)\s*/gi, '')
-      .replace(/\./g, '')
-      .trim();
-    currentBodyPhotosMap[stripped] = url;
-  }
-});
+const CURRENT_BODY_IMAGE_PATHS: Record<string, string> = {
+  'ajit lunawat': ajitLunawatImg,
+  'shri. ajit lunawat': ajitLunawatImg,
+  'shri ajit lunawat': ajitLunawatImg,
+  'air commodore shri ganesh joshi': ganeshJoshiImg,
+  'ganesh joshi': ganeshJoshiImg,
+  'shri. kailas sandbhor': kailasSandbhorImg,
+  'shri kailas sandbhor': kailasSandbhorImg,
+  'kailas sandbhor': kailasSandbhorImg,
+  'dr. shri. pradeep shewale': pradeepShewaleImg,
+  'dr shri pradeep shewale': pradeepShewaleImg,
+  'pradeep shewale': pradeepShewaleImg,
+  'adv. shri. sandeep bhosale': sandeepBhosaleImg,
+  'adv shri sandeep bhosale': sandeepBhosaleImg,
+  'sandeep bhosale': sandeepBhosaleImg,
+  'sau. urmila sandbhor': urmilaSandbhorImg,
+  'sau urmila sandbhor': urmilaSandbhorImg,
+  'urmila sandbhor': urmilaSandbhorImg,
+  'shri rahul prabhakar kumbhar': rahulKumbharImg,
+  'rahul kumbhar': rahulKumbharImg,
+  'shri swanand vilas khedkar': swanandKhedkarImg,
+  'swanand khedkar': swanandKhedkarImg,
+};
 
 function getBodyMemberImage(nameEn: string, staticImg?: string | null): string | null {
-  if (staticImg) return staticImg;
+  if (staticImg) {
+    if (staticImg.startsWith('/src/assets/images/')) {
+      return staticImg.replace('/src/assets/images/', '/images/');
+    }
+    if (staticImg.startsWith('../assets/images/')) {
+      return staticImg.replace('../assets/images/', '/images/');
+    }
+    return staticImg;
+  }
   const clean = nameEn.trim().toLowerCase();
-  if (currentBodyPhotosMap[clean]) return currentBodyPhotosMap[clean];
+  if (CURRENT_BODY_IMAGE_PATHS[clean]) return CURRENT_BODY_IMAGE_PATHS[clean];
   const stripped = clean
     .replace(/^(air commodore|shri|smt|sau|dr|adv|\.)\s*/gi, '')
     .replace(/\./g, '')
     .trim();
-  if (currentBodyPhotosMap[stripped]) return currentBodyPhotosMap[stripped];
-  for (const [key, url] of Object.entries(currentBodyPhotosMap)) {
+  if (CURRENT_BODY_IMAGE_PATHS[stripped]) return CURRENT_BODY_IMAGE_PATHS[stripped];
+  for (const [key, url] of Object.entries(CURRENT_BODY_IMAGE_PATHS)) {
     if (stripped.length >= 4 && (key.includes(stripped) || stripped.includes(key))) {
       return url;
     }
@@ -382,14 +407,24 @@ function MemberAvatar({
   }, [src]);
 
   const handleImageError = () => {
-    // If the primary image failed to load, attempt fallback from presidentImages glob
+    // If the primary image failed to load, check alternative static paths
     if (nameEn) {
       const stripped = nameEn.replace(/^late\s+/i, '').trim().toLowerCase();
-      for (const [key, value] of Object.entries(presidentImages)) {
-        const keyLower = key.toLowerCase();
-        const altUrl = typeof value === 'string' ? value : value?.default;
-        if (altUrl && altUrl !== currentSrc && keyLower.includes(stripped.slice(0, 5))) {
-          setCurrentSrc(altUrl);
+      if (stripped.includes('ghumatkar')) {
+        if (currentSrc !== '/images/presidents/Late Naryan Ghumatkar.jpg') {
+          setCurrentSrc('/images/presidents/Late Naryan Ghumatkar.jpg');
+          return;
+        }
+      }
+      if (stripped.includes('sutar')) {
+        if (currentSrc !== '/images/presidents/Late Moreshwar Sutar.jpg') {
+          setCurrentSrc('/images/presidents/Late Moreshwar Sutar.jpg');
+          return;
+        }
+      }
+      if (stripped.includes('kulkarni')) {
+        if (currentSrc !== '/images/presidents/Late Narhar Kulkarni.jpg') {
+          setCurrentSrc('/images/presidents/Late Narhar Kulkarni.jpg');
           return;
         }
       }

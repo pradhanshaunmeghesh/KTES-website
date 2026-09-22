@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-// @ts-ignore
-import library1 from '../assets/images/library1.jpg';
-// @ts-ignore
-import library2 from '../assets/images/library2.jpg';
+const library1 = '/images/library1.jpg';
+const library2 = '/images/library2.jpg';
 
 interface LibraryCarouselProps {
   selectedLang: 'en' | 'mr' | 'both';

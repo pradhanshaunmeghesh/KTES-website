@@ -9,10 +9,8 @@ import {
   ClassSchedule,
   LibraryBook
 } from '../types';
-// @ts-ignore
-import chairmanImg from '../assets/images/Chairman.png';
-// @ts-ignore
-import computerLabImg from '../assets/images/computer_lab.jpg';
+const chairmanImg = '/images/Chairman.png';
+const computerLabImg = '/images/computer_lab.jpg';
 
 export const INITIAL_ANNOUNCEMENTS: Announcement[] = [
   {
