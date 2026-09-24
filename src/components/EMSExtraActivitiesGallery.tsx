@@ -14,31 +14,26 @@ import {
   Flag
 } from 'lucide-react';
 
-// Imports of EMS and English Medium School extra activity images
-const emsImg01 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.02 PM.jpeg';
-const emsImg02 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.03 PM (1).jpeg';
-const emsImg03 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.03 PM (2).jpeg';
-const emsImg04 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM.jpeg';
-const emsImg05 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM (1).jpeg';
-const emsImg06 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.04 PM (2).jpeg';
-const emsImg07 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.05 PM.jpeg';
-const emsImg08 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.05 PM (1).jpeg';
-const emsImg09 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.06 PM.jpeg';
-const emsImg10 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.06 PM (1).jpeg';
-const emsImg11 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM.jpeg';
-const emsImg12 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM (1).jpeg';
-const emsImg13 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.07 PM (2).jpeg';
-const emsImg14 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.08 PM (1).jpeg';
-const emsImg15 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.08 PM (2).jpeg';
-const emsImg16 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.09 PM (1).jpeg';
-const emsImg17 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.09 PM (2).jpeg';
-const emsImg18 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.10 PM (2).jpeg';
-const emsImg19 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.10 PM (3).jpeg';
-const emsImg20 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.11 PM (1).jpeg';
-const emsImg21 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.12 PM.jpeg';
-const emsImg22 = '/images/ems/WhatsApp Image 2026-07-03 at 1.22.12 PM (1).jpeg';
-const emsScoutImg = '/images/ems/scout.jpg';
-const emsAssemblyImg = '/images/ems/assembly.jpg';
+// Static public assets for EMS extra activities gallery from /images/EMS/
+const emsImg01 = '/images/EMS/extra activities 1.jpeg';
+const emsImg02 = '/images/EMS/extra activities 2.jpeg';
+const emsImg03 = '/images/EMS/extra activities 3.jpeg';
+const emsImg04 = '/images/EMS/extra activities 4.jpeg';
+const emsImg05 = '/images/EMS/extra activities 5.jpeg';
+const emsImg06 = '/images/EMS/extra activities 6.jpeg';
+const emsImg07 = '/images/EMS/extra activities 7.jpeg';
+const emsImg08 = '/images/EMS/extra activities 8.jpeg';
+const emsImg09 = '/images/EMS/extra activities 9.jpeg';
+const emsImg10 = '/images/EMS/extra activities 10.jpeg';
+const emsImg11 = '/images/EMS/extra activities 11.jpeg';
+const emsImg12 = '/images/EMS/extra activities 12.jpeg';
+const emsImg13 = '/images/EMS/extra activities 13.jpeg';
+const emsImg14 = '/images/EMS/extra activities 14.jpeg';
+const emsImg15 = '/images/EMS/extra activities 15.jpeg';
+const emsImg16 = '/images/EMS/extra activities 16.jpeg';
+const emsImg17 = '/images/EMS/extra activities 17.jpeg';
+const emsImg18 = '/images/EMS/extra activities 18.jpeg';
+const emsImg19 = '/images/EMS/extra activities.jpeg';
 
 interface EMSExtraActivitiesGalleryProps {
   selectedLang?: 'en' | 'mr' | 'both';
@@ -56,7 +51,7 @@ export default function EMSExtraActivitiesGallery({
     }
   }, [initialLang]);
 
-  // Gallery item collection with 24 photos
+  // Gallery item collection with 19 photos
   const activityItems = [
     {
       id: 'ems-act-1',
@@ -263,64 +258,9 @@ export default function EMSExtraActivitiesGallery({
       badgeColor: 'bg-indigo-500/90 text-white border-indigo-300 font-bold',
       category: 'Celebration',
       titleEn: 'Art & Craft Exhibition - Srujan Gallery',
-      titleMr: 'चित्रकला व हस्तकला प्रदर्शन',
+      titleMr: 'चित्रकला व हस्तकला प्रदर्शन - सृजन दालन',
       descEn: 'Vibrant sketches, origami structures, and eco-friendly handicrafts by young creators.',
-      descMr: 'विद्यार्थ्यांच्या हस्तकला व चित्रकलेचे प्रदर्शन.'
-    },
-    {
-      id: 'ems-act-20',
-      src: emsImg20,
-      badge: 'NATIONAL LEVEL',
-      badgeColor: 'bg-amber-400 text-slate-950 border-amber-300 font-black',
-      category: 'Achievement',
-      titleEn: 'National Delegation Champions Trophy Pose',
-      titleMr: 'राष्ट्रीय विजेत्यांची विजयी मुद्रा व चषक',
-      descEn: 'The pride of K.T.E.S English Medium School holding their national tournament laurels.',
-      descMr: 'राष्ट्रीय स्तरावर शाळेचे नाव उज्ज्वल करणारे खेळाडू व मार्गदर्शक.'
-    },
-    {
-      id: 'ems-act-21',
-      src: emsImg21,
-      badge: 'SCOUTS & GUIDES',
-      badgeColor: 'bg-indigo-600/90 text-white border-indigo-400/50',
-      category: 'Discipline',
-      titleEn: 'Scouts Patrol Flag Hoisting & Campfire Drills',
-      titleMr: 'स्काऊट ध्वजवंदन व शिबिर प्रात्यक्षिके',
-      descEn: 'Evening campfire camaraderie, oath-taking, and character-building exercises.',
-      descMr: 'स्काऊट-गाईड प्रतिज्ञा व शिबिर उपक्रम.'
-    },
-    {
-      id: 'ems-act-22',
-      src: emsImg22,
-      badge: 'CULTURAL FEST',
-      badgeColor: 'bg-rose-500/90 text-white border-rose-300 font-bold',
-      category: 'Celebration',
-      titleEn: 'Theatrical Drama & Roleplay Performances',
-      titleMr: 'नाट्य सादरीकरण व वक्तृत्व स्पर्धा',
-      descEn: 'Historical skits and moral storytelling enacted by talented students.',
-      descMr: 'विद्यार्थ्यांचे प्रभावी नाट्य व अभिनय सादरीकरण.'
-    },
-    {
-      id: 'ems-act-23',
-      src: emsScoutImg,
-      badge: 'SCOUTS & GUIDES',
-      badgeColor: 'bg-blue-600/90 text-white border-blue-400/50',
-      category: 'Discipline',
-      titleEn: 'Official Bharat Scout Uniform Squad',
-      titleMr: 'स्काऊट गणवेशधारी पथक व शिस्त',
-      descEn: 'Ceremonial parade inspection and state merit badges presentation.',
-      descMr: 'शिस्तबद्ध स्काऊट पथक आणि पदक विजेते.'
-    },
-    {
-      id: 'ems-act-24',
-      src: emsAssemblyImg,
-      badge: 'CAMPUS EVENT',
-      badgeColor: 'bg-amber-400 text-slate-950 border-amber-300 font-black',
-      category: 'Celebration',
-      titleEn: 'Morning Assembly & Value Education Gathering',
-      titleMr: 'दैनिक शालेय परिपाठ व संस्कार मूल्ये',
-      descEn: 'Daily prayer chants, news reading, thoughts for the day, and collective national anthem.',
-      descMr: 'शांत व शिस्तप्रिय वातावरणात होणारा दैनिक परिपाठ.'
+      descMr: 'विद्यार्थ्यांच्या हस्तकला, सृजनशीलता व चित्रकलेचे प्रदर्शन.'
     }
   ];
 
@@ -375,7 +315,7 @@ export default function EMSExtraActivitiesGallery({
         </div>
       </div>
 
-      {/* 2. Multi-Photo Gallery Grid (Clean Full-Frame Photo Boxes) */}
+      {/* 2. Multi-Photo Gallery Grid (Clean Full-Frame Photo Boxes with Badges & Titles) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
         {activityItems.map((item) => (
           <div
@@ -393,13 +333,33 @@ export default function EMSExtraActivitiesGallery({
               alt={item.titleEn}
               className="w-full h-full object-cover object-center transform group-hover:scale-108 transition-transform duration-500 filter brightness-[0.95] contrast-[1.02]"
               referrerPolicy="no-referrer"
+              loading="lazy"
             />
 
+            {/* Badge overlay at top-left */}
+            <div className="absolute top-3 left-3 z-10">
+              <span className={`inline-block text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-lg uppercase tracking-wider backdrop-blur-md shadow-lg ${item.badgeColor || 'bg-slate-950/80 text-amber-300 border border-amber-400/40'}`}>
+                {item.badge}
+              </span>
+            </div>
+
             {/* Zoom Icon Indicator on Hover */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/25 backdrop-blur-[1px] pointer-events-none">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/25 backdrop-blur-[1px] pointer-events-none z-10">
               <div className="bg-slate-950/80 text-amber-300 border border-amber-400/40 rounded-full p-2.5 shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
                 <Maximize2 className="w-4 h-4 text-amber-400" />
               </div>
+            </div>
+
+            {/* Bottom Caption Overlay */}
+            <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent z-10">
+              <p className="text-white text-xs font-bold truncate group-hover:text-amber-300 transition-colors">
+                {selectedLang === 'mr' ? item.titleMr : selectedLang === 'en' ? item.titleEn : item.titleEn}
+              </p>
+              {selectedLang === 'both' && (
+                <p className="text-amber-400/90 text-[10px] font-medium truncate">
+                  {item.titleMr}
+                </p>
+              )}
             </div>
           </div>
         ))}
@@ -417,7 +377,7 @@ export default function EMSExtraActivitiesGallery({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center space-x-3">
-              <span className="bg-amber-400/20 text-amber-300 border border-amber-400/40 text-xs font-mono font-bold px-3 py-1 rounded-full uppercase">
+              <span className={`text-xs font-mono font-bold px-3 py-1 rounded-full uppercase border ${activityItems[lightboxIndex].badgeColor || 'bg-amber-400/20 text-amber-300 border-amber-400/40'}`}>
                 {activityItems[lightboxIndex].badge}
               </span>
               <span className="text-slate-400 text-xs sm:text-sm font-mono">
@@ -483,11 +443,18 @@ export default function EMSExtraActivitiesGallery({
           >
             <div className="space-y-1 text-center sm:text-left">
               <h4 className="text-white font-display font-black text-sm sm:text-base">
-                {activityItems[lightboxIndex].titleEn}{' '}
-                <span className="text-amber-400">| {activityItems[lightboxIndex].titleMr}</span>
+                {selectedLang === 'mr'
+                  ? activityItems[lightboxIndex].titleMr
+                  : selectedLang === 'en'
+                  ? activityItems[lightboxIndex].titleEn
+                  : `${activityItems[lightboxIndex].titleEn} | ${activityItems[lightboxIndex].titleMr}`}
               </h4>
-              <p className="text-slate-300 text-xs sm:text-sm">
-                {activityItems[lightboxIndex].descEn}
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                {selectedLang === 'mr'
+                  ? activityItems[lightboxIndex].descMr
+                  : selectedLang === 'en'
+                  ? activityItems[lightboxIndex].descEn
+                  : `${activityItems[lightboxIndex].descEn} — ${activityItems[lightboxIndex].descMr}`}
               </p>
             </div>
 
