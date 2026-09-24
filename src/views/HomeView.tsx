@@ -133,6 +133,12 @@ const sandeepBhosaleImg = '/images/Ktes Current Body/Adv. Shri. Sandeep Bhosale.
 const urmilaSandbhorImg = '/images/Ktes Current Body/Sau. Urmila Sandbhor.jpg';
 const rahulKumbharImg = '/images/Ktes Current Body/Shri Rahul Prabhakar Kumbhar.jpg';
 const swanandKhedkarImg = '/images/Ktes Current Body/Shri Swanand Vilas Khedkar.jpg';
+const hiramanSatkarImg = '/images/Ktes Current Body/Shri. Hiraman Satkar.jpg';
+const pradeepKaswaImg = '/images/Ktes Current Body/Shri. Pradeep Kaswa.jpg';
+const ganeshGhumatkarImg = '/images/Ktes Current Body/Shri. Ganesh Ghumatkar.jpg';
+const prakashBhansaliImg = '/images/Ktes Current Body/Shri. Prakash Bhansali.jpg';
+const dattatrayaSandbhorImg = '/images/Ktes Current Body/Shri. Dattatraya Sandbhor.jpg';
+const surekhaShrotriyaImg = '/images/Ktes Current Body/Smt. Surekha Shrotriya.jpeg';
 
 const CURRENT_BODY_IMAGE_PATHS: Record<string, string> = {
   'ajit lunawat': ajitLunawatImg,
@@ -160,6 +166,24 @@ const CURRENT_BODY_IMAGE_PATHS: Record<string, string> = {
   'kailash raghunath pacharne': kailashPacharneImg,
   'kailash pacharne': kailashPacharneImg,
   'pacharne': kailashPacharneImg,
+  'shri. hiraman satkar': hiramanSatkarImg,
+  'shri hiraman satkar': hiramanSatkarImg,
+  'hiraman satkar': hiramanSatkarImg,
+  'shri. pradeep kaswa': pradeepKaswaImg,
+  'shri pradeep kaswa': pradeepKaswaImg,
+  'pradeep kaswa': pradeepKaswaImg,
+  'shri. ganesh ghumatkar': ganeshGhumatkarImg,
+  'shri ganesh ghumatkar': ganeshGhumatkarImg,
+  'ganesh ghumatkar': ganeshGhumatkarImg,
+  'shri. prakash bhansali': prakashBhansaliImg,
+  'shri prakash bhansali': prakashBhansaliImg,
+  'prakash bhansali': prakashBhansaliImg,
+  'shri. dattatraya sandbhor': dattatrayaSandbhorImg,
+  'shri dattatraya sandbhor': dattatrayaSandbhorImg,
+  'dattatraya sandbhor': dattatrayaSandbhorImg,
+  'smt. surekha shrotriya': surekhaShrotriyaImg,
+  'smt surekha shrotriya': surekhaShrotriyaImg,
+  'surekha shrotriya': surekhaShrotriyaImg,
 };
 
 function getBodyMemberImage(nameEn: string, staticImg?: string | null): string | null {
@@ -268,7 +292,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. हिरामाण सातकर',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: getBodyMemberImage('Shri. Hiraman Satkar'),
+    image: hiramanSatkarImg,
     isExecutive: false
   },
   {
@@ -304,7 +328,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. प्रदीप कासवा',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: getBodyMemberImage('Shri. Pradeep Kaswa'),
+    image: pradeepKaswaImg,
     isExecutive: false
   },
   {
@@ -313,7 +337,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. गणेश घुमटकर',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: getBodyMemberImage('Shri. Ganesh Ghumatkar'),
+    image: ganeshGhumatkarImg,
     isExecutive: false
   },
   {
@@ -322,7 +346,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. प्रकाश भनसाळी',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: getBodyMemberImage('Shri. Prakash Bhansali'),
+    image: prakashBhansaliImg,
     isExecutive: false
   },
   {
@@ -331,7 +355,7 @@ const TRUST_BOARD = [
     nameMr: 'श्री. दत्तात्रय सांडभोर',
     designationEn: 'Member',
     designationMr: 'संचालक',
-    image: getBodyMemberImage('Shri. Dattatraya Sandbhor'),
+    image: dattatrayaSandbhorImg,
     isExecutive: false
   },
   {
@@ -340,7 +364,7 @@ const TRUST_BOARD = [
     nameMr: 'श्रीमती सुरेखा श्रोत्रिय',
     designationEn: 'Member',
     designationMr: 'संचालिका',
-    image: getBodyMemberImage('Smt. Surekha Shrotriya'),
+    image: surekhaShrotriyaImg,
     isExecutive: false
   },
   {
@@ -416,9 +440,16 @@ function MemberAvatar({
     if (nameEn) {
       const stripped = nameEn.replace(/^late\s+/i, '').trim().toLowerCase();
       if (stripped.includes('ghumatkar')) {
-        if (currentSrc !== '/images/presidents/Late Naryan Ghumatkar.jpg') {
-          setCurrentSrc('/images/presidents/Late Naryan Ghumatkar.jpg');
-          return;
+        if (stripped.includes('ganesh')) {
+          if (currentSrc !== '/images/Ktes Current Body/Shri. Ganesh Ghumatkar.jpg') {
+            setCurrentSrc('/images/Ktes Current Body/Shri. Ganesh Ghumatkar.jpg');
+            return;
+          }
+        } else {
+          if (currentSrc !== '/images/presidents/Late Naryan Ghumatkar.jpg') {
+            setCurrentSrc('/images/presidents/Late Naryan Ghumatkar.jpg');
+            return;
+          }
         }
       }
       if (stripped.includes('sutar')) {
@@ -436,6 +467,40 @@ function MemberAvatar({
       if (stripped.includes('pacharne')) {
         if (currentSrc !== '/images/presidents/Shri Kailash Raghunath Pacharne.jpg') {
           setCurrentSrc('/images/presidents/Shri Kailash Raghunath Pacharne.jpg');
+          return;
+        }
+      }
+      if (stripped.includes('satkar')) {
+        if (currentSrc !== '/images/Ktes Current Body/Shri. Hiraman Satkar.jpg') {
+          setCurrentSrc('/images/Ktes Current Body/Shri. Hiraman Satkar.jpg');
+          return;
+        }
+      }
+      if (stripped.includes('kaswa')) {
+        if (currentSrc !== '/images/Ktes Current Body/Shri. Pradeep Kaswa.jpg') {
+          setCurrentSrc('/images/Ktes Current Body/Shri. Pradeep Kaswa.jpg');
+          return;
+        }
+      }
+      if (stripped.includes('bhansali')) {
+        if (currentSrc !== '/images/Ktes Current Body/Shri. Prakash Bhansali.jpg') {
+          setCurrentSrc('/images/Ktes Current Body/Shri. Prakash Bhansali.jpg');
+          return;
+        }
+      }
+      if (stripped.includes('dattatraya')) {
+        if (currentSrc !== '/images/Ktes Current Body/Shri. Dattatraya Sandbhor.jpg') {
+          setCurrentSrc('/images/Ktes Current Body/Shri. Dattatraya Sandbhor.jpg');
+          return;
+        }
+      }
+      if (stripped.includes('shrotriya')) {
+        if (currentSrc !== '/images/Ktes Current Body/Smt. Surekha Shrotriya.jpeg' && currentSrc !== '/images/Ktes Current Body/Smt. Surekha Shrotriya.jpg') {
+          setCurrentSrc('/images/Ktes Current Body/Smt. Surekha Shrotriya.jpeg');
+          return;
+        }
+        if (currentSrc === '/images/Ktes Current Body/Smt. Surekha Shrotriya.jpeg') {
+          setCurrentSrc('/images/Ktes Current Body/Smt. Surekha Shrotriya.jpg');
           return;
         }
       }
