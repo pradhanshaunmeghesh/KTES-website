@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Youtube, ExternalLink, GraduationCap, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Youtube, ExternalLink, GraduationCap, CheckCircle, Navigation, Compass } from 'lucide-react';
+import GoogleMapsLocation, { KTES_DIRECTIONS_URL, KTES_PLUS_CODE } from './GoogleMapsLocation';
 const ktesLogo = '/images/ktes_official_logo_1783686643223.jpg';
 
 interface FooterProps {
@@ -9,6 +10,7 @@ interface FooterProps {
 export default function Footer({ onChangeTab }: FooterProps) {
   const [emailValue, setEmailValue] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [showFooterMap, setShowFooterMap] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -140,22 +142,59 @@ export default function Footer({ onChangeTab }: FooterProps) {
               )}
             </div>
 
-            <div className="space-y-2 text-xs text-gray-400 border-t border-white/10 pt-4">
+            <div className="space-y-2.5 text-xs text-gray-400 border-t border-white/10 pt-4">
+              <a
+                href={KTES_DIRECTIONS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start space-x-2 text-slate-300 hover:text-amber-300 transition-colors group"
+                title="Get Google Maps Driving Directions"
+              >
+                <MapPin className="h-4 w-4 text-amber-400 mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
+                <div>
+                  <span className="block text-white font-medium">KTES Campus Location</span>
+                  <span className="font-mono text-[11px] text-amber-300/90">{KTES_PLUS_CODE}</span>
+                </div>
+              </a>
               <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-secondary" />
-                <span>VV4P+JPR, Rajgurunagar, Maharashtra 410505</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-secondary" />
+                <Phone className="h-4 w-4 text-amber-400 shrink-0" />
                 <span>+91 22 2567-9034 / 2568-9122</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-secondary" />
+                <Mail className="h-4 w-4 text-amber-400 shrink-0" />
                 <span>admissions@ktes.edu.in</span>
+              </div>
+
+              {/* Direct Google Maps Action Buttons */}
+              <div className="pt-2 flex flex-wrap items-center gap-2">
+                <a
+                  href={KTES_DIRECTIONS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-amber-400/20 hover:bg-amber-400/30 border border-amber-400/50 text-amber-300 hover:text-amber-200 px-3 py-1.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm"
+                >
+                  <Navigation className="h-3 w-3 text-amber-400" />
+                  <span>Get Directions</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setShowFooterMap(!showFooterMap)}
+                  className="bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 hover:text-white px-3 py-1.5 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 transition-all cursor-pointer"
+                >
+                  <Compass className="h-3 w-3 text-amber-400" />
+                  <span>{showFooterMap ? 'Hide Campus Map' : 'View Campus Map'}</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Expandable Interactive Campus Google Map */}
+        {showFooterMap && (
+          <div className="mb-12 animate-fadeIn">
+            <GoogleMapsLocation heightClass="h-64 sm:h-72 md:h-80" />
+          </div>
+        )}
 
         {/* Legal block */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-4 md:space-y-0">

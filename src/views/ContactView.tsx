@@ -12,6 +12,7 @@ import {
   CheckCircle,
   HelpCircle
 } from 'lucide-react';
+import GoogleMapsLocation from '../components/GoogleMapsLocation';
 
 export default function ContactView() {
   const [formName, setFormName] = useState('');
@@ -21,9 +22,6 @@ export default function ContactView() {
   const [formMsg, setFormMsg] = useState('');
   const [submittingMsg, setSubmittingMsg] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  // Simulated GPS details
-  const [mapType, setMapType] = useState<'vector' | 'satellite'>('vector');
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -167,95 +165,9 @@ export default function ContactView() {
           )}
         </div>
 
-        {/* Location & satellite maps mockup */}
-        <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-6 shadow-2xl backdrop-blur-md space-y-6 text-white">
-          <div className="border-b border-white/10 pb-3 flex justify-between items-center">
-            <div>
-              <h3 className="font-display font-black text-white text-base">Campus GPS coordinates</h3>
-              <p className="text-slate-300 text-[11px]">30-Acre Hills campus mapping</p>
-            </div>
-            {/* Map switcher */}
-            <div className="bg-white/5 border border-white/10 rounded-xl p-1 flex space-x-1">
-              <button
-                onClick={() => setMapType('vector')}
-                className={`py-1 px-2.5 rounded-lg text-[9px] font-black uppercase transition-all tracking-wider cursor-pointer ${
-                  mapType === 'vector' ? 'bg-secondary text-primary-dark shadow' : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                Vector
-              </button>
-              <button
-                onClick={() => setMapType('satellite')}
-                className={`py-1 px-2.5 rounded-lg text-[9px] font-black uppercase transition-all tracking-wider cursor-pointer ${
-                  mapType === 'satellite' ? 'bg-secondary text-primary-dark shadow' : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                Satel
-              </button>
-            </div>
-          </div>
-
-          {/* Interactive Google Map Mockup */}
-          <div className="relative rounded-2xl h-56 overflow-hidden border border-white/10 bg-[#000c24] flex items-center justify-center shadow-inner group">
-            {mapType === 'vector' ? (
-              <div className="absolute inset-0 bg-[#000c24] p-6 flex flex-col justify-between overflow-hidden">
-                {/* Simulated streets, water bodies and blocks */}
-                <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:16px_16px] opacity-60"></div>
-                {/* Streets lines mockup in vector */}
-                <div className="absolute top-1/3 left-0 w-full h-2.5 bg-[#001f4d]/85 border-y border-white/10 transform rotate-12"></div>
-                <div className="absolute top-0 left-2/3 w-2.5 h-full bg-[#001f4d]/85 border-x border-white/10 transform -rotate-12"></div>
-                {/* Central pin layout */}
-                <div className="relative z-10 m-auto flex flex-col items-center justify-center text-center space-y-1 animate-bounce">
-                  <MapPin className="h-8 w-8 text-rose-500 fill-rose-200" />
-                  <span className="bg-secondary text-primary-dark font-mono font-black text-[9px] px-2.5 py-1 rounded-lg shadow-xl uppercase border border-white/10">
-                    KTES HILLS CAMPUS
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <div className="absolute inset-0 bg-slate-900 group">
-                <img
-                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80"
-                  alt="Satellite mock view"
-                  className="w-full h-full object-cover filter brightness-75 contrast-125"
-                />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                  <div className="text-center font-mono text-[9px] text-amber-300 space-y-1 bg-[#000c24]/90 p-2.5 border border-white/10 rounded-xl">
-                    <Compass className="h-4 w-4 animate-spin-slow mx-auto text-amber-400" />
-                    <div>GPS: 19.1128° N, 72.8220° E</div>
-                    <div>Alt: 125 meters above sea level</div>
-                  </div>
-                </div>
-              </div>
-            )}
-            <div className="absolute bottom-2 left-2 bg-slate-950/80 text-white text-[8px] font-mono px-2 py-0.5 rounded backdrop-blur">
-              Scale 1 : 12,000 meters
-            </div>
-          </div>
-
-          <div className="space-y-3.5 text-xs text-slate-300">
-            <div className="flex items-start space-x-3 leading-relaxed">
-              <MapPin className="h-4 w-4 text-amber-400 mt-1 shrink-0" />
-              <div>
-                <strong className="text-white">Central Address Location:</strong>
-                <p className="text-slate-300 font-medium">VV4P+JPR, Rajgurunagar, Maharashtra 410505</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-3 leading-relaxed">
-              <Clock className="h-4 w-4 text-amber-400 mt-1 shrink-0" />
-              <div>
-                <strong className="text-white">Working Reception Hours:</strong>
-                <p className="text-slate-300 font-medium">Monday to Saturday: 08:30 AM to 05:30 PM (Sundays Closed)</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-3 leading-relaxed">
-              <Mail className="h-4 w-4 text-amber-400 mt-1 shrink-0" />
-              <div>
-                <strong className="text-white">Official Board Dispatch:</strong>
-                <p className="text-slate-300 font-medium font-mono">office@ktes_institutions.edu.in</p>
-              </div>
-            </div>
-          </div>
+        {/* Real Interactive Google Maps Platform Location */}
+        <div className="lg:col-span-5">
+          <GoogleMapsLocation heightClass="h-72 sm:h-80 md:h-[380px]" />
         </div>
       </section>
 

@@ -105,6 +105,13 @@ export default function App() {
 
   // Slide-over Announcement Details Drawer
   const [selectedAnn, setSelectedAnn] = useState<Announcement | null>(null);
+  const [quotaExceeded, setQuotaExceeded] = useState(false);
+
+  useEffect(() => {
+    const handleQuota = () => setQuotaExceeded(true);
+    window.addEventListener('gmp-quota-exceeded', handleQuota);
+    return () => window.removeEventListener('gmp-quota-exceeded', handleQuota);
+  }, []);
 
   // Sync state mutations to local storage for realistic persistence
   useEffect(() => {
@@ -220,6 +227,24 @@ export default function App() {
     <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100 relative font-sans antialiased overflow-x-hidden">
       {/* Full-screen Splash Screen Preloader */}
       <SplashScreen />
+
+      {/* Google Maps Platform Quota Notice (Demo Key) */}
+      {quotaExceeded && (
+        <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2.5 text-xs md:text-sm text-center sticky top-0 z-50 shadow-sm">
+          <span>
+            Google Maps Platform quota reached. If you are the app owner, visit{' '}
+            <a
+              href="https://developers.google.com/maps/ai/ai-studio?utm_campaign=gmp_mcp_codeassist_v1_aistudio#quota_exceeded_errors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline font-semibold text-amber-950 hover:text-amber-800"
+            >
+              maps developer site
+            </a>{' '}
+            for instructions to update your account.
+          </span>
+        </div>
+      )}
 
       {/* Background radial glow spots */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

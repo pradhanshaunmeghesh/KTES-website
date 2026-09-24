@@ -31,6 +31,7 @@ export interface SKPPVPhotoItem {
   eventDateMr?: string;
   eventDateEn?: string;
   customMediaUrl?: string; // For user uploaded or preview media
+  fallbackUrl?: string;
 }
 
 // Initial 22 official image mapping targets reflecting the Website Photos folder
@@ -40,7 +41,9 @@ const INITIAL_FOTOS: SKPPVPhotoItem[] = [
   // ==========================================
   {
     id: 'ag-1',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.04 PM.jpeg',
+    filename: 'पारंपारिक नृत्य.jpeg',
+    customMediaUrl: '/images/SKPP/पारंपारिक नृत्य.jpeg',
+    fallbackUrl: '/images/SKPP/traditional_folk_dance.jpeg',
     category: 'annual_gathering',
     titleMr: 'पारंपरिक लोकनृत्य सादरीकरण',
     titleEn: 'Traditional Folk Dance Performance',
@@ -51,7 +54,9 @@ const INITIAL_FOTOS: SKPPVPhotoItem[] = [
   },
   {
     id: 'ag-2',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.05 PM (1).jpeg',
+    filename: 'सांस्कृतिक समुहगायन १.jpg',
+    customMediaUrl: '/images/SKPP/सांस्कृतिक समुहगायन १.jpg',
+    fallbackUrl: '/images/SKPP/cultural_choir.jpg',
     category: 'annual_gathering',
     titleMr: 'सांस्कृतिक समूहगान व स्वागत गीत',
     titleEn: 'Cultural Choir & Welcome Song Ensemble',
@@ -62,7 +67,9 @@ const INITIAL_FOTOS: SKPPVPhotoItem[] = [
   },
   {
     id: 'ag-3',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.07 PM (2).jpeg',
+    filename: 'नाटक.jpg',
+    customMediaUrl: '/images/SKPP/नाटक.jpg',
+    fallbackUrl: '/images/SKPP/drama_skit.jpg',
     category: 'annual_gathering',
     titleMr: 'नाट्य व प्रबोधनात्मक एकांकिका',
     titleEn: 'Drama & Social Awareness Skit',
@@ -73,7 +80,9 @@ const INITIAL_FOTOS: SKPPVPhotoItem[] = [
   },
   {
     id: 'ag-4',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.05 PM.jpeg',
+    filename: 'SKPP_1.jpeg',
+    customMediaUrl: '/images/SKPP/SKPP_1.jpeg',
+    fallbackUrl: '/images/SKPP/पारंपारिक  वेशभूषा.jpeg',
     category: 'annual_gathering',
     titleMr: 'गुणवंत विद्यार्थी बक्षीस वितरण सोहळा',
     titleEn: 'Merit Prize Distribution Ceremony',
@@ -84,7 +93,9 @@ const INITIAL_FOTOS: SKPPVPhotoItem[] = [
   },
   {
     id: 'ag-5',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.06 PM (1).jpeg',
+    filename: 'पारंपारिक वेशभूषा १.jpg',
+    customMediaUrl: '/images/SKPP/पारंपारिक वेशभूषा १.jpg',
+    fallbackUrl: '/images/SKPP/SKPP_2.jpeg',
     category: 'annual_gathering',
     titleMr: 'पारंपरिक वेशभूषा स्पर्धा (बालवाडी व प्राथमिक)',
     titleEn: 'Fancy Dress & Traditional Attire Showcase',
@@ -95,7 +106,8 @@ const INITIAL_FOTOS: SKPPVPhotoItem[] = [
   },
   {
     id: 'ag-6',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.08 PM (2).jpeg',
+    filename: 'SKPP_4.jpeg',
+    customMediaUrl: '/images/SKPP/SKPP_4.jpeg',
     category: 'annual_gathering',
     titleMr: 'दीपप्रज्वलन व स्नेहसंमेलन उद्घाटन',
     titleEn: 'Lighting of the Lamp & Ceremony Inauguration',
@@ -550,6 +562,12 @@ export default function SKPPVGallery() {
                     <img
                       src={photo.customMediaUrl}
                       alt={photo.titleEn || photo.titleMr}
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (photo.fallbackUrl && target.src !== photo.fallbackUrl && !target.src.endsWith(photo.fallbackUrl)) {
+                          target.src = photo.fallbackUrl;
+                        }
+                      }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
@@ -623,6 +641,13 @@ export default function SKPPVGallery() {
                 <img
                   src={filteredPhotos[lightboxIdx].customMediaUrl}
                   alt={filteredPhotos[lightboxIdx].titleEn}
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    const fallback = filteredPhotos[lightboxIdx].fallbackUrl;
+                    if (fallback && target.src !== fallback && !target.src.endsWith(fallback)) {
+                      target.src = fallback;
+                    }
+                  }}
                   className="max-h-[58vh] max-w-full object-contain rounded-2xl shadow-2xl border border-white/15"
                 />
               ) : (
