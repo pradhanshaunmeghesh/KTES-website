@@ -1,363 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Sparkles,
-  Calendar,
-  Trophy,
-  Building,
-  Image as ImageIcon,
+  Camera,
   ZoomIn,
   X,
   ChevronLeft,
   ChevronRight,
-  Filter,
-  Search,
-  Upload,
-  Info,
+  Sparkles,
   Layers,
-  Camera,
-  CheckCircle2
+  Image as ImageIcon
 } from 'lucide-react';
 
-export type GalleryCategory = 'all' | 'annual_gathering' | 'sports_cocurricular' | 'campus_events';
-
-export interface SKPPVPhotoItem {
+export interface SKPPPhotoCard {
   id: string;
   filename: string;
-  category: 'annual_gathering' | 'sports_cocurricular' | 'campus_events';
-  titleMr: string;
-  titleEn: string;
-  descMr: string;
-  descEn: string;
-  eventDateMr?: string;
-  eventDateEn?: string;
-  customMediaUrl?: string; // For user uploaded or preview media
-  fallbackUrl?: string;
+  url: string;
+  fallbackUrl: string;
 }
 
-// Initial 22 official image mapping targets reflecting the Website Photos folder
-const INITIAL_FOTOS: SKPPVPhotoItem[] = [
-  // ==========================================
-  // Category 1: Annual Gathering & Cultural Events (वार्षिक स्नेहसम्मेलन व सांस्कृतिक कार्यक्रम)
-  // ==========================================
-  {
-    id: 'ag-1',
-    filename: 'पारंपारिक नृत्य.jpeg',
-    customMediaUrl: '/images/SKPP/पारंपारिक नृत्य.jpeg',
-    fallbackUrl: '/images/SKPP/traditional_folk_dance.jpeg',
-    category: 'annual_gathering',
-    titleMr: 'पारंपरिक लोकनृत्य सादरीकरण',
-    titleEn: 'Traditional Folk Dance Performance',
-    descMr: 'वार्षिक स्नेहसंमेलनात प्राथमिक विभागातील विद्यार्थ्यांचे मनमोहक लोकनृत्य सादरीकरण.',
-    descEn: 'Captivating Maharashtrian folk dance performance by primary school students at the Annual Gathering.',
-    eventDateMr: 'वार्षिक स्नेहसंमेलन २०२५-२६',
-    eventDateEn: 'Annual Gathering 2025-26'
-  },
-  {
-    id: 'ag-2',
-    filename: 'सांस्कृतिक समुहगायन १.jpg',
-    customMediaUrl: '/images/SKPP/सांस्कृतिक समुहगायन १.jpg',
-    fallbackUrl: '/images/SKPP/cultural_choir.jpg',
-    category: 'annual_gathering',
-    titleMr: 'सांस्कृतिक समूहगान व स्वागत गीत',
-    titleEn: 'Cultural Choir & Welcome Song Ensemble',
-    descMr: 'समारंभाच्या सुरुवातीला विद्यार्थ्यांनी सादर केलेले सुरेल स्वागतगीत व ईशस्तवन.',
-    descEn: 'Students performing the opening prayer and melodious welcome song for esteemed guests.',
-    eventDateMr: 'वार्षिक स्नेहसंमेलन',
-    eventDateEn: 'Annual Gathering'
-  },
-  {
-    id: 'ag-3',
-    filename: 'नाटक.jpg',
-    customMediaUrl: '/images/SKPP/नाटक.jpg',
-    fallbackUrl: '/images/SKPP/drama_skit.jpg',
-    category: 'annual_gathering',
-    titleMr: 'नाट्य व प्रबोधनात्मक एकांकिका',
-    titleEn: 'Drama & Social Awareness Skit',
-    descMr: 'सामाजिक प्रबोधनपर नाट्यकृती आणि पर्यावरण संवर्धनाचा संदेश देणारा अभिनय.',
-    descEn: 'Educational and social awareness dramatic skit performed on stage by young scholars.',
-    eventDateMr: 'वार्षिक स्नेहसंमेलन',
-    eventDateEn: 'Annual Gathering'
-  },
-  {
-    id: 'ag-4',
-    filename: 'SKPP_1.jpeg',
-    customMediaUrl: '/images/SKPP/SKPP_1.jpeg',
-    fallbackUrl: '/images/SKPP/पारंपारिक  वेशभूषा.jpeg',
-    category: 'annual_gathering',
-    titleMr: 'गुणवंत विद्यार्थी बक्षीस वितरण सोहळा',
-    titleEn: 'Merit Prize Distribution Ceremony',
-    descMr: 'शैक्षणिक व सहशालेय क्षेत्रात उल्लेखनीय यश मिळवणाऱ्या विद्यार्थ्यांचा मान्यवरांच्या हस्ते गौरव.',
-    descEn: 'Academic excellence and talent award distribution felicitated by executive trustees.',
-    eventDateMr: 'गुणगौरव सोहळा',
-    eventDateEn: 'Prize Distribution'
-  },
-  {
-    id: 'ag-5',
-    filename: 'पारंपारिक वेशभूषा १.jpg',
-    customMediaUrl: '/images/SKPP/पारंपारिक वेशभूषा १.jpg',
-    fallbackUrl: '/images/SKPP/SKPP_2.jpeg',
-    category: 'annual_gathering',
-    titleMr: 'पारंपरिक वेशभूषा स्पर्धा (बालवाडी व प्राथमिक)',
-    titleEn: 'Fancy Dress & Traditional Attire Showcase',
-    descMr: 'भारतीय संस्कृती आणि थोर महापुरुषांच्या वेशभूषेत सहभागी झालेले चिमुकले विद्यार्थी.',
-    descEn: 'Pre-primary & primary kids adorned in vibrant historical attire of national icons.',
-    eventDateMr: 'सांस्कृतिक सप्ताह',
-    eventDateEn: 'Cultural Week'
-  },
-  {
-    id: 'ag-6',
-    filename: 'SKPP_4.jpeg',
-    customMediaUrl: '/images/SKPP/SKPP_4.jpeg',
-    category: 'annual_gathering',
-    titleMr: 'दीपप्रज्वलन व स्नेहसंमेलन उद्घाटन',
-    titleEn: 'Lighting of the Lamp & Ceremony Inauguration',
-    descMr: 'संस्थेचे पदाधिकारी व मान्यवरांच्या शुभहस्ते दीपप्रज्वलन करून कार्यक्रमाचा शुभारंभ.',
-    descEn: 'Dignitaries lighting the traditional lamp to inaugurate the grand annual gathering stage.',
-    eventDateMr: 'वार्षिक स्नेहसंमेलन',
-    eventDateEn: 'Annual Gathering'
-  },
-  {
-    id: 'ag-7',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.03 PM (1).jpeg',
-    category: 'annual_gathering',
-    titleMr: 'देशभक्तीपर गीत व नृत्य सादरीकरण',
-    titleEn: 'Patriotic Song & Choreography',
-    descMr: 'तिरंगा ध्वज फडकवत विद्यार्थ्यांनी सादर केलेले राष्ट्रभक्तीपर समूह नृत्य.',
-    descEn: 'Inspiring patriotic musical performance presented with tricolor flags and synchrony.',
-    eventDateMr: 'सांस्कृतिक मंच',
-    eventDateEn: 'Cultural Stage'
-  },
+// Dynamically iterate through the entire src/assets/images/SKPP/ directory
+const skppAssetModules: Record<string, string> = import.meta.glob(
+  '../assets/images/SKPP/*.{jpeg,jpg,png,webp,JPEG,JPG,PNG,WEBP}',
+  { eager: true, import: 'default' }
+);
 
-  // ==========================================
-  // Category 2: Sports & Co-Curricular Activities (क्रीडा व सहशालेय उपक्रम)
-  // ==========================================
-  {
-    id: 'sp-1',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.02 PM.jpeg',
-    category: 'sports_cocurricular',
-    titleMr: 'वार्षिक क्रीडा स्पर्धा - धावणे व मैदानी खेळ',
-    titleEn: 'Annual Athletic Sprint & Track Events',
-    descMr: 'विद्यालयाच्या भव्य क्रीडांगणावर रंगलेल्या धावणे व मैदानी खेळांच्या स्पर्धा.',
-    descEn: 'Primary students competing enthusiastically in track sprints on the school grounds.',
-    eventDateMr: 'क्रीडा महोत्सव',
-    eventDateEn: 'Sports Meet'
-  },
-  {
-    id: 'sp-2',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.03 PM (2).jpeg',
-    category: 'sports_cocurricular',
-    titleMr: 'कबड्डी व खो-खो सामने',
-    titleEn: 'Inter-House Kabaddi & Kho-Kho Matches',
-    descMr: 'विद्यार्थ्यांमधील सांघिक भावना आणि शारीरिक चपळाई वाढवणारे पारंपरिक मैदानी सामने.',
-    descEn: 'Traditional team sports promoting agility, stamina, and camaraderie among pupils.',
-    eventDateMr: 'क्रीडा महोत्सव',
-    eventDateEn: 'Sports Meet'
-  },
-  {
-    id: 'sp-3',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.04 PM (1).jpeg',
-    category: 'sports_cocurricular',
-    titleMr: 'सामूहिक योगासन व सूर्यनमस्कार प्रात्यक्षिके',
-    titleEn: 'Mass Yoga & Surya Namaskar Session',
-    descMr: 'आंतरराष्ट्रीय योग दिनानिमित्त आणि दैनंदिन परिपाठात विद्यार्थ्यांचे सामूहिक सूर्यनमस्कार.',
-    descEn: 'Synchronized morning yoga posture demonstration promoting health and mental focus.',
-    eventDateMr: 'योग दिन उपक्रम',
-    eventDateEn: 'Yoga Day Session'
-  },
-  {
-    id: 'sp-4',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.07 PM.jpeg',
-    category: 'sports_cocurricular',
-    titleMr: 'आनंददायी शनिवार - मातीकाम व हस्तकला निर्मिती',
-    titleEn: 'Joyful Saturday Clay Modeling & Origami Art',
-    descMr: 'हस्तकला, कागदी काम आणि मातीकामातून विद्यार्थ्यांच्या कल्पकतेला मिळालेली मुक्त संधी.',
-    descEn: 'Expressive creative craft workshop conducted during Joyful Saturday sessions.',
-    eventDateMr: 'आनंददायी शनिवार',
-    eventDateEn: 'Joyful Saturday'
-  },
-  {
-    id: 'sp-5',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.08 PM (1).jpeg',
-    category: 'sports_cocurricular',
-    titleMr: 'कब व बुलबुल - सामाजिक सेवा व रक्षाबंधन',
-    titleEn: 'Cub & Bulbul Outreach & Raksha Bandhan',
-    descMr: 'कब-बुलबुल पथकाचे अनाथआश्रमात रक्षाबंधन व सामाजिक जाणीव उपक्रम.',
-    descEn: 'Scouting unit outreach initiative sharing festive affection and community service.',
-    eventDateMr: 'कब-बुलबुल उपक्रम',
-    eventDateEn: 'Cub & Bulbul'
-  },
-  {
-    id: 'sp-6',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.09 PM (1).jpeg',
-    category: 'sports_cocurricular',
-    titleMr: 'प्राथमिक शालेय विज्ञान प्रदर्शन व प्रकल्प',
-    titleEn: 'Primary Science Exhibition & Experiment Fair',
-    descMr: 'वैज्ञानिक दृष्टिकोन रुजवण्यासाठी विद्यार्थ्यांनी तयार केलेले विविध वैज्ञानिक मॉडेल्स.',
-    descEn: 'Hands-on scientific exhibits and interactive models presented by young researchers.',
-    eventDateMr: 'विज्ञान दिन',
-    eventDateEn: 'Science Fair'
-  },
-  {
-    id: 'sp-7',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.10 PM (2).jpeg',
-    category: 'sports_cocurricular',
-    titleMr: 'क्रीडा चषक व पदके वितरण',
-    titleEn: 'Sports Trophy & Medal Ceremony',
-    descMr: 'विजेत्या संघांना व खेळाडूंना सुवर्ण व रौप्य पदके प्रदान करून गौरव.',
-    descEn: 'Cheering victorious sports houses with athletic medals and championship shields.',
-    eventDateMr: 'क्रीडा पारितोषिक',
-    eventDateEn: 'Sports Ceremony'
-  },
-
-  // ==========================================
-  // Category 3: Campus & School Events (शाळा परिसर व उपक्रम)
-  // ==========================================
-  {
-    id: 'cp-1',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.04 PM (2).jpeg',
-    category: 'campus_events',
-    titleMr: 'स्वातंत्र्य दिन व प्रजासत्ताक दिन ध्वजारोहण',
-    titleEn: 'Independence Day & Republic Day Flag Hoisting',
-    descMr: 'विद्यालयाच्या भव्य प्रांगणात राष्ट्रध्वज वंदन व राष्ट्रभक्तीपर घोषणांचा सोहळा.',
-    descEn: 'National tri-color flag hoisting ceremony and patriotic march in the school quadrangle.',
-    eventDateMr: 'राष्ट्रीय सण',
-    eventDateEn: 'National Festival'
-  },
-  {
-    id: 'cp-2',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.06 PM.jpeg',
-    category: 'campus_events',
-    titleMr: 'शाळा परिसर, इमारत व सुसज्ज वर्गखोल्या',
-    titleEn: 'School Campus, Building & Smart Classrooms',
-    descMr: 'शेठ केशरचंद पारख प्राथमिक विद्यालयाची विस्तीर्ण इमारत व निसर्गरम्य परिसर.',
-    descEn: 'Panoramic view of the SKPPV educational wing with airy, well-equipped classrooms.',
-    eventDateMr: 'शाळा परिसर',
-    eventDateEn: 'Campus Architecture'
-  },
-  {
-    id: 'cp-3',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.07 PM (1).jpeg',
-    category: 'campus_events',
-    titleMr: 'मराठी भाषा संवर्धन पंधरवडा व अभिजात गौरव',
-    titleEn: 'Marathi Classical Language Celebration Project',
-    descMr: 'मराठी भाषेला मिळालेल्या अभिजात दर्जामुळे विद्यार्थ्यांनी केलेले विशेष प्रकल्प सादरीकरण.',
-    descEn: 'Special project presentation celebrating Marathi conferred with Classical Language status.',
-    eventDateMr: 'मराठी भाषा गौरव',
-    eventDateEn: 'Marathi Heritage Project'
-  },
-  {
-    id: 'cp-4',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.09 PM (2).jpeg',
-    category: 'campus_events',
-    titleMr: 'स्वच्छता पंधरवडा व वृक्षारोपण मोहीम',
-    titleEn: 'Campus Cleanliness & Tree Plantation Drive',
-    descMr: 'पर्यावरण संवर्धनासाठी शिक्षक व विद्यार्थ्यांनी एकत्र येऊन केलेले वृक्षारोपण.',
-    descEn: 'Eco-club cleanliness drive and sapling plantation enhancing campus green cover.',
-    eventDateMr: 'पर्यावरण उपक्रम',
-    eventDateEn: 'Green Initiative'
-  },
-  {
-    id: 'cp-5',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.10 PM (3).jpeg',
-    category: 'campus_events',
-    titleMr: 'वाचन प्रेरणा दिन व ग्रंथालय उपक्रम',
-    titleEn: 'Vachan Prerana Reading Movement & Library',
-    descMr: 'डॉ. ए. पी. जे. अब्दुल कलाम यांच्या जयंतीनिमित्त सामूहिक वाचन उपक्रम.',
-    descEn: 'Mass reading hour in the school library commemorating Dr. A.P.J. Abdul Kalam.',
-    eventDateMr: 'वाचन प्रेरणा दिन',
-    eventDateEn: 'Reading Day'
-  },
-  {
-    id: 'cp-6',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.11 PM (1).jpeg',
-    category: 'campus_events',
-    titleMr: 'शालेय पोषण आहार व आरोग्य तपासणी शिबिर',
-    titleEn: 'Nutritious Mid-Day Meal & Health Checkup',
-    descMr: 'विद्यार्थ्यांच्या सर्वांगीण विकासासाठी नियमित आरोग्य व दंत तपासणी शिबिर.',
-    descEn: 'Annual pediatric health checkup and nutritious mid-day meals for primary scholars.',
-    eventDateMr: 'आरोग्य शिबिर',
-    eventDateEn: 'Health Camp'
-  },
-  {
-    id: 'cp-7',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.12 PM.jpeg',
-    category: 'campus_events',
-    titleMr: 'बालवाडी व प्राथमिक विभाग प्रवेशोत्सव',
-    titleEn: 'Balwadi & Primary Praveshotsav Welcome',
-    descMr: 'पहिल्या दिवशी नवागतांचे औक्षण करून आणि गुलाबपुष्प देऊन केलेले जल्लोषात स्वागत.',
-    descEn: 'Heartwarming floral welcome celebration welcoming kindergarten & grade 1 entrants.',
-    eventDateMr: 'प्रवेशोत्सव',
-    eventDateEn: 'School Reopening'
-  },
-  {
-    id: 'cp-8',
-    filename: 'WhatsApp Image 2026-07-03 at 1.22.12 PM (1).jpeg',
-    category: 'campus_events',
-    titleMr: 'पालक-शिक्षक मेळावा व मार्गदर्शन सभा',
-    titleEn: 'Parent-Teacher Meet (PTA) & Seminar',
-    descMr: 'विद्यार्थ्यांच्या प्रगतीसाठी आयोजित केलेली पालक-शिक्षक संवाद सभा.',
-    descEn: 'Collaborative parent-teacher general body meeting fostering child development.',
-    eventDateMr: 'पालक सभा',
-    eventDateEn: 'PTA Conference'
+// Map discovered image modules into structured photo card items
+const INITIAL_SKPP_PHOTOS: SKPPPhotoCard[] = Object.entries(skppAssetModules).map(
+  ([filePath, assetUrl], index) => {
+    const filename = filePath.split('/').pop() || `photo-${index + 1}`;
+    return {
+      id: `skpp-asset-${index + 1}-${filename}`,
+      filename,
+      url: typeof assetUrl === 'string' ? assetUrl : (assetUrl as any)?.default || assetUrl,
+      fallbackUrl: `/images/SKPP/${encodeURIComponent(filename)}`
+    };
   }
-];
+);
 
 export default function SKPPVGallery() {
-  const [photos, setPhotos] = useState<SKPPVPhotoItem[]>(INITIAL_FOTOS);
-  const [selectedCategory, setSelectedCategory] = useState<GalleryCategory>('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [photos] = useState<SKPPPhotoCard[]>(INITIAL_SKPP_PHOTOS);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
-  // Category Configuration with Dual-Language titles
-  const categoryFilters = [
-    {
-      id: 'all' as const,
-      labelMr: 'सर्व छायाचित्रे',
-      labelEn: 'All Photos',
-      icon: Layers,
-      count: photos.length
-    },
-    {
-      id: 'annual_gathering' as const,
-      labelMr: 'वार्षिक स्नेहसम्मेलन व सांस्कृतिक कार्यक्रम',
-      labelEn: 'Annual Gathering & Cultural Events',
-      icon: Sparkles,
-      count: photos.filter((p) => p.category === 'annual_gathering').length
-    },
-    {
-      id: 'sports_cocurricular' as const,
-      labelMr: 'क्रीडा व सहशालेय उपक्रम',
-      labelEn: 'Sports & Co-Curricular Activities',
-      icon: Trophy,
-      count: photos.filter((p) => p.category === 'sports_cocurricular').length
-    },
-    {
-      id: 'campus_events' as const,
-      labelMr: 'शाळा परिसर व उपक्रम',
-      labelEn: 'Campus & School Events',
-      icon: Building,
-      count: photos.filter((p) => p.category === 'campus_events').length
-    }
-  ];
-
-  // Filtered Photos
-  const filteredPhotos = photos.filter((photo) => {
-    const matchesCategory = selectedCategory === 'all' || photo.category === selectedCategory;
-    if (!matchesCategory) return false;
-
-    const q = searchQuery.toLowerCase().trim();
-    if (!q) return true;
-
-    return (
-      photo.titleMr.toLowerCase().includes(q) ||
-      photo.titleEn.toLowerCase().includes(q) ||
-      photo.descMr.toLowerCase().includes(q) ||
-      photo.descEn.toLowerCase().includes(q) ||
-      photo.filename.toLowerCase().includes(q) ||
-      (photo.eventDateMr && photo.eventDateMr.toLowerCase().includes(q)) ||
-      (photo.eventDateEn && photo.eventDateEn.toLowerCase().includes(q))
-    );
-  });
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxIdx === null) return;
+      if (e.key === 'Escape') setLightboxIdx(null);
+      if (e.key === 'ArrowLeft') {
+        setLightboxIdx((prev) => (prev === null || prev === 0 ? photos.length - 1 : prev - 1));
+      }
+      if (e.key === 'ArrowRight') {
+        setLightboxIdx((prev) => (prev === null || prev === photos.length - 1 ? 0 : prev + 1));
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIdx, photos.length]);
 
   const handleOpenLightbox = (index: number) => {
     setLightboxIdx(index);
@@ -367,26 +64,17 @@ export default function SKPPVGallery() {
     setLightboxIdx(null);
   };
 
-  const handlePrev = () => {
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (lightboxIdx !== null) {
-      setLightboxIdx((prev) => (prev === 0 ? filteredPhotos.length - 1 : prev! - 1));
+      setLightboxIdx((prev) => (prev === 0 ? photos.length - 1 : prev! - 1));
     }
   };
 
-  const handleNext = () => {
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (lightboxIdx !== null) {
-      setLightboxIdx((prev) => (prev === filteredPhotos.length - 1 ? 0 : prev! + 1));
-    }
-  };
-
-  // Optional manual file upload / replacement handler for interactive exploration
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>, photoId: string) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const objectUrl = URL.createObjectURL(file);
-      setPhotos((prev) =>
-        prev.map((p) => (p.id === photoId ? { ...p, customMediaUrl: objectUrl } : p))
-      );
+      setLightboxIdx((prev) => (prev === photos.length - 1 ? 0 : prev! + 1));
     }
   };
 
@@ -397,7 +85,7 @@ export default function SKPPVGallery() {
       style={{ backgroundColor: '#0a0e1a' }}
     >
       {/* Gallery Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-white/10 pb-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span
@@ -405,10 +93,10 @@ export default function SKPPVGallery() {
               style={{ backgroundColor: '#ffc107' }}
             >
               <Camera className="w-3.5 h-3.5 text-slate-950" />
-              Website Photos Archive
+              SKPP Media Gallery
             </span>
-            <span className="text-xs text-amber-300/80 font-mono bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full">
-              {photos.length} Total Slots
+            <span className="text-xs text-amber-300/90 font-mono bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full">
+              {photos.length} Photos
             </span>
           </div>
 
@@ -417,305 +105,150 @@ export default function SKPPVGallery() {
               ५) छायाचित्र दालन - अधिकृत फोटो संग्रह
             </span>
             <span className="block text-slate-100 text-lg sm:text-xl font-semibold mt-0.5">
-              Sheth Kesharchand Parakh Prathamik Vidyalay, Rajgurunagar - Media Gallery
+              Sheth Kesharchand Parakh Prathamik Vidyalay, Rajgurunagar
             </span>
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-3xl leading-relaxed">
-            वार्षिक स्नेहसंमेलन, क्रीडा स्पर्धा आणि शाळा परिसरातील विविध उपक्रमांचे डिजिटल छायाचित्र दालन.
+            विद्यालयातील विविध सांस्कृतिक, क्रीडा व शैक्षणिक उपक्रमांचे अधिकृत छायाचित्र दालन.
           </p>
         </div>
 
-        {/* Real-time Search Box */}
-        <div className="relative w-full md:w-80 shrink-0">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            placeholder="Search gallery / छायाचित्र शोधा..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none transition-all shadow-inner"
-            style={{
-              backgroundColor: '#1e293b',
-              border: '1px solid rgba(255, 193, 7, 0.3)'
-            }}
-          />
-          {searchQuery && (
-            <button
-              onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs cursor-pointer"
-            >
-              ✕
-            </button>
-          )}
+        <div className="flex items-center gap-2 text-xs text-slate-400 font-mono bg-white/5 border border-white/10 px-3.5 py-2 rounded-xl">
+          <Layers className="w-4 h-4 text-amber-400" />
+          <span>Click any image to expand in lightbox</span>
         </div>
       </div>
 
-      {/* Category Filter Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        {categoryFilters.map((cat) => {
-          const Icon = cat.icon;
-          const isSelected = selectedCategory === cat.id;
-
-          return (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`p-4 rounded-2xl text-left transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden group ${
-                isSelected
-                  ? 'shadow-xl ring-2'
-                  : 'hover:bg-opacity-80'
-              }`}
-              style={{
-                backgroundColor: isSelected ? '#1e293b' : 'rgba(30, 41, 59, 0.55)',
-                borderColor: isSelected ? '#ffc107' : 'rgba(255, 255, 255, 0.1)',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                outline: 'none',
-                boxShadow: isSelected ? '0 8px 24px rgba(255, 193, 7, 0.15)' : undefined
-              }}
-            >
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <div
-                  className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
-                  style={{
-                    backgroundColor: isSelected ? '#ffc107' : 'rgba(255, 255, 255, 0.08)',
-                    color: isSelected ? '#0a0e1a' : '#ffc107'
-                  }}
-                >
-                  <Icon className="w-4 h-4" />
-                </div>
-                <span
-                  className="text-xs font-mono font-black px-2 py-0.5 rounded-full"
-                  style={{
-                    backgroundColor: isSelected ? '#ffc107' : 'rgba(255, 255, 255, 0.1)',
-                    color: isSelected ? '#0a0e1a' : '#ffc107'
-                  }}
-                >
-                  {cat.count}
-                </span>
-              </div>
-
-              <div>
-                <h4 className="text-xs font-bold text-amber-300 font-sans leading-snug">
-                  {cat.labelMr}
-                </h4>
-                <p className="text-[11px] text-slate-300 font-medium leading-snug mt-0.5">
-                  {cat.labelEn}
-                </p>
-              </div>
-
-              {isSelected && (
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-1"
-                  style={{ backgroundColor: '#ffc107' }}
-                />
-              )}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Gallery Photos Count & Legend */}
-      <div className="flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-slate-400 font-sans">
-        <div>
-          <span>दर्शविलेली छायाचित्रे: </span>
-          <strong style={{ color: '#ffc107' }}>{filteredPhotos.length}</strong> / {photos.length}
-        </div>
-        <div className="flex items-center gap-3 text-[11px]">
-          <span className="inline-flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ffc107' }}></span>
-            <span>अधिकृत वर्गवारी</span>
-          </span>
-          <span className="inline-flex items-center gap-1 text-slate-400">
-            <span>द्वैभाषिक मथळे (Marathi / English)</span>
-          </span>
-        </div>
-      </div>
-
-      {/* Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredPhotos.length === 0 ? (
-          <div className="col-span-full py-16 text-center text-slate-400 font-sans" style={{ backgroundColor: '#1e293b', borderRadius: '1.5rem' }}>
+      {/* Clean Responsive Photo Cards Grid (No titles, captions, or headlines below) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 sm:gap-6">
+        {photos.length === 0 ? (
+          <div
+            className="col-span-full py-16 text-center text-slate-400 font-sans"
+            style={{ backgroundColor: '#1e293b', borderRadius: '1.5rem' }}
+          >
             <ImageIcon className="w-10 h-10 mx-auto mb-3 text-slate-500" />
-            <p className="text-sm font-semibold text-slate-200">कोणतीही छायाचित्रे सापडली नाहीत.</p>
-            <p className="text-xs text-slate-400 mt-1">No matching photos found in this category.</p>
+            <p className="text-sm font-semibold text-slate-200">कोणतीही छायाचित्रे उपलब्ध नाहीत.</p>
+            <p className="text-xs text-slate-400 mt-1">No images currently found in the folder.</p>
           </div>
         ) : (
-          filteredPhotos.map((photo, index) => {
-            const hasCustomMedia = !!photo.customMediaUrl;
-
-            return (
-              <div
-                key={photo.id}
-                id={`skppv-foto-${photo.id}`}
-                onClick={() => handleOpenLightbox(index)}
-                className="group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col cursor-pointer border hover:-translate-y-1"
-                style={{
-                  backgroundColor: '#151d2e',
-                  borderColor: 'rgba(255, 255, 255, 0.08)',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)'
+          photos.map((photo, index) => (
+            <div
+              key={photo.id}
+              id={`skpp-photo-card-${index}`}
+              onClick={() => handleOpenLightbox(index)}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950 border border-white/10 hover:border-amber-400/50 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer"
+              style={{
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
+              }}
+            >
+              <img
+                src={photo.url}
+                alt={photo.filename}
+                loading="lazy"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  const rawFallback = `/images/SKPP/${photo.filename}`;
+                  const encodedFallback = photo.fallbackUrl;
+                  if (target.src !== rawFallback && !target.src.endsWith(rawFallback)) {
+                    target.src = rawFallback;
+                  } else if (target.src !== encodedFallback && !target.src.endsWith(encodedFallback)) {
+                    target.src = encodedFallback;
+                  }
                 }}
-              >
-                {/* Plain rectangular image container */}
-                <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden bg-slate-950 flex items-center justify-center">
-                  {hasCustomMedia ? (
-                    <img
-                      src={photo.customMediaUrl}
-                      alt={photo.titleEn || photo.titleMr}
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        if (photo.fallbackUrl && target.src !== photo.fallbackUrl && !target.src.endsWith(photo.fallbackUrl)) {
-                          target.src = photo.fallbackUrl;
-                        }
-                      }}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-slate-900/60 group-hover:bg-slate-900/90 transition-colors p-4">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 group-hover:border-amber-400/30 group-hover:bg-amber-400/10 transition-colors">
-                        <ImageIcon className="w-6 h-6 text-slate-500 group-hover:text-amber-400 transition-colors" />
-                      </div>
-                    </div>
-                  )}
-                </div>
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
 
-                {/* Clean title text placed directly below */}
-                <div className="p-4 bg-slate-900/40 group-hover:bg-slate-900/70 transition-colors">
-                  <h3 className="text-sm font-semibold text-white group-hover:text-amber-300 transition-colors leading-snug">
-                    <span className="block font-sans">{photo.titleMr}</span>
-                    {photo.titleEn && (
-                      <span className="block text-slate-400 text-xs font-normal mt-0.5">
-                        {photo.titleEn}
-                      </span>
-                    )}
-                  </h3>
+              {/* Clean Hover Overlay with Zoom Icon */}
+              <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                <div className="p-3 rounded-full bg-slate-950/80 text-amber-300 border border-amber-400/40 shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                  <ZoomIn className="w-6 h-6" />
                 </div>
               </div>
-            );
-          })
+            </div>
+          ))
         )}
       </div>
 
-      {/* Lightbox Modal */}
-      {lightboxIdx !== null && filteredPhotos[lightboxIdx] && (
+      {/* Lightbox Preview Viewer */}
+      {lightboxIdx !== null && photos[lightboxIdx] && (
         <div
           id="skppv-lightbox-modal"
+          onClick={handleCloseLightbox}
           className="fixed inset-0 z-50 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6 text-white animate-fadeIn"
           style={{ backgroundColor: 'rgba(10, 14, 26, 0.96)' }}
         >
           {/* Top Bar */}
-          <div className="flex justify-between items-center z-10 border-b border-white/10 pb-4">
-            <div className="space-y-0.5">
-              <span className="font-mono text-xs text-amber-300">
-                Photo {lightboxIdx + 1} of {filteredPhotos.length} | Category:{' '}
-                <strong className="uppercase">
-                  {filteredPhotos[lightboxIdx].category.replace('_', ' ')}
-                </strong>
+          <div
+            className="flex justify-between items-center z-10 border-b border-white/10 pb-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs text-amber-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                Photo {lightboxIdx + 1} of {photos.length}
               </span>
-              <p className="text-xs text-slate-300 font-sans font-medium">
-                {filteredPhotos[lightboxIdx].titleMr}
-              </p>
+              <span className="text-xs text-slate-400 font-mono hidden sm:inline truncate max-w-xs">
+                {photos[lightboxIdx].filename}
+              </span>
             </div>
 
             <button
               onClick={handleCloseLightbox}
               className="p-2 border border-white/20 bg-white/5 hover:bg-white/15 rounded-full transition-colors cursor-pointer text-white hover:text-amber-400"
+              title="Close (Esc)"
             >
               <X className="h-6 w-6" />
             </button>
           </div>
 
-          {/* Core Image Display Layout */}
-          <div className="flex-1 flex items-center justify-between relative max-w-5xl mx-auto w-full py-4">
+          {/* Core Image Display Area */}
+          <div className="flex-1 flex items-center justify-between relative max-w-6xl mx-auto w-full py-4">
             {/* Prev Button */}
             <button
               onClick={handlePrev}
-              className="p-3 border border-white/20 bg-slate-900/80 hover:bg-amber-400 hover:text-slate-950 rounded-full transition-all cursor-pointer z-10 shadow-xl"
+              className="p-3.5 border border-white/20 bg-slate-900/80 hover:bg-amber-400 hover:text-slate-950 rounded-full transition-all cursor-pointer z-10 shadow-2xl"
+              title="Previous Photo (Left Arrow)"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
 
-            {/* Image or Placeholder View */}
-            <div className="flex-1 flex flex-col items-center justify-center px-4 max-h-[60vh] w-full">
-              {filteredPhotos[lightboxIdx].customMediaUrl ? (
-                <img
-                  src={filteredPhotos[lightboxIdx].customMediaUrl}
-                  alt={filteredPhotos[lightboxIdx].titleEn}
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    const fallback = filteredPhotos[lightboxIdx].fallbackUrl;
-                    if (fallback && target.src !== fallback && !target.src.endsWith(fallback)) {
-                      target.src = fallback;
-                    }
-                  }}
-                  className="max-h-[58vh] max-w-full object-contain rounded-2xl shadow-2xl border border-white/15"
-                />
-              ) : (
-                <div
-                  className="img-placeholder max-h-[55vh] w-full max-w-xl h-80 rounded-2xl flex flex-col items-center justify-center p-8 text-center shadow-2xl border"
-                  style={{
-                    backgroundColor: '#151d2e',
-                    borderColor: 'rgba(255, 255, 255, 0.1)'
-                  }}
-                >
-                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 bg-white/5 border border-white/10">
-                    <ImageIcon className="w-8 h-8 text-slate-400" />
-                  </div>
-                  <span className="text-lg font-bold text-amber-300 font-sans">
-                    {filteredPhotos[lightboxIdx].titleMr}
-                  </span>
-                  <span className="text-sm font-medium text-slate-300 mt-1">
-                    {filteredPhotos[lightboxIdx].titleEn}
-                  </span>
-                </div>
-              )}
+            {/* Photo View */}
+            <div
+              className="flex-1 flex items-center justify-center px-2 sm:px-6 max-h-[82vh] w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={photos[lightboxIdx].url}
+                alt={photos[lightboxIdx].filename}
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  const rawFallback = `/images/SKPP/${photos[lightboxIdx].filename}`;
+                  const encodedFallback = photos[lightboxIdx].fallbackUrl;
+                  if (target.src !== rawFallback && !target.src.endsWith(rawFallback)) {
+                    target.src = rawFallback;
+                  } else if (target.src !== encodedFallback && !target.src.endsWith(encodedFallback)) {
+                    target.src = encodedFallback;
+                  }
+                }}
+                className="max-h-[80vh] max-w-full object-contain rounded-2xl shadow-2xl border border-white/15"
+              />
             </div>
 
             {/* Next Button */}
             <button
               onClick={handleNext}
-              className="p-3 border border-white/20 bg-slate-900/80 hover:bg-amber-400 hover:text-slate-950 rounded-full transition-all cursor-pointer z-10 shadow-xl"
+              className="p-3.5 border border-white/20 bg-slate-900/80 hover:bg-amber-400 hover:text-slate-950 rounded-full transition-all cursor-pointer z-10 shadow-2xl"
+              title="Next Photo (Right Arrow)"
             >
               <ChevronRight className="h-6 w-6" />
             </button>
           </div>
 
-          {/* Bottom Dual Language Description Panel */}
+          {/* Bottom Bar Indicator */}
           <div
-            className="max-w-4xl mx-auto w-full p-5 rounded-2xl border border-white/10 z-10 shadow-2xl"
-            style={{ backgroundColor: '#1e293b' }}
+            className="flex items-center justify-center z-10 pt-2 text-xs text-slate-400 font-mono"
+            onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-white/10 pb-3 mb-3">
-              <div>
-                <h4 className="text-lg font-bold text-amber-300 font-sans">
-                  {filteredPhotos[lightboxIdx].titleMr}
-                </h4>
-                <h5 className="text-sm font-semibold text-white">
-                  {filteredPhotos[lightboxIdx].titleEn}
-                </h5>
-              </div>
-              <div
-                className="px-3 py-1 rounded-full text-xs font-bold text-slate-950 shrink-0"
-                style={{ backgroundColor: '#ffc107' }}
-              >
-                {filteredPhotos[lightboxIdx].eventDateMr || 'SKPPV Event'}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-sans">
-              <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                <span className="text-amber-400 font-bold block mb-1">मराठी वर्णन:</span>
-                <p className="text-slate-200 leading-relaxed">
-                  {filteredPhotos[lightboxIdx].descMr}
-                </p>
-              </div>
-              <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                <span className="text-amber-400 font-bold block mb-1">English Description:</span>
-                <p className="text-slate-300 leading-relaxed">
-                  {filteredPhotos[lightboxIdx].descEn}
-                </p>
-              </div>
-            </div>
+            <span>Use Left / Right arrow keys to navigate, Esc to close</span>
           </div>
         </div>
       )}
