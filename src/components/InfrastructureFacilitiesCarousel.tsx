@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Building2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import computerLabAssetImg from '../assets/images/Computer lab.jpeg';
 
-const computerLabImg = '/images/computer_lab.jpg';
-const computerLabPng = '/images/computer_lab.png';
+const computerLabImg = '/images/Computer lab.jpeg';
 const scienceLabImg = '/images/science_lab.jpg';
 const scienceLabImg1 = '/images/Science_lab1.jpg';
 const labImg = '/images/lab.jpg';
@@ -32,11 +32,11 @@ export default function InfrastructureFacilitiesCarousel({
   const slides = [
     {
       id: 'computer-lab',
-      image: computerLabImg || computerLabPng,
-      altImage: computerLabPng || computerLabImg,
-      overlayHeadingBoth: 'Computer Lab (संगणक प्रयोगशाळा)',
+      image: computerLabImg,
+      altImage: computerLabAssetImg,
+      overlayHeadingBoth: 'Computer Lab / संगणक प्रयोगशाला',
       leftCardTitleEn: '1. Computer Lab',
-      leftCardTitleMr: '१. Computer Lab (संगणक प्रयोगशाळा)',
+      leftCardTitleMr: '१. संगणक प्रयोगशाला',
       rightPanelEn: 'Equipped with modern technology, our computer lab provides students with hands-on practical knowledge, coding, and essential digital skills.',
       rightPanelMr: 'आधुनिक तंत्रज्ञानाची ओळख करून देण्यासाठी सुसज्ज अशी संगणक लॅब उपलब्ध आहे. येथे विद्यार्थ्यांना प्रॅक्टिकल ज्ञान, कोडिंग आणि डिजिटल कौशल्यांचे (Digital Skills) उत्तम शिक्षण दिले जाते.',
       specsEn: [

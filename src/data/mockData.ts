@@ -10,7 +10,7 @@ import {
   LibraryBook
 } from '../types';
 const chairmanImg = '/images/Chairman.png';
-const computerLabImg = '/images/computer_lab.jpg';
+const computerLabImg = '/images/Computer lab.jpeg';
 
 export const INITIAL_ANNOUNCEMENTS: Announcement[] = [
   {
