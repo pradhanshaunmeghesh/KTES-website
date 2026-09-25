@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Building2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import computerLabAssetImg from '../assets/images/Computer lab.jpeg';
-import centralLibraryAssetImg from '../assets/images/central library.jpg';
 
 const computerLabImg = '/images/Computer lab.jpeg';
 const scienceLabImg = '/images/science_lab.jpg';
@@ -11,6 +10,7 @@ const labImg = '/images/lab.jpg';
 const physicsLabUploadedImg = '/images/Physics lab.jpg';
 const biologyLabUploadedImg = '/images/biology lab.jpg';
 const centralLibraryPublicImg = '/images/central library.jpg';
+const centralLibraryAssetImg = centralLibraryPublicImg;
 const libraryImg = '/images/library1.jpg';
 
 interface InfrastructureFacilitiesCarouselProps {

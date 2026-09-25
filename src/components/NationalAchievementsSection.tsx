@@ -14,14 +14,14 @@ import {
   Info
 } from 'lucide-react';
 
-// Import images from junior college folder
-const teamNationalGames1 = '/images/junior_college/WhatsApp Image 2026-08-25 at 18.07.28.jpeg';
-const teamNationalGames2 = '/images/junior_college/WhatsApp Image 2026-08-25 at 18.07.28 (1).jpeg';
-const rutujaPodiumBronze1 = '/images/junior_college/WhatsApp Image 2026-08-25 at 18.07.29 (1).jpeg';
-const rutujaPodiumBronze2 = '/images/junior_college/WhatsApp Image 2026-08-25 at 18.07.29 (2).jpeg';
-const teamFelicitation = '/images/junior_college/WhatsApp Image 2026-08-25 at 18.07.29.jpeg';
-const gunavantSanmanTrophies1 = '/images/junior_college/WhatsApp Image 2026-08-25 at 18.07.30.jpeg';
-const gunavantSanmanTrophies2 = '/images/junior_college/WhatsApp Image 2026-08-25 at 18.07.30 (1).jpeg';
+// Import images from src/assets/images/Junior college/ folder
+import teamNationalGames1 from '../assets/images/Junior college/WhatsApp Image 2026-08-25 at 18.07.28.jpeg';
+import teamNationalGames2 from '../assets/images/Junior college/WhatsApp Image 2026-08-25 at 18.07.28 (1).jpeg';
+import rutujaPodiumBronze1 from '../assets/images/Junior college/rutuja rakshe.jpeg';
+import rutujaPodiumBronze2 from '../assets/images/Junior college/WhatsApp Image 2026-08-25 at 18.07.29 (2).jpeg';
+import teamFelicitation from '../assets/images/Junior college/WhatsApp Image 2026-08-25 at 18.07.29.jpeg';
+import gunavantSanmanTrophies1 from '../assets/images/Junior college/WhatsApp Image 2026-08-25 at 18.07.30.jpeg';
+import gunavantSanmanTrophies2 from '../assets/images/Junior college/WhatsApp Image 2026-08-25 at 18.07.30 (1).jpeg';
 
 interface NationalAchievementsSectionProps {
   selectedLang?: 'en' | 'mr' | 'both';
