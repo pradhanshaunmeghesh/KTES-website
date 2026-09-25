@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Building2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import computerLabAssetImg from '../assets/images/Computer lab.jpeg';
+import centralLibraryAssetImg from '../assets/images/central library.jpg';
 
 const computerLabImg = '/images/Computer lab.jpeg';
 const scienceLabImg = '/images/science_lab.jpg';
@@ -9,6 +10,7 @@ const scienceLabImg1 = '/images/Science_lab1.jpg';
 const labImg = '/images/lab.jpg';
 const physicsLabUploadedImg = '/images/Physics lab.jpg';
 const biologyLabUploadedImg = '/images/biology lab.jpg';
+const centralLibraryPublicImg = '/images/central library.jpg';
 const libraryImg = '/images/library1.jpg';
 
 interface InfrastructureFacilitiesCarouselProps {
@@ -72,10 +74,11 @@ export default function InfrastructureFacilitiesCarousel({
     },
     {
       id: 'central-library',
-      image: libraryImg,
-      overlayHeadingBoth: 'Central Library (ग्रंथालय)',
+      image: centralLibraryAssetImg,
+      altImage: centralLibraryPublicImg,
+      overlayHeadingBoth: 'Central Library / केंद्रीय ग्रंथालय',
       leftCardTitleEn: '3. Central Library',
-      leftCardTitleMr: '३. Library (ग्रंथालय)',
+      leftCardTitleMr: '३. केंद्रीय ग्रंथालय',
       rightPanelEn: 'To cultivate a reading culture and foster overall personality development, Mahatma Gandhi Vidyalay & Junior College, Rajgurunagar maintains a well-equipped library with over 11,611 books. Dedicated reading sessions are held every Wednesday and Sunday.',
       rightPanelMr: 'महात्मा गांधी विद्यालय व कनिष्ठ महाविद्यालय, राजगुरूनगर येथे विद्यार्थ्यांमध्ये वाचन संस्कृती रुजवणे, ज्ञानसंपादनाची आवड निर्माण करणे व व्यक्तिमत्त्व विकासाला चालना देणे या उद्देशाने समृद्ध ग्रंथालय प्रभावीपणे कार्यरत असून त्यामध्ये सुमारे ११,६११ पुस्तके उपलब्ध आहेत. विद्यार्थ्यांसाठी वयोगटानुसार विविध विषयांवरील पुस्तके उपलब्ध करून देण्यात आली असून आठवड्यातील बुधवार व रविवार या दिवशी नियमित वाचन तास आयोजित केले जातात.',
       specsEn: [

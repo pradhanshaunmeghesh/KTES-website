@@ -343,8 +343,8 @@ export default function SKPPVDeptView() {
     {
       sr: 17,
       catSr: 1,
-      nameMr: 'सौ. गुजर मनीषा दीपक',
-      nameEn: 'Smt. Manisha Deepak Gujar',
+      nameMr: 'श्रीम. गुजर मनिषा दिपक',
+      nameEn: 'Smt. Manisha Dipak Gujar',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
       qual: 'D.Ed, B.A.',
@@ -497,7 +497,7 @@ export default function SKPPVDeptView() {
     {
       sr: 28,
       catSr: 12,
-      nameMr: 'वाळुंज निलम गणेश',
+      nameMr: 'सौ. वाळुंज निलम गणेश',
       nameEn: 'Smt. Nilam Ganesh Walunj',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
@@ -511,7 +511,7 @@ export default function SKPPVDeptView() {
     {
       sr: 29,
       catSr: 13,
-      nameMr: 'खाडगीर वनिता भानुदास',
+      nameMr: 'सौ. खाडगीर वनिता भानुदास',
       nameEn: 'Smt. Vanita Bhanudas Khadgir',
       roleMr: 'उपशिक्षिका',
       roleEn: 'Assistant Teacher',
@@ -530,8 +530,8 @@ export default function SKPPVDeptView() {
       roleMr: 'उपशिक्षिका (बालवाडी)',
       roleEn: 'Assistant Teacher (Balwadi)',
       qual: 'H.S.C. बालवाडी कोर्स',
-      date: '20/06/2017',
-      dateMr: '२०/०६/२०१७',
+      date: '07/12/2016',
+      dateMr: '०७/१२/२०१६',
       category: 'unaided_teaching' as const,
       categoryLabelMr: 'शिक्षक कर्मचारी - विनाअनुदानित',
       categoryLabelEn: 'Teaching Staff - Unaided'
@@ -539,13 +539,13 @@ export default function SKPPVDeptView() {
     {
       sr: 31,
       catSr: 15,
-      nameMr: 'शमीम नजीर मोमीन',
+      nameMr: 'सौ. शमीम नजीर मोमीन',
       nameEn: 'Smt. Shamim Nazeer Momin',
       roleMr: 'उपशिक्षिका (बालवाडी)',
       roleEn: 'Assistant Teacher (Balwadi)',
       qual: 'H.S.C. बालवाडी कोर्स',
-      date: '01/07/2023',
-      dateMr: '०१/०७/२०२३',
+      date: '27/06/2022',
+      dateMr: '२७/०६/२०२२',
       category: 'unaided_teaching' as const,
       categoryLabelMr: 'शिक्षक कर्मचारी - विनाअनुदानित',
       categoryLabelEn: 'Teaching Staff - Unaided'
@@ -553,7 +553,7 @@ export default function SKPPVDeptView() {
     {
       sr: 32,
       catSr: 16,
-      nameMr: 'कुंभार स्नेहल संदेश',
+      nameMr: 'सौ. कुंभार स्नेहल संदेश',
       nameEn: 'Smt. Snehal Sandesh Kumbhar',
       roleMr: 'उपशिक्षिका (बालवाडी)',
       roleEn: 'Assistant Teacher (Balwadi)',
@@ -655,7 +655,7 @@ export default function SKPPVDeptView() {
     {
       sr: 39,
       catSr: 7,
-      nameMr: 'हाबडे दिपाली सोमनाथ',
+      nameMr: 'सौ. हाबडे दिपाली सोमनाथ',
       nameEn: 'Smt. Dipali Somnath Habade',
       roleMr: 'शिक्षकेतर कर्मचारी',
       roleEn: 'Non-Teaching Staff',
