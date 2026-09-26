@@ -35,6 +35,9 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import kailashPacharneImg from '../assets/images/presidents/Shri Kailash Raghunath Pacharne.jpg';
+import ganeshJoshiImg from '../assets/images/Ktes Current Body/Air Commodore Shri Ganesh Joshi.jpg';
+import rahulKumbharImg from '../assets/images/Ktes Current Body/Shri Rahul Prabhakar Kumbhar.jpg';
+import swanandKhedkarImg from '../assets/images/Ktes Current Body/Shri Swanand Vilas Khedkar.jpg';
 const ktesCampusImg = '/images/ktes_actual_banner_1783586668608.jpg';
 const chairmanImg = '/images/Chairman.png';
 
@@ -124,15 +127,12 @@ function resolvePresidentPath(pathOrUrl: string, nameEn?: string): string {
   }
   return '';
 }
-// Member photos from Ktes Current Body referencing static public /images/
+// Member photos from Ktes Current Body
 const ajitLunawatImg = '/images/Ktes Current Body/Shri Ajit Lunawat.jpg';
-const ganeshJoshiImg = '/images/Ktes Current Body/Air Commodore Shri Ganesh Joshi.jpg';
 const kailasSandbhorImg = '/images/Ktes Current Body/Shri. Kailas Sandbhor.jpg';
 const pradeepShewaleImg = '/images/Ktes Current Body/Dr. Shri. Pradeep Shewale.jpg';
 const sandeepBhosaleImg = '/images/Ktes Current Body/Adv. Shri. Sandeep Bhosale.jpg';
 const urmilaSandbhorImg = '/images/Ktes Current Body/Sau. Urmila Sandbhor.jpg';
-const rahulKumbharImg = '/images/Ktes Current Body/Shri Rahul Prabhakar Kumbhar.jpg';
-const swanandKhedkarImg = '/images/Ktes Current Body/Shri Swanand Vilas Khedkar.jpg';
 const hiramanSatkarImg = '/images/Ktes Current Body/Shri. Hiraman Satkar.jpg';
 const pradeepKaswaImg = '/images/Ktes Current Body/Shri. Pradeep Kaswa.jpg';
 const ganeshGhumatkarImg = '/images/Ktes Current Body/Shri. Ganesh Ghumatkar.jpg';
@@ -380,14 +380,6 @@ const TRUST_BOARD = [
 
 const ADMIN_OFFICERS = [
   {
-    id: 'ao-1',
-    nameEn: 'Shri Kailash Raghunath Pacharne',
-    nameMr: 'श्री. कैलास रघुनाथ पाचारणे',
-    designationEn: 'Administrative Officer',
-    designationMr: 'प्रशासकीय अधिकारी',
-    image: kailashPacharneImg
-  },
-  {
     id: 'ao-2',
     nameEn: 'Shri Rahul Prabhakar Kumbhar',
     nameMr: 'श्री. राहुल प्रभाकर कुंभार',
@@ -402,6 +394,14 @@ const ADMIN_OFFICERS = [
     designationEn: 'Local Auditor',
     designationMr: 'स्थानिक हिशोब तपासनीस',
     image: swanandKhedkarImg
+  },
+  {
+    id: 'ao-1',
+    nameEn: 'Shri Kailash Raghunath Pacharne',
+    nameMr: 'श्री. कैलास रघुनाथ पाचारणे',
+    designationEn: 'Administrative Officer',
+    designationMr: 'प्रशासकीय अधिकारी',
+    image: kailashPacharneImg
   }
 ];
 
