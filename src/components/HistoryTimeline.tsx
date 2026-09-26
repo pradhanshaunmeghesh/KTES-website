@@ -126,7 +126,7 @@ export default function HistoryTimeline() {
       titleEn: 'Step into Tech Literacy',
       titleMr: 'तंत्रज्ञान साक्षरतेकडे पाऊल',
       descEn: 'Launched the Smt. Jadavbai Tapadiya Computer Institute, taking the first futuristic step toward digital literacy.',
-      descMr: 'श्रीमती जाधवबाई तापडिया कॉम्प्युटर इन्स्टिट्यूटची स्थापना करून तंत्रज्ञान व डिजिटल साक्षरतेच्या दिशेने पहिले भविष्यवादी पाऊल टाकण्यात आले.',
+      descMr: 'श्रीमती जडाव तापडिया कॉम्प्युटर इन्स्टिट्यूटची स्थापना करून तंत्रज्ञान व डिजिटल साक्षरतेच्या दिशेने पहिले भविष्यवादी पाऊल टाकण्यात आले.',
       icon: Laptop,
       category: 'landmark'
     },
@@ -144,7 +144,7 @@ export default function HistoryTimeline() {
       titleEn: 'Diamond Jubilee Milestone',
       titleMr: 'हीरक महोत्सव टप्पा (६० वर्षे)',
       descEn: "Celebrated the Diamond Jubilee (60 years). The grand main entrance was formally named 'Guruvarya G. N. Deshpande'.",
-      descMr: "संस्थेची हीरक महोत्सवी ६० वर्षे साजरी करण्यात आली. या प्रसंगी भव्य मुख्य प्रवेशद्वाराचे अधिकृतपणे 'गुरुवर्य ग. न. देशपांडे' असे नामकरण करण्यात आले.",
+      descMr: "संस्थेची हीरक महोत्सवी ६० वर्षे साजरी करण्यात आली. या प्रसंगी भव्य मुख्य प्रवेशद्वाराचे अधिकृतपणे 'गुरुवर्य ग. ना. देशपांडे' असे नामकरण करण्यात आले.",
       icon: Award,
       category: 'landmark'
     },

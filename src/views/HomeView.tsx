@@ -400,7 +400,7 @@ const ADMIN_OFFICERS = [
     nameEn: 'Shri Kailash Raghunath Pacharne',
     nameMr: 'श्री. कैलास रघुनाथ पाचारणे',
     designationEn: 'Administrative Officer',
-    designationMr: 'प्रशासकीय अधिकारी',
+    designationMr: 'व्यवस्थापकीय अधिकारी',
     image: kailashPacharneImg
   }
 ];
