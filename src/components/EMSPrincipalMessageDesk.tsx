@@ -39,19 +39,21 @@ export default function EMSPrincipalMessageDesk({
               {/* Photo Container */}
               <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border-2 border-amber-400/60 bg-slate-950 shadow-2xl flex items-center justify-center">
                 <div className="w-full h-full bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 flex flex-col items-center justify-center p-6 text-center">
-                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/60 bg-slate-950 flex items-center justify-center mb-3.5 shadow-xl overflow-hidden shrink-0">
-                    {!imgError ? (
-                      <img
-                        src={photoSrc}
-                        alt="Mr. Ganesh Dethe - Principal, English Medium School"
-                        onError={() => setImgError(true)}
-                        className="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="w-full h-full rounded-full bg-amber-500/15 flex items-center justify-center text-amber-400 shadow-inner">
-                        <GraduationCap className="h-12 w-12 text-amber-400" />
-                      </div>
-                    )}
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/60 bg-slate-900 flex items-center justify-center mb-3.5 shadow-xl overflow-hidden shrink-0">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 flex items-center justify-center relative">
+                      {!imgError ? (
+                        <img
+                          src={photoSrc}
+                          alt="Mr. Ganesh Dethe - Principal, English Medium School"
+                          onError={() => setImgError(true)}
+                          className="w-full h-full object-cover object-[50%_10%] rounded-full transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full rounded-full bg-amber-500/15 flex items-center justify-center text-amber-400 shadow-inner">
+                          <GraduationCap className="h-12 w-12 text-amber-400" />
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <span className="text-sm font-display font-bold text-white tracking-wide">
                     Mr. Ganesh Dethe

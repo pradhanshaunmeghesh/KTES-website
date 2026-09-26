@@ -158,11 +158,11 @@ export default function Footer({ onChangeTab }: FooterProps) {
               </a>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-amber-400 shrink-0" />
-                <span>+91 22 2567-9034 / 2568-9122</span>
+                <span>+91-2125-222054 / 225154</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-amber-400 shrink-0" />
-                <span>admissions@ktes.edu.in</span>
+                <span>ktes@gmail.com</span>
               </div>
 
               {/* Direct Google Maps Action Buttons */}
