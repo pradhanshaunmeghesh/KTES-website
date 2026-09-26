@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Quote, Sparkles, GraduationCap, Award, BookOpen, HeartHandshake, ShieldCheck } from 'lucide-react';
+import ganeshDethePhoto from '../assets/images/EMS/Prof. Ganesh Dethe.jpeg';
 
 interface EMSPrincipalMessageDeskProps {
   className?: string;
@@ -13,9 +14,8 @@ export default function EMSPrincipalMessageDesk({
   const [activeLang, setActiveLang] = useState<'both' | 'mr' | 'en'>('both');
   const [imgError, setImgError] = useState(false);
 
-  // Default image path specified in requirements
-  const defaultPhotoPath = '/images/ems/principal.jpg';
-  const photoSrc = customPhotoUrl || defaultPhotoPath;
+  // Official portrait asset path
+  const photoSrc = customPhotoUrl || ganeshDethePhoto;
 
   return (
     <section
@@ -38,30 +38,28 @@ export default function EMSPrincipalMessageDesk({
 
               {/* Photo Container */}
               <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border-2 border-amber-400/60 bg-slate-950 shadow-2xl flex items-center justify-center">
-                {!imgError ? (
-                  <img
-                    src={photoSrc}
-                    alt="Mr. Ganesh Dethe - Principal, English Medium School"
-                    onError={() => setImgError(true)}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 flex flex-col items-center justify-center p-6 text-center">
-                    <div className="w-20 h-20 rounded-2xl bg-amber-500/15 border border-amber-400/40 flex items-center justify-center mb-3 text-amber-400 shadow-inner">
-                      <GraduationCap className="h-10 w-10 text-amber-400" />
-                    </div>
-                    <span className="text-sm font-display font-bold text-white tracking-wide">
-                      Mr. Ganesh Dethe
-                    </span>
-                    <span className="text-xs text-amber-400 font-sans mt-0.5">
-                      (श्री. गणेश देठे)
-                    </span>
-                    <span className="text-[11px] text-slate-400 font-sans mt-2 px-3 py-1 bg-white/5 rounded-full border border-white/10">
-                      Official Photograph
-                    </span>
+                <div className="w-full h-full bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 flex flex-col items-center justify-center p-6 text-center">
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 border-2 border-amber-400/60 bg-slate-950 flex items-center justify-center mb-3.5 shadow-xl overflow-hidden shrink-0">
+                    {!imgError ? (
+                      <img
+                        src={photoSrc}
+                        alt="Mr. Ganesh Dethe - Principal, English Medium School"
+                        onError={() => setImgError(true)}
+                        className="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full rounded-full bg-amber-500/15 flex items-center justify-center text-amber-400 shadow-inner">
+                        <GraduationCap className="h-12 w-12 text-amber-400" />
+                      </div>
+                    )}
                   </div>
-                )}
+                  <span className="text-sm font-display font-bold text-white tracking-wide">
+                    Mr. Ganesh Dethe
+                  </span>
+                  <span className="text-xs text-amber-400 font-sans mt-0.5">
+                    (श्री. गणेश देठे)
+                  </span>
+                </div>
 
                 {/* Floating Principal Badge */}
                 <div className="absolute top-3 right-3 z-10">
