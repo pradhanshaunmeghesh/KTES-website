@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'motion/react';
 const nccPilotInteraction = '/images/ncc_pilot_interaction_1787651755440.jpg';
 const nccPilotTarmac = '/images/ncc_pilot_tarmac_1787651772635.jpg';
 const nccAirForceGallery = '/images/air_force_gallery_1787651788607.jpg';
-const nccTroopTen = '/images/ncc_troop_ten_1787651805916.jpg';
 
 export default function NCCCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,13 +29,9 @@ export default function NCCCarousel() {
       alt: 'Air Force Day informational gallery and aircraft display board',
       headline: 'Aviation Awareness & Technical Knowledge | हवाई दल आणि तंत्रज्ञानाची ओळख',
     },
-    {
-      id: 'ncc-slide-4',
-      path: nccTroopTen,
-      alt: 'National Cadet Corps Troop No. 10 / No. 3 MAH Air Sqn NCC Pune unit',
-      headline: 'National Cadet Corps (Troop No. 10) | राष्ट्रीय छात्र सेना (एअर विंग)',
-    },
   ];
+
+  const safeIndex = currentIndex % slides.length;
 
   // Autoplay 4.5s
   useEffect(() => {
@@ -72,7 +67,7 @@ export default function NCCCarousel() {
       <div className="absolute inset-0 w-full h-full">
         <AnimatePresence mode="wait">
           <motion.div
-            key={currentIndex}
+            key={safeIndex}
             initial={{ opacity: 0, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -80,8 +75,8 @@ export default function NCCCarousel() {
             className="absolute inset-0 w-full h-full"
           >
             <img
-              src={slides[currentIndex].path}
-              alt={slides[currentIndex].alt}
+              src={slides[safeIndex].path}
+              alt={slides[safeIndex].alt}
               className="w-full h-full object-cover object-center filter brightness-[0.78] contrast-[1.05]"
               referrerPolicy="no-referrer"
             />
@@ -90,10 +85,10 @@ export default function NCCCarousel() {
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-5 sm:p-7 flex flex-col justify-end">
               <div className="space-y-1 max-w-2xl">
                 <span className="text-[10px] sm:text-xs font-bold text-amber-400 tracking-wider uppercase font-mono bg-amber-400/15 border border-amber-400/25 px-2.5 py-0.5 rounded inline-block">
-                  Air Wing Slide {currentIndex + 1} / {slides.length}
+                  Air Wing Slide {safeIndex + 1} / {slides.length}
                 </span>
                 <h3 className="text-base sm:text-lg md:text-xl font-display font-black text-white leading-snug drop-shadow-md">
-                  {slides[currentIndex].headline}
+                  {slides[safeIndex].headline}
                 </h3>
               </div>
             </div>
@@ -129,7 +124,7 @@ export default function NCCCarousel() {
             type="button"
             onClick={() => setCurrentIndex(idx)}
             className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-              currentIndex === idx
+              safeIndex === idx
                 ? 'w-6 bg-amber-400'
                 : 'w-2 bg-white/40 hover:bg-white/70'
             }`}

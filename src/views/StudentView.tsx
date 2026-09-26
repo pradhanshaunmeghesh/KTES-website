@@ -11,7 +11,7 @@ import {
   Target,
   Award
 } from 'lucide-react';
-const schoolSportsGroundImg = '/images/school_sports_ground_1787645807351.jpg';
+import fosteringSportsImg from '../assets/images/Fostering.jpg';
 import NationalSportsAchievers from '../components/NationalSportsAchievers';
 import NCCCarousel from '../components/NCCCarousel';
 import NCCGallerySection from '../components/NCCGallerySection';
@@ -104,10 +104,9 @@ export default function StudentView() {
 
             <div className="lg:col-span-5 relative rounded-2.5xl overflow-hidden shadow-2xl aspect-video border border-white/10 bg-slate-900 group">
               <img
-                src={schoolSportsGroundImg}
+                src={fosteringSportsImg}
                 alt="School Sports Ground & Assembly"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                referrerPolicy="no-referrer"
               />
             </div>
           </section>
